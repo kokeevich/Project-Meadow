@@ -11,6 +11,8 @@ namespace ProjectMeadow.Animals
         [SerializeField] private ProjectMeadow.Items.ItemData eggData;
         [SerializeField] private Material bodyMaterial;
         [SerializeField] private Material beakMaterial;
+        [SerializeField] private Material combMaterial, eyeMaterial, wingMaterial;
+        private Transform head, leftFoot, rightFoot;
         private NavMeshAgent agent;
         private ChickenCycle cycle;
         private FoodPlot target;
@@ -28,10 +30,22 @@ namespace ProjectMeadow.Animals
             agent.height = 1f;
             agent.stoppingDistance = 0.1f;
             cycle = new ChickenCycle(data.eatSeconds, data.productionSeconds);
-            body = Part("Body", PrimitiveType.Sphere, new Vector3(0, .45f, 0), new Vector3(.65f, .7f, .8f), bodyMaterial);
-            Part("Head", PrimitiveType.Sphere, new Vector3(0, .8f, .35f), Vector3.one * .4f, bodyMaterial);
-            Part("Beak", PrimitiveType.Cube, new Vector3(0, .78f, .61f), new Vector3(.18f, .12f, .23f), beakMaterial);
-            Part("Comb", PrimitiveType.Cube, new Vector3(0, 1.04f, .35f), new Vector3(.12f, .18f, .25f), beakMaterial);
+            body = Part("Body", PrimitiveType.Sphere, new Vector3(0, .5f, 0), new Vector3(.7f, .7f, .85f), bodyMaterial);
+            head = Part("Head", PrimitiveType.Sphere, new Vector3(0, .83f, .36f), Vector3.one * .43f, bodyMaterial);
+            Part("Beak", PrimitiveType.Sphere, new Vector3(0, .79f, .62f), new Vector3(.19f, .13f, .25f), beakMaterial);
+            for (int i = 0; i < 3; i++)
+                Part("Comb", PrimitiveType.Sphere, new Vector3(0, 1.06f, .23f + i * .11f), new Vector3(.13f, .2f, .14f), combMaterial);
+            Part("Wattle", PrimitiveType.Sphere, new Vector3(0, .66f, .54f), new Vector3(.12f, .19f, .12f), combMaterial);
+            for (int side = -1; side <= 1; side += 2)
+            {
+                Part("Eye", PrimitiveType.Sphere, new Vector3(side * .19f, .88f, .47f), Vector3.one * .07f, eyeMaterial);
+                Part("Eye glint", PrimitiveType.Sphere, new Vector3(side * .215f, .9f, .49f), Vector3.one * .024f, bodyMaterial);
+                Part("Wing", PrimitiveType.Sphere, new Vector3(side * .31f, .5f, -.03f), new Vector3(.16f, .38f, .53f), wingMaterial);
+                var foot = Part("Foot", PrimitiveType.Cube, new Vector3(side * .16f, .08f, .05f), new Vector3(.13f, .1f, .28f), beakMaterial);
+                if (side < 0) leftFoot = foot; else rightFoot = foot;
+            }
+            var tail = Part("Tail feathers", PrimitiveType.Sphere, new Vector3(0, .68f, -.39f), new Vector3(.35f, .49f, .2f), wingMaterial);
+            tail.localRotation = Quaternion.Euler(-32, 0, 0);
         }
         private Transform Part(string label, PrimitiveType shape, Vector3 position, Vector3 scale, Material material)
         {
@@ -41,7 +55,7 @@ namespace ProjectMeadow.Animals
             part.transform.localPosition = position;
             part.transform.localScale = scale;
             part.GetComponent<Renderer>().sharedMaterial = material;
-            Destroy(part.GetComponent<Collider>());
+            var collider = part.GetComponent<Collider>(); collider.enabled = false; Destroy(collider);
             return part.transform;
         }
         private void Update()
@@ -50,8 +64,12 @@ namespace ProjectMeadow.Animals
             if (cycle.Tick(Time.deltaTime)) SpawnEgg();
             bool eating = cycle.State == ChickenCycle.Phase.Eat;
             float bob = eating ? Mathf.Sin(Time.time * 12f) * .06f : agent.velocity.magnitude > .1f ? Mathf.Sin(Time.time * 10f) * .04f : 0;
-            body.localPosition = new Vector3(0, .45f + bob, 0);
+            body.localPosition = new Vector3(0, .5f + bob, 0);
             body.localRotation = Quaternion.Euler(eating ? 18f + Mathf.Sin(Time.time * 12f) * 12f : 0, 0, 0);
+            head.localPosition = new Vector3(0, .83f + (eating ? bob * 2 : bob), .36f + (eating ? .07f : 0));
+            float step = agent.velocity.magnitude > .1f ? Mathf.Sin(Time.time * 12f) * .07f : 0;
+            leftFoot.localPosition = new Vector3(-.16f, .08f + Mathf.Max(0, step), .05f + step);
+            rightFoot.localPosition = new Vector3(.16f, .08f + Mathf.Max(0, -step), .05f - step);
             if (cycle.State != ChickenCycle.Phase.Idle) return;
             if (target != null)
             {
@@ -97,7 +115,7 @@ namespace ProjectMeadow.Animals
             var egg = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             egg.name = "Egg";
             egg.transform.position = transform.position - transform.forward * .6f + Vector3.up * .4f;
-            egg.transform.localScale = new Vector3(.25f, .35f, .25f);
+            egg.transform.localScale = new Vector3(.32f, .43f, .32f);
             egg.GetComponent<Renderer>().sharedMaterial = bodyMaterial;
             var physics = egg.AddComponent<Rigidbody>();
             physics.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;

@@ -48,3 +48,6 @@ MonoBehaviour:
   bodyMaterial: {fileID: 2100000, guid: f92291204431491e92914c72dedf6b4e, type: 2}
   beakMaterial: {fileID: 2100000, guid: eb861de26e224488b9c2a715c06cb491, type: 2}
   eggData: {fileID: 11400000, guid: 110efa523171486e99bc89a64fb34996, type: 2}
+  combMaterial: {fileID: 2100000, guid: c3fbd17f9c7a4377a447e32e2002df30, type: 2}
+  eyeMaterial: {fileID: 2100000, guid: bab571160f184759ab41ceb0408c7c2f, type: 2}
+  wingMaterial: {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}

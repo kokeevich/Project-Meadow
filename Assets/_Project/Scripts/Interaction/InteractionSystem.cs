@@ -6,7 +6,9 @@ namespace ProjectMeadow.Interaction
     public sealed class InteractionSystem : MonoBehaviour
     {
         [SerializeField] private UnityEngine.Camera viewCamera;
-        public void Initialize(UnityEngine.Camera camera) => viewCamera = camera;
+        private ProjectMeadow.UI.FarmHud hud;
+        public void Initialize(UnityEngine.Camera camera, ProjectMeadow.UI.FarmHud interfaceView)
+        { viewCamera = camera; hud = interfaceView; }
 
         private void Update()
         {
@@ -26,8 +28,7 @@ namespace ProjectMeadow.Interaction
                 if (mouse == null || !mouse.leftButton.wasPressedThisFrame) return;
                 position = mouse.position.ReadValue();
             }
-            // Reserve the prototype HUD area; clicks there must not hit the world.
-            if (position.y > Screen.height - 360 && position.x < 360) return;
+            if (hud != null && hud.BlocksScreenPoint(position)) return;
             if (viewCamera == null) return;
             if (!Physics.Raycast(viewCamera.ScreenPointToRay(position), out var hit, 200f,
                 Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore)) return;

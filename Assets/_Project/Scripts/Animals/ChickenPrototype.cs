@@ -28,7 +28,7 @@ namespace ProjectMeadow.Animals
                 });
             }
             var settings = NavMesh.GetSettingsByIndex(0);
-            mesh = NavMeshBuilder.BuildNavMeshData(settings, sources, new Bounds(Vector3.zero, new Vector3(14, 6, 14)), Vector3.zero, Quaternion.identity);
+            mesh = NavMeshBuilder.BuildNavMeshData(settings, sources, new Bounds(Vector3.zero, new Vector3(18, 8, 18)), Vector3.zero, Quaternion.identity);
             if (mesh == null) { Debug.LogError("Cannot build prototype NavMesh.", this); return; }
             instance = NavMesh.AddNavMeshData(mesh);
             currentAgentType = settings.agentTypeID;

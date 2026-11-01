@@ -155,8 +155,8 @@ Camera:
   m_GameObject: {fileID: 330585543}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.73, g: 0.81, b: 0.76, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -179,7 +179,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 48
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -206,7 +206,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387953}
-  m_LocalPosition: {x: 0, y: 12, z: -12}
+  m_LocalPosition: {x: 0, y: 14, z: -14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -328,7 +328,7 @@ Light:
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_ColorTemperature: 5000
+  m_ColorTemperature: 5500
   m_UseColorTemperature: 1
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
@@ -457,6 +457,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2a67cc9b0c94c80924a1e387fce659f, type: 3}
   m_Name:
   m_EditorClassIdentifier:
+  cream: {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+  teal: {fileID: 2100000, guid: 2c0c61981c434063a2b321d2a8041247, type: 2}
+  wood: {fileID: 2100000, guid: c3a3e9cc544f4f8cbca8725d96ba7cd0, type: 2}
+  dark: {fileID: 2100000, guid: bab571160f184759ab41ceb0408c7c2f, type: 2}
+  glass: {fileID: 2100000, guid: fd24c36884fe40b9ada2be198c668c3d, type: 2}
+  gold: {fileID: 2100000, guid: 825a88434f644f23b930d7e06ffd9f20, type: 2}
+  leaves: {fileID: 2100000, guid: e69591cc567f4ae2ae68a3fab5db41d0, type: 2}
 --- !u!1 &910000
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,7 +484,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.15, z: 0}
-  m_LocalScale: {x: 10, y: 0.3, z: 10}
+  m_LocalScale: {x: 13, y: 0.3, z: 11}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!33 &910002
@@ -493,7 +500,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 2536f96cbb394a82bff1d11b8d265871, type: 2}
+  - {fileID: 2100000, guid: 5e801367fd0d46aea2e33ca2a352258a, type: 2}
 --- !u!65 &910004
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -503,61 +510,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &910010
-GameObject:
-  m_ObjectHideFlags: 0
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 910011}
-  - component: {fileID: 910012}
-  - component: {fileID: 910013}
-  - component: {fileID: 910014}
-  - component: {fileID: 910015}
-  m_Layer: 0
-  m_Name: Clickable Prototype Cube
-  m_TagString: Untagged
-  m_IsActive: 1
---- !u!4 &910011
-Transform:
-  m_ObjectHideFlags: 0
-  m_GameObject: {fileID: 910010}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: 0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
---- !u!33 &910012
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_GameObject: {fileID: 910010}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &910013
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_GameObject: {fileID: 910010}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_Materials:
-  - {fileID: 2100000, guid: eb861de26e224488b9c2a715c06cb491, type: 2}
---- !u!65 &910014
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_GameObject: {fileID: 910010}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &910015
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_GameObject: {fileID: 910010}
-  m_Enabled: 1
-  m_Script: {fileID: 11500000, guid: f01e11770e7b406480b3754ef9bb85e8, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
 --- !u!1 &910020
 GameObject:
   m_ObjectHideFlags: 0
@@ -619,6 +571,4696 @@ MonoBehaviour:
   m_Enabled: 1
   m_Script: {fileID: 11500000, guid: 10b78bf1f9ff4b9181bda3a0f7216771, type: 3}
   chickenPrefab: {fileID: 1000, guid: d766a7bffe174db6b3ae5758e83cc9f1, type: 3}
+--- !u!1 &1999990
+GameObject:
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1999991}
+  m_Name: Meadow - Art
+  m_IsActive: 1
+--- !u!4 &1999991
+Transform:
+  m_GameObject: {fileID: 1999990}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2000001}
+  - {fileID: 2000011}
+  - {fileID: 2000021}
+  - {fileID: 2000031}
+  - {fileID: 2000041}
+  - {fileID: 2000051}
+  - {fileID: 2000061}
+  - {fileID: 2000071}
+  - {fileID: 2000081}
+  - {fileID: 2000091}
+  - {fileID: 2000101}
+  - {fileID: 2000111}
+  - {fileID: 2000121}
+  - {fileID: 2000131}
+  - {fileID: 2000141}
+  - {fileID: 2000151}
+  - {fileID: 2000161}
+  - {fileID: 2000171}
+  - {fileID: 2000181}
+  - {fileID: 2000191}
+  - {fileID: 2000201}
+  - {fileID: 2000211}
+  - {fileID: 2000221}
+  - {fileID: 2000231}
+  - {fileID: 2000241}
+  - {fileID: 2000251}
+  - {fileID: 2000261}
+  - {fileID: 2000271}
+  - {fileID: 2000281}
+  - {fileID: 2000291}
+  - {fileID: 2000301}
+  - {fileID: 2000311}
+  - {fileID: 2000321}
+  - {fileID: 2000331}
+  - {fileID: 2000341}
+  - {fileID: 2000351}
+  - {fileID: 2000361}
+  - {fileID: 2000371}
+  - {fileID: 2000381}
+  - {fileID: 2000391}
+  - {fileID: 2000401}
+  - {fileID: 2000411}
+  - {fileID: 2000421}
+  - {fileID: 2000431}
+  - {fileID: 2000441}
+  - {fileID: 2000451}
+  - {fileID: 2000461}
+  - {fileID: 2000471}
+  - {fileID: 2000481}
+  - {fileID: 2000491}
+  - {fileID: 2000501}
+  - {fileID: 2000511}
+  - {fileID: 2000521}
+  - {fileID: 2000531}
+  - {fileID: 2000541}
+  - {fileID: 2000551}
+  - {fileID: 2000561}
+  - {fileID: 2000571}
+  - {fileID: 2000581}
+  - {fileID: 2000591}
+  - {fileID: 2000601}
+  - {fileID: 2000611}
+  - {fileID: 2000621}
+  - {fileID: 2000631}
+  - {fileID: 2000641}
+  - {fileID: 2000651}
+  - {fileID: 2000661}
+  - {fileID: 2000671}
+  - {fileID: 2000681}
+  - {fileID: 2000691}
+  - {fileID: 2000701}
+  - {fileID: 2000711}
+  - {fileID: 2000721}
+  - {fileID: 2000731}
+  - {fileID: 2000741}
+  - {fileID: 2000751}
+  - {fileID: 2000761}
+  - {fileID: 2000771}
+  - {fileID: 2000781}
+  - {fileID: 2000791}
+  - {fileID: 2000801}
+  - {fileID: 2000811}
+  - {fileID: 2000821}
+  - {fileID: 2000831}
+  - {fileID: 2000841}
+  - {fileID: 2000851}
+  - {fileID: 2000861}
+  - {fileID: 2000871}
+  - {fileID: 2000881}
+  - {fileID: 2000891}
+  - {fileID: 2000901}
+  - {fileID: 2000911}
+  - {fileID: 2000921}
+  - {fileID: 2000931}
+  - {fileID: 2000941}
+  - {fileID: 2000951}
+  - {fileID: 2000961}
+  - {fileID: 2000971}
+  - {fileID: 2000981}
+  - {fileID: 2000991}
+  - {fileID: 2001001}
+  - {fileID: 2001011}
+  - {fileID: 2001021}
+  - {fileID: 2001031}
+  - {fileID: 2001041}
+  - {fileID: 2001051}
+  - {fileID: 2001061}
+  - {fileID: 2001071}
+  - {fileID: 2001081}
+  - {fileID: 2001091}
+  - {fileID: 2001101}
+  - {fileID: 2001111}
+  - {fileID: 2001121}
+  - {fileID: 2001131}
+  - {fileID: 2001141}
+  - {fileID: 2001151}
+  - {fileID: 2001161}
+  - {fileID: 2001171}
+  - {fileID: 2001181}
+  - {fileID: 2001191}
+  - {fileID: 2001201}
+  - {fileID: 2001211}
+  - {fileID: 2001221}
+  - {fileID: 2001231}
+  - {fileID: 2001241}
+  - {fileID: 2001251}
+  - {fileID: 2001261}
+  - {fileID: 2001271}
+  - {fileID: 2001281}
+  - {fileID: 2001291}
+  - {fileID: 2001301}
+  - {fileID: 2001311}
+  m_Father: {fileID: 0}
+--- !u!1 &2000000
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000001}
+  - component: {fileID: 2000002}
+  - component: {fileID: 2000003}
+  m_Layer: 0
+  m_Name: Island soil edge
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000001
+Transform:
+  m_GameObject: {fileID: 2000000}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 0, y: -0.48, z: 0}
+  m_LocalScale: {x: 13, y: 0.65, z: 11}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000002
+MeshFilter:
+  m_GameObject: {fileID: 2000000}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000003
+MeshRenderer:
+  m_GameObject: {fileID: 2000000}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 07a00c21d47a4b6db26d4ec4ab739b51, type: 2}
+--- !u!1 &2000010
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000011}
+  - component: {fileID: 2000012}
+  - component: {fileID: 2000013}
+  m_Layer: 0
+  m_Name: Market lane
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000011
+Transform:
+  m_GameObject: {fileID: 2000010}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 0, y: 0.015, z: -3.9}
+  m_LocalScale: {x: 12.5, y: 0.035, z: 1.25}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000012
+MeshFilter:
+  m_GameObject: {fileID: 2000010}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000013
+MeshRenderer:
+  m_GameObject: {fileID: 2000010}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: b0dc635b2623430393ee8c6657e87b01, type: 2}
+--- !u!1 &2000020
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000021}
+  - component: {fileID: 2000022}
+  - component: {fileID: 2000023}
+  - component: {fileID: 2000024}
+  m_Layer: 0
+  m_Name: Barn
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000021
+Transform:
+  m_GameObject: {fileID: 2000020}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -3, y: 1.05, z: 2.3}
+  m_LocalScale: {x: 2.8, y: 2.1, z: 2.3}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000022
+MeshFilter:
+  m_GameObject: {fileID: 2000020}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000023
+MeshRenderer:
+  m_GameObject: {fileID: 2000020}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: c3fbd17f9c7a4377a447e32e2002df30, type: 2}
+--- !u!65 &2000024
+BoxCollider:
+  m_GameObject: {fileID: 2000020}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &2000030
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000031}
+  - component: {fileID: 2000032}
+  - component: {fileID: 2000033}
+  m_Layer: 0
+  m_Name: Barn roof
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000031
+Transform:
+  m_GameObject: {fileID: 2000030}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.27563735581699916, w: 0.9612616959383189}
+  m_LocalPosition: {x: -3.7800000000000002, y: 2.42, z: 2.3}
+  m_LocalScale: {x: 1.9, y: 0.18, z: 2.8}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000032
+MeshFilter:
+  m_GameObject: {fileID: 2000030}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000033
+MeshRenderer:
+  m_GameObject: {fileID: 2000030}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: c9b72beffcb947d59b9c7de095658f47, type: 2}
+--- !u!1 &2000040
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000041}
+  - component: {fileID: 2000042}
+  - component: {fileID: 2000043}
+  m_Layer: 0
+  m_Name: Barn corner
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000041
+Transform:
+  m_GameObject: {fileID: 2000040}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -4.32, y: 1.05, z: 1.12}
+  m_LocalScale: {x: 0.12, y: 2.1, z: 0.12}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000042
+MeshFilter:
+  m_GameObject: {fileID: 2000040}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000043
+MeshRenderer:
+  m_GameObject: {fileID: 2000040}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000050
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000051}
+  - component: {fileID: 2000052}
+  - component: {fileID: 2000053}
+  m_Layer: 0
+  m_Name: Barn roof
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000051
+Transform:
+  m_GameObject: {fileID: 2000050}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: -0.27563735581699916, w: 0.9612616959383189}
+  m_LocalPosition: {x: -2.2199999999999998, y: 2.42, z: 2.3}
+  m_LocalScale: {x: 1.9, y: 0.18, z: 2.8}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000052
+MeshFilter:
+  m_GameObject: {fileID: 2000050}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000053
+MeshRenderer:
+  m_GameObject: {fileID: 2000050}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: c9b72beffcb947d59b9c7de095658f47, type: 2}
+--- !u!1 &2000060
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000061}
+  - component: {fileID: 2000062}
+  - component: {fileID: 2000063}
+  m_Layer: 0
+  m_Name: Barn corner
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000061
+Transform:
+  m_GameObject: {fileID: 2000060}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -1.68, y: 1.05, z: 1.12}
+  m_LocalScale: {x: 0.12, y: 2.1, z: 0.12}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000062
+MeshFilter:
+  m_GameObject: {fileID: 2000060}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000063
+MeshRenderer:
+  m_GameObject: {fileID: 2000060}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000070
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000071}
+  - component: {fileID: 2000072}
+  - component: {fileID: 2000073}
+  m_Layer: 0
+  m_Name: Barn lintel
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000071
+Transform:
+  m_GameObject: {fileID: 2000070}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -3, y: 1.95, z: 1.1}
+  m_LocalScale: {x: 2.8, y: 0.14, z: 0.12}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000072
+MeshFilter:
+  m_GameObject: {fileID: 2000070}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000073
+MeshRenderer:
+  m_GameObject: {fileID: 2000070}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000080
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000081}
+  - component: {fileID: 2000082}
+  - component: {fileID: 2000083}
+  m_Layer: 0
+  m_Name: Barn door
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000081
+Transform:
+  m_GameObject: {fileID: 2000080}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -3, y: 0.78, z: 1.1}
+  m_LocalScale: {x: 1.5, y: 1.55, z: 0.1}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000082
+MeshFilter:
+  m_GameObject: {fileID: 2000080}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000083
+MeshRenderer:
+  m_GameObject: {fileID: 2000080}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: c3a3e9cc544f4f8cbca8725d96ba7cd0, type: 2}
+--- !u!1 &2000090
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000091}
+  - component: {fileID: 2000092}
+  - component: {fileID: 2000093}
+  m_Layer: 0
+  m_Name: Door cross brace
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000091
+Transform:
+  m_GameObject: {fileID: 2000090}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: -0.3665012267242973, w: 0.9304175679820246}
+  m_LocalPosition: {x: -3, y: 0.78, z: 1.02}
+  m_LocalScale: {x: 0.09, y: 1.95, z: 0.08}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000092
+MeshFilter:
+  m_GameObject: {fileID: 2000090}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000093
+MeshRenderer:
+  m_GameObject: {fileID: 2000090}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000100
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000101}
+  - component: {fileID: 2000102}
+  - component: {fileID: 2000103}
+  m_Layer: 0
+  m_Name: Door cross brace
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000101
+Transform:
+  m_GameObject: {fileID: 2000100}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.3665012267242973, w: 0.9304175679820246}
+  m_LocalPosition: {x: -3, y: 0.78, z: 1.02}
+  m_LocalScale: {x: 0.09, y: 1.95, z: 0.08}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000102
+MeshFilter:
+  m_GameObject: {fileID: 2000100}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000103
+MeshRenderer:
+  m_GameObject: {fileID: 2000100}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000110
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000111}
+  - component: {fileID: 2000112}
+  - component: {fileID: 2000113}
+  m_Layer: 0
+  m_Name: Loft window
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000111
+Transform:
+  m_GameObject: {fileID: 2000110}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -3, y: 2.23, z: 1.12}
+  m_LocalScale: {x: 0.5, y: 0.4, z: 0.08}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000112
+MeshFilter:
+  m_GameObject: {fileID: 2000110}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000113
+MeshRenderer:
+  m_GameObject: {fileID: 2000110}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: fd24c36884fe40b9ada2be198c668c3d, type: 2}
+--- !u!1 &2000120
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000121}
+  - component: {fileID: 2000122}
+  - component: {fileID: 2000123}
+  - component: {fileID: 2000124}
+  m_Layer: 0
+  m_Name: Hen house
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000121
+Transform:
+  m_GameObject: {fileID: 2000120}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 4, y: 0.75, z: 2.5}
+  m_LocalScale: {x: 1.8, y: 1.5, z: 1.65}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000122
+MeshFilter:
+  m_GameObject: {fileID: 2000120}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000123
+MeshRenderer:
+  m_GameObject: {fileID: 2000120}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 825a88434f644f23b930d7e06ffd9f20, type: 2}
+--- !u!65 &2000124
+BoxCollider:
+  m_GameObject: {fileID: 2000120}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &2000130
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000131}
+  - component: {fileID: 2000132}
+  - component: {fileID: 2000133}
+  m_Layer: 0
+  m_Name: Coop roof
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000131
+Transform:
+  m_GameObject: {fileID: 2000130}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.25881904510252074, w: 0.9659258262890683}
+  m_LocalPosition: {x: 3.5, y: 1.85, z: 2.5}
+  m_LocalScale: {x: 1.25, y: 0.16, z: 2}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000132
+MeshFilter:
+  m_GameObject: {fileID: 2000130}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000133
+MeshRenderer:
+  m_GameObject: {fileID: 2000130}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: c9b72beffcb947d59b9c7de095658f47, type: 2}
+--- !u!1 &2000140
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000141}
+  - component: {fileID: 2000142}
+  - component: {fileID: 2000143}
+  m_Layer: 0
+  m_Name: Coop roof
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000141
+Transform:
+  m_GameObject: {fileID: 2000140}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: -0.25881904510252074, w: 0.9659258262890683}
+  m_LocalPosition: {x: 4.5, y: 1.85, z: 2.5}
+  m_LocalScale: {x: 1.25, y: 0.16, z: 2}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000142
+MeshFilter:
+  m_GameObject: {fileID: 2000140}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000143
+MeshRenderer:
+  m_GameObject: {fileID: 2000140}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: c9b72beffcb947d59b9c7de095658f47, type: 2}
+--- !u!1 &2000150
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000151}
+  - component: {fileID: 2000152}
+  - component: {fileID: 2000153}
+  m_Layer: 0
+  m_Name: Hen door
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000151
+Transform:
+  m_GameObject: {fileID: 2000150}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 4, y: 0.45, z: 1.64}
+  m_LocalScale: {x: 0.6, y: 0.8, z: 0.08}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000152
+MeshFilter:
+  m_GameObject: {fileID: 2000150}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000153
+MeshRenderer:
+  m_GameObject: {fileID: 2000150}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: bab571160f184759ab41ceb0408c7c2f, type: 2}
+--- !u!1 &2000160
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000161}
+  - component: {fileID: 2000162}
+  - component: {fileID: 2000163}
+  m_Layer: 0
+  m_Name: Hen ramp
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000161
+Transform:
+  m_GameObject: {fileID: 2000160}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.10452846326765347, y: 0.0, z: 0.0, w: 0.9945218953682733}
+  m_LocalPosition: {x: 4, y: 0.14, z: 1.05}
+  m_LocalScale: {x: 0.7, y: 0.16, z: 1.1}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000162
+MeshFilter:
+  m_GameObject: {fileID: 2000160}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000163
+MeshRenderer:
+  m_GameObject: {fileID: 2000160}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: c3a3e9cc544f4f8cbca8725d96ba7cd0, type: 2}
+--- !u!1 &2000170
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000171}
+  - component: {fileID: 2000172}
+  - component: {fileID: 2000173}
+  m_Layer: 0
+  m_Name: Harvest crate
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000171
+Transform:
+  m_GameObject: {fileID: 2000170}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -4.7, y: 0.25, z: 0.8}
+  m_LocalScale: {x: 0.46, y: 0.5, z: 0.46}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000172
+MeshFilter:
+  m_GameObject: {fileID: 2000170}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000173
+MeshRenderer:
+  m_GameObject: {fileID: 2000170}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: c3a3e9cc544f4f8cbca8725d96ba7cd0, type: 2}
+--- !u!1 &2000180
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000181}
+  - component: {fileID: 2000182}
+  - component: {fileID: 2000183}
+  m_Layer: 0
+  m_Name: Crate band
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000181
+Transform:
+  m_GameObject: {fileID: 2000180}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -4.7, y: 0.25, z: 0.56}
+  m_LocalScale: {x: 0.48, y: 0.06, z: 0.04}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000182
+MeshFilter:
+  m_GameObject: {fileID: 2000180}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000183
+MeshRenderer:
+  m_GameObject: {fileID: 2000180}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000190
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000191}
+  - component: {fileID: 2000192}
+  - component: {fileID: 2000193}
+  m_Layer: 0
+  m_Name: Crate band
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000191
+Transform:
+  m_GameObject: {fileID: 2000190}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -4.7, y: 0.25, z: 1.04}
+  m_LocalScale: {x: 0.48, y: 0.06, z: 0.04}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000192
+MeshFilter:
+  m_GameObject: {fileID: 2000190}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000193
+MeshRenderer:
+  m_GameObject: {fileID: 2000190}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000200
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000201}
+  - component: {fileID: 2000202}
+  - component: {fileID: 2000203}
+  m_Layer: 0
+  m_Name: Harvest crate
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000201
+Transform:
+  m_GameObject: {fileID: 2000200}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -4.15, y: 0.25, z: 0.8}
+  m_LocalScale: {x: 0.46, y: 0.5, z: 0.46}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000202
+MeshFilter:
+  m_GameObject: {fileID: 2000200}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000203
+MeshRenderer:
+  m_GameObject: {fileID: 2000200}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: c3a3e9cc544f4f8cbca8725d96ba7cd0, type: 2}
+--- !u!1 &2000210
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000211}
+  - component: {fileID: 2000212}
+  - component: {fileID: 2000213}
+  m_Layer: 0
+  m_Name: Crate band
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000211
+Transform:
+  m_GameObject: {fileID: 2000210}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -4.15, y: 0.25, z: 0.56}
+  m_LocalScale: {x: 0.48, y: 0.06, z: 0.04}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000212
+MeshFilter:
+  m_GameObject: {fileID: 2000210}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000213
+MeshRenderer:
+  m_GameObject: {fileID: 2000210}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000220
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000221}
+  - component: {fileID: 2000222}
+  - component: {fileID: 2000223}
+  m_Layer: 0
+  m_Name: Crate band
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000221
+Transform:
+  m_GameObject: {fileID: 2000220}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -4.15, y: 0.25, z: 1.04}
+  m_LocalScale: {x: 0.48, y: 0.06, z: 0.04}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000222
+MeshFilter:
+  m_GameObject: {fileID: 2000220}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000223
+MeshRenderer:
+  m_GameObject: {fileID: 2000220}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000230
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000231}
+  - component: {fileID: 2000232}
+  - component: {fileID: 2000233}
+  m_Layer: 0
+  m_Name: Harvest crate
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000231
+Transform:
+  m_GameObject: {fileID: 2000230}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -3.6, y: 0.25, z: 0.8}
+  m_LocalScale: {x: 0.46, y: 0.5, z: 0.46}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000232
+MeshFilter:
+  m_GameObject: {fileID: 2000230}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000233
+MeshRenderer:
+  m_GameObject: {fileID: 2000230}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: c3a3e9cc544f4f8cbca8725d96ba7cd0, type: 2}
+--- !u!1 &2000240
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000241}
+  - component: {fileID: 2000242}
+  - component: {fileID: 2000243}
+  m_Layer: 0
+  m_Name: Crate band
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000241
+Transform:
+  m_GameObject: {fileID: 2000240}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -3.6, y: 0.25, z: 0.56}
+  m_LocalScale: {x: 0.48, y: 0.06, z: 0.04}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000242
+MeshFilter:
+  m_GameObject: {fileID: 2000240}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000243
+MeshRenderer:
+  m_GameObject: {fileID: 2000240}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000250
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000251}
+  - component: {fileID: 2000252}
+  - component: {fileID: 2000253}
+  m_Layer: 0
+  m_Name: Crate band
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000251
+Transform:
+  m_GameObject: {fileID: 2000250}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -3.6, y: 0.25, z: 1.04}
+  m_LocalScale: {x: 0.48, y: 0.06, z: 0.04}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000252
+MeshFilter:
+  m_GameObject: {fileID: 2000250}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000253
+MeshRenderer:
+  m_GameObject: {fileID: 2000250}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000260
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000261}
+  - component: {fileID: 2000262}
+  - component: {fileID: 2000263}
+  m_Layer: 0
+  m_Name: Fence post
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000261
+Transform:
+  m_GameObject: {fileID: 2000260}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -6, y: 0.5, z: 4.9}
+  m_LocalScale: {x: 0.16, y: 1, z: 0.16}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000262
+MeshFilter:
+  m_GameObject: {fileID: 2000260}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000263
+MeshRenderer:
+  m_GameObject: {fileID: 2000260}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000270
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000271}
+  - component: {fileID: 2000272}
+  - component: {fileID: 2000273}
+  m_Layer: 0
+  m_Name: Fence rail
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000271
+Transform:
+  m_GameObject: {fileID: 2000270}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -5, y: 0.35, z: 4.9}
+  m_LocalScale: {x: 2, y: 0.12, z: 0.12}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000272
+MeshFilter:
+  m_GameObject: {fileID: 2000270}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000273
+MeshRenderer:
+  m_GameObject: {fileID: 2000270}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000280
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000281}
+  - component: {fileID: 2000282}
+  - component: {fileID: 2000283}
+  m_Layer: 0
+  m_Name: Fence rail
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000281
+Transform:
+  m_GameObject: {fileID: 2000280}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -5, y: 0.73, z: 4.9}
+  m_LocalScale: {x: 2, y: 0.12, z: 0.12}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000282
+MeshFilter:
+  m_GameObject: {fileID: 2000280}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000283
+MeshRenderer:
+  m_GameObject: {fileID: 2000280}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000290
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000291}
+  - component: {fileID: 2000292}
+  - component: {fileID: 2000293}
+  m_Layer: 0
+  m_Name: Fence post
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000291
+Transform:
+  m_GameObject: {fileID: 2000290}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -4, y: 0.5, z: 4.9}
+  m_LocalScale: {x: 0.16, y: 1, z: 0.16}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000292
+MeshFilter:
+  m_GameObject: {fileID: 2000290}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000293
+MeshRenderer:
+  m_GameObject: {fileID: 2000290}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000300
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000301}
+  - component: {fileID: 2000302}
+  - component: {fileID: 2000303}
+  m_Layer: 0
+  m_Name: Fence rail
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000301
+Transform:
+  m_GameObject: {fileID: 2000300}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -3, y: 0.35, z: 4.9}
+  m_LocalScale: {x: 2, y: 0.12, z: 0.12}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000302
+MeshFilter:
+  m_GameObject: {fileID: 2000300}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000303
+MeshRenderer:
+  m_GameObject: {fileID: 2000300}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000310
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000311}
+  - component: {fileID: 2000312}
+  - component: {fileID: 2000313}
+  m_Layer: 0
+  m_Name: Fence rail
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000311
+Transform:
+  m_GameObject: {fileID: 2000310}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -3, y: 0.73, z: 4.9}
+  m_LocalScale: {x: 2, y: 0.12, z: 0.12}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000312
+MeshFilter:
+  m_GameObject: {fileID: 2000310}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000313
+MeshRenderer:
+  m_GameObject: {fileID: 2000310}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000320
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000321}
+  - component: {fileID: 2000322}
+  - component: {fileID: 2000323}
+  m_Layer: 0
+  m_Name: Fence post
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000321
+Transform:
+  m_GameObject: {fileID: 2000320}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -2, y: 0.5, z: 4.9}
+  m_LocalScale: {x: 0.16, y: 1, z: 0.16}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000322
+MeshFilter:
+  m_GameObject: {fileID: 2000320}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000323
+MeshRenderer:
+  m_GameObject: {fileID: 2000320}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000330
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000331}
+  - component: {fileID: 2000332}
+  - component: {fileID: 2000333}
+  m_Layer: 0
+  m_Name: Fence rail
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000331
+Transform:
+  m_GameObject: {fileID: 2000330}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -1, y: 0.35, z: 4.9}
+  m_LocalScale: {x: 2, y: 0.12, z: 0.12}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000332
+MeshFilter:
+  m_GameObject: {fileID: 2000330}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000333
+MeshRenderer:
+  m_GameObject: {fileID: 2000330}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000340
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000341}
+  - component: {fileID: 2000342}
+  - component: {fileID: 2000343}
+  m_Layer: 0
+  m_Name: Fence rail
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000341
+Transform:
+  m_GameObject: {fileID: 2000340}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -1, y: 0.73, z: 4.9}
+  m_LocalScale: {x: 2, y: 0.12, z: 0.12}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000342
+MeshFilter:
+  m_GameObject: {fileID: 2000340}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000343
+MeshRenderer:
+  m_GameObject: {fileID: 2000340}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000350
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000351}
+  - component: {fileID: 2000352}
+  - component: {fileID: 2000353}
+  m_Layer: 0
+  m_Name: Fence post
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000351
+Transform:
+  m_GameObject: {fileID: 2000350}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 4.9}
+  m_LocalScale: {x: 0.16, y: 1, z: 0.16}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000352
+MeshFilter:
+  m_GameObject: {fileID: 2000350}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000353
+MeshRenderer:
+  m_GameObject: {fileID: 2000350}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000360
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000361}
+  - component: {fileID: 2000362}
+  - component: {fileID: 2000363}
+  m_Layer: 0
+  m_Name: Fence rail
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000361
+Transform:
+  m_GameObject: {fileID: 2000360}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 1, y: 0.35, z: 4.9}
+  m_LocalScale: {x: 2, y: 0.12, z: 0.12}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000362
+MeshFilter:
+  m_GameObject: {fileID: 2000360}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000363
+MeshRenderer:
+  m_GameObject: {fileID: 2000360}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000370
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000371}
+  - component: {fileID: 2000372}
+  - component: {fileID: 2000373}
+  m_Layer: 0
+  m_Name: Fence rail
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000371
+Transform:
+  m_GameObject: {fileID: 2000370}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 1, y: 0.73, z: 4.9}
+  m_LocalScale: {x: 2, y: 0.12, z: 0.12}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000372
+MeshFilter:
+  m_GameObject: {fileID: 2000370}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000373
+MeshRenderer:
+  m_GameObject: {fileID: 2000370}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000380
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000381}
+  - component: {fileID: 2000382}
+  - component: {fileID: 2000383}
+  m_Layer: 0
+  m_Name: Fence post
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000381
+Transform:
+  m_GameObject: {fileID: 2000380}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 2, y: 0.5, z: 4.9}
+  m_LocalScale: {x: 0.16, y: 1, z: 0.16}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000382
+MeshFilter:
+  m_GameObject: {fileID: 2000380}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000383
+MeshRenderer:
+  m_GameObject: {fileID: 2000380}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000390
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000391}
+  - component: {fileID: 2000392}
+  - component: {fileID: 2000393}
+  m_Layer: 0
+  m_Name: Fence rail
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000391
+Transform:
+  m_GameObject: {fileID: 2000390}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 3, y: 0.35, z: 4.9}
+  m_LocalScale: {x: 2, y: 0.12, z: 0.12}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000392
+MeshFilter:
+  m_GameObject: {fileID: 2000390}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000393
+MeshRenderer:
+  m_GameObject: {fileID: 2000390}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000400
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000401}
+  - component: {fileID: 2000402}
+  - component: {fileID: 2000403}
+  m_Layer: 0
+  m_Name: Fence rail
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000401
+Transform:
+  m_GameObject: {fileID: 2000400}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 3, y: 0.73, z: 4.9}
+  m_LocalScale: {x: 2, y: 0.12, z: 0.12}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000402
+MeshFilter:
+  m_GameObject: {fileID: 2000400}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000403
+MeshRenderer:
+  m_GameObject: {fileID: 2000400}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000410
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000411}
+  - component: {fileID: 2000412}
+  - component: {fileID: 2000413}
+  m_Layer: 0
+  m_Name: Fence post
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000411
+Transform:
+  m_GameObject: {fileID: 2000410}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 4, y: 0.5, z: 4.9}
+  m_LocalScale: {x: 0.16, y: 1, z: 0.16}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000412
+MeshFilter:
+  m_GameObject: {fileID: 2000410}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000413
+MeshRenderer:
+  m_GameObject: {fileID: 2000410}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000420
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000421}
+  - component: {fileID: 2000422}
+  - component: {fileID: 2000423}
+  m_Layer: 0
+  m_Name: Fence rail
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000421
+Transform:
+  m_GameObject: {fileID: 2000420}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 5, y: 0.35, z: 4.9}
+  m_LocalScale: {x: 2, y: 0.12, z: 0.12}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000422
+MeshFilter:
+  m_GameObject: {fileID: 2000420}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000423
+MeshRenderer:
+  m_GameObject: {fileID: 2000420}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000430
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000431}
+  - component: {fileID: 2000432}
+  - component: {fileID: 2000433}
+  m_Layer: 0
+  m_Name: Fence rail
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000431
+Transform:
+  m_GameObject: {fileID: 2000430}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 5, y: 0.73, z: 4.9}
+  m_LocalScale: {x: 2, y: 0.12, z: 0.12}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000432
+MeshFilter:
+  m_GameObject: {fileID: 2000430}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000433
+MeshRenderer:
+  m_GameObject: {fileID: 2000430}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000440
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000441}
+  - component: {fileID: 2000442}
+  - component: {fileID: 2000443}
+  m_Layer: 0
+  m_Name: Fence post
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000441
+Transform:
+  m_GameObject: {fileID: 2000440}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 6, y: 0.5, z: 4.9}
+  m_LocalScale: {x: 0.16, y: 1, z: 0.16}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000442
+MeshFilter:
+  m_GameObject: {fileID: 2000440}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000443
+MeshRenderer:
+  m_GameObject: {fileID: 2000440}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000450
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000451}
+  - component: {fileID: 2000452}
+  - component: {fileID: 2000453}
+  m_Layer: 0
+  m_Name: Fence post
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000451
+Transform:
+  m_GameObject: {fileID: 2000450}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -6.1, y: 0.5, z: -2}
+  m_LocalScale: {x: 0.16, y: 1, z: 0.16}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000452
+MeshFilter:
+  m_GameObject: {fileID: 2000450}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000453
+MeshRenderer:
+  m_GameObject: {fileID: 2000450}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000460
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000461}
+  - component: {fileID: 2000462}
+  - component: {fileID: 2000463}
+  m_Layer: 0
+  m_Name: Fence rail
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000461
+Transform:
+  m_GameObject: {fileID: 2000460}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -6.1, y: 0.35, z: -1}
+  m_LocalScale: {x: 0.12, y: 0.12, z: 2}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000462
+MeshFilter:
+  m_GameObject: {fileID: 2000460}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000463
+MeshRenderer:
+  m_GameObject: {fileID: 2000460}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000470
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000471}
+  - component: {fileID: 2000472}
+  - component: {fileID: 2000473}
+  m_Layer: 0
+  m_Name: Fence rail
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000471
+Transform:
+  m_GameObject: {fileID: 2000470}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -6.1, y: 0.73, z: -1}
+  m_LocalScale: {x: 0.12, y: 0.12, z: 2}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000472
+MeshFilter:
+  m_GameObject: {fileID: 2000470}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000473
+MeshRenderer:
+  m_GameObject: {fileID: 2000470}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000480
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000481}
+  - component: {fileID: 2000482}
+  - component: {fileID: 2000483}
+  m_Layer: 0
+  m_Name: Fence post
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000481
+Transform:
+  m_GameObject: {fileID: 2000480}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -6.1, y: 0.5, z: 0}
+  m_LocalScale: {x: 0.16, y: 1, z: 0.16}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000482
+MeshFilter:
+  m_GameObject: {fileID: 2000480}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000483
+MeshRenderer:
+  m_GameObject: {fileID: 2000480}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000490
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000491}
+  - component: {fileID: 2000492}
+  - component: {fileID: 2000493}
+  m_Layer: 0
+  m_Name: Fence rail
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000491
+Transform:
+  m_GameObject: {fileID: 2000490}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -6.1, y: 0.35, z: 1}
+  m_LocalScale: {x: 0.12, y: 0.12, z: 2}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000492
+MeshFilter:
+  m_GameObject: {fileID: 2000490}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000493
+MeshRenderer:
+  m_GameObject: {fileID: 2000490}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000500
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000501}
+  - component: {fileID: 2000502}
+  - component: {fileID: 2000503}
+  m_Layer: 0
+  m_Name: Fence rail
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000501
+Transform:
+  m_GameObject: {fileID: 2000500}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -6.1, y: 0.73, z: 1}
+  m_LocalScale: {x: 0.12, y: 0.12, z: 2}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000502
+MeshFilter:
+  m_GameObject: {fileID: 2000500}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000503
+MeshRenderer:
+  m_GameObject: {fileID: 2000500}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000510
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000511}
+  - component: {fileID: 2000512}
+  - component: {fileID: 2000513}
+  m_Layer: 0
+  m_Name: Fence post
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000511
+Transform:
+  m_GameObject: {fileID: 2000510}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -6.1, y: 0.5, z: 2}
+  m_LocalScale: {x: 0.16, y: 1, z: 0.16}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000512
+MeshFilter:
+  m_GameObject: {fileID: 2000510}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000513
+MeshRenderer:
+  m_GameObject: {fileID: 2000510}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000520
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000521}
+  - component: {fileID: 2000522}
+  - component: {fileID: 2000523}
+  m_Layer: 0
+  m_Name: Fence rail
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000521
+Transform:
+  m_GameObject: {fileID: 2000520}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -6.1, y: 0.35, z: 3}
+  m_LocalScale: {x: 0.12, y: 0.12, z: 2}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000522
+MeshFilter:
+  m_GameObject: {fileID: 2000520}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000523
+MeshRenderer:
+  m_GameObject: {fileID: 2000520}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000530
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000531}
+  - component: {fileID: 2000532}
+  - component: {fileID: 2000533}
+  m_Layer: 0
+  m_Name: Fence rail
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000531
+Transform:
+  m_GameObject: {fileID: 2000530}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -6.1, y: 0.73, z: 3}
+  m_LocalScale: {x: 0.12, y: 0.12, z: 2}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000532
+MeshFilter:
+  m_GameObject: {fileID: 2000530}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000533
+MeshRenderer:
+  m_GameObject: {fileID: 2000530}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000540
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000541}
+  - component: {fileID: 2000542}
+  - component: {fileID: 2000543}
+  m_Layer: 0
+  m_Name: Fence post
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000541
+Transform:
+  m_GameObject: {fileID: 2000540}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -6.1, y: 0.5, z: 4}
+  m_LocalScale: {x: 0.16, y: 1, z: 0.16}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000542
+MeshFilter:
+  m_GameObject: {fileID: 2000540}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000543
+MeshRenderer:
+  m_GameObject: {fileID: 2000540}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000550
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000551}
+  - component: {fileID: 2000552}
+  - component: {fileID: 2000553}
+  m_Layer: 0
+  m_Name: Fence post
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000551
+Transform:
+  m_GameObject: {fileID: 2000550}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 6.1, y: 0.5, z: -2}
+  m_LocalScale: {x: 0.16, y: 1, z: 0.16}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000552
+MeshFilter:
+  m_GameObject: {fileID: 2000550}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000553
+MeshRenderer:
+  m_GameObject: {fileID: 2000550}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000560
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000561}
+  - component: {fileID: 2000562}
+  - component: {fileID: 2000563}
+  m_Layer: 0
+  m_Name: Fence rail
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000561
+Transform:
+  m_GameObject: {fileID: 2000560}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 6.1, y: 0.35, z: -1}
+  m_LocalScale: {x: 0.12, y: 0.12, z: 2}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000562
+MeshFilter:
+  m_GameObject: {fileID: 2000560}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000563
+MeshRenderer:
+  m_GameObject: {fileID: 2000560}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000570
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000571}
+  - component: {fileID: 2000572}
+  - component: {fileID: 2000573}
+  m_Layer: 0
+  m_Name: Fence rail
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000571
+Transform:
+  m_GameObject: {fileID: 2000570}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 6.1, y: 0.73, z: -1}
+  m_LocalScale: {x: 0.12, y: 0.12, z: 2}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000572
+MeshFilter:
+  m_GameObject: {fileID: 2000570}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000573
+MeshRenderer:
+  m_GameObject: {fileID: 2000570}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000580
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000581}
+  - component: {fileID: 2000582}
+  - component: {fileID: 2000583}
+  m_Layer: 0
+  m_Name: Fence post
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000581
+Transform:
+  m_GameObject: {fileID: 2000580}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 6.1, y: 0.5, z: 0}
+  m_LocalScale: {x: 0.16, y: 1, z: 0.16}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000582
+MeshFilter:
+  m_GameObject: {fileID: 2000580}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000583
+MeshRenderer:
+  m_GameObject: {fileID: 2000580}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000590
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000591}
+  - component: {fileID: 2000592}
+  - component: {fileID: 2000593}
+  m_Layer: 0
+  m_Name: Fence rail
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000591
+Transform:
+  m_GameObject: {fileID: 2000590}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 6.1, y: 0.35, z: 1}
+  m_LocalScale: {x: 0.12, y: 0.12, z: 2}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000592
+MeshFilter:
+  m_GameObject: {fileID: 2000590}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000593
+MeshRenderer:
+  m_GameObject: {fileID: 2000590}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000600
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000601}
+  - component: {fileID: 2000602}
+  - component: {fileID: 2000603}
+  m_Layer: 0
+  m_Name: Fence rail
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000601
+Transform:
+  m_GameObject: {fileID: 2000600}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 6.1, y: 0.73, z: 1}
+  m_LocalScale: {x: 0.12, y: 0.12, z: 2}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000602
+MeshFilter:
+  m_GameObject: {fileID: 2000600}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000603
+MeshRenderer:
+  m_GameObject: {fileID: 2000600}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000610
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000611}
+  - component: {fileID: 2000612}
+  - component: {fileID: 2000613}
+  m_Layer: 0
+  m_Name: Fence post
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000611
+Transform:
+  m_GameObject: {fileID: 2000610}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 6.1, y: 0.5, z: 2}
+  m_LocalScale: {x: 0.16, y: 1, z: 0.16}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000612
+MeshFilter:
+  m_GameObject: {fileID: 2000610}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000613
+MeshRenderer:
+  m_GameObject: {fileID: 2000610}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000620
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000621}
+  - component: {fileID: 2000622}
+  - component: {fileID: 2000623}
+  m_Layer: 0
+  m_Name: Fence rail
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000621
+Transform:
+  m_GameObject: {fileID: 2000620}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 6.1, y: 0.35, z: 3}
+  m_LocalScale: {x: 0.12, y: 0.12, z: 2}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000622
+MeshFilter:
+  m_GameObject: {fileID: 2000620}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000623
+MeshRenderer:
+  m_GameObject: {fileID: 2000620}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000630
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000631}
+  - component: {fileID: 2000632}
+  - component: {fileID: 2000633}
+  m_Layer: 0
+  m_Name: Fence rail
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000631
+Transform:
+  m_GameObject: {fileID: 2000630}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 6.1, y: 0.73, z: 3}
+  m_LocalScale: {x: 0.12, y: 0.12, z: 2}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000632
+MeshFilter:
+  m_GameObject: {fileID: 2000630}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000633
+MeshRenderer:
+  m_GameObject: {fileID: 2000630}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000640
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000641}
+  - component: {fileID: 2000642}
+  - component: {fileID: 2000643}
+  m_Layer: 0
+  m_Name: Fence post
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000641
+Transform:
+  m_GameObject: {fileID: 2000640}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 6.1, y: 0.5, z: 4}
+  m_LocalScale: {x: 0.16, y: 1, z: 0.16}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000642
+MeshFilter:
+  m_GameObject: {fileID: 2000640}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000643
+MeshRenderer:
+  m_GameObject: {fileID: 2000640}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000650
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000651}
+  - component: {fileID: 2000652}
+  - component: {fileID: 2000653}
+  - component: {fileID: 2000654}
+  m_Layer: 0
+  m_Name: Tree trunk
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000651
+Transform:
+  m_GameObject: {fileID: 2000650}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -5, y: 0.81, z: 3.7}
+  m_LocalScale: {x: 0.24, y: 1.8, z: 0.24}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000652
+MeshFilter:
+  m_GameObject: {fileID: 2000650}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000653
+MeshRenderer:
+  m_GameObject: {fileID: 2000650}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: c3a3e9cc544f4f8cbca8725d96ba7cd0, type: 2}
+--- !u!65 &2000654
+BoxCollider:
+  m_GameObject: {fileID: 2000650}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &2000660
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000661}
+  - component: {fileID: 2000662}
+  - component: {fileID: 2000663}
+  m_Layer: 0
+  m_Name: Tree crown
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000661
+Transform:
+  m_GameObject: {fileID: 2000660}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -5, y: 1.8, z: 3.7}
+  m_LocalScale: {x: 1.5, y: 1.35, z: 1.5}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000662
+MeshFilter:
+  m_GameObject: {fileID: 2000660}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000663
+MeshRenderer:
+  m_GameObject: {fileID: 2000660}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: e69591cc567f4ae2ae68a3fab5db41d0, type: 2}
+--- !u!1 &2000670
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000671}
+  - component: {fileID: 2000672}
+  - component: {fileID: 2000673}
+  m_Layer: 0
+  m_Name: Tree crown
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000671
+Transform:
+  m_GameObject: {fileID: 2000670}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -5.4, y: 1.95, z: 3.85}
+  m_LocalScale: {x: 1.1, y: 0.9900000000000001, z: 1.1}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000672
+MeshFilter:
+  m_GameObject: {fileID: 2000670}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000673
+MeshRenderer:
+  m_GameObject: {fileID: 2000670}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 574ee97bb13d49fa99796daf64d66583, type: 2}
+--- !u!1 &2000680
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000681}
+  - component: {fileID: 2000682}
+  - component: {fileID: 2000683}
+  m_Layer: 0
+  m_Name: Tree crown
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000681
+Transform:
+  m_GameObject: {fileID: 2000680}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -4.65, y: 2.25, z: 3.7}
+  m_LocalScale: {x: 1.15, y: 1.035, z: 1.15}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000682
+MeshFilter:
+  m_GameObject: {fileID: 2000680}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000683
+MeshRenderer:
+  m_GameObject: {fileID: 2000680}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: e69591cc567f4ae2ae68a3fab5db41d0, type: 2}
+--- !u!1 &2000690
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000691}
+  - component: {fileID: 2000692}
+  - component: {fileID: 2000693}
+  - component: {fileID: 2000694}
+  m_Layer: 0
+  m_Name: Tree trunk
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000691
+Transform:
+  m_GameObject: {fileID: 2000690}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 5.2, y: 0.855, z: 4}
+  m_LocalScale: {x: 0.24, y: 1.9, z: 0.24}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000692
+MeshFilter:
+  m_GameObject: {fileID: 2000690}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000693
+MeshRenderer:
+  m_GameObject: {fileID: 2000690}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: c3a3e9cc544f4f8cbca8725d96ba7cd0, type: 2}
+--- !u!65 &2000694
+BoxCollider:
+  m_GameObject: {fileID: 2000690}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &2000700
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000701}
+  - component: {fileID: 2000702}
+  - component: {fileID: 2000703}
+  m_Layer: 0
+  m_Name: Tree crown
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000701
+Transform:
+  m_GameObject: {fileID: 2000700}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 5.2, y: 1.9, z: 4}
+  m_LocalScale: {x: 1.5, y: 1.35, z: 1.5}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000702
+MeshFilter:
+  m_GameObject: {fileID: 2000700}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000703
+MeshRenderer:
+  m_GameObject: {fileID: 2000700}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: e69591cc567f4ae2ae68a3fab5db41d0, type: 2}
+--- !u!1 &2000710
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000711}
+  - component: {fileID: 2000712}
+  - component: {fileID: 2000713}
+  m_Layer: 0
+  m_Name: Tree crown
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000711
+Transform:
+  m_GameObject: {fileID: 2000710}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 4.8, y: 2.05, z: 4.15}
+  m_LocalScale: {x: 1.1, y: 0.9900000000000001, z: 1.1}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000712
+MeshFilter:
+  m_GameObject: {fileID: 2000710}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000713
+MeshRenderer:
+  m_GameObject: {fileID: 2000710}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 574ee97bb13d49fa99796daf64d66583, type: 2}
+--- !u!1 &2000720
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000721}
+  - component: {fileID: 2000722}
+  - component: {fileID: 2000723}
+  m_Layer: 0
+  m_Name: Tree crown
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000721
+Transform:
+  m_GameObject: {fileID: 2000720}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 5.55, y: 2.35, z: 4}
+  m_LocalScale: {x: 1.15, y: 1.035, z: 1.15}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000722
+MeshFilter:
+  m_GameObject: {fileID: 2000720}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000723
+MeshRenderer:
+  m_GameObject: {fileID: 2000720}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: e69591cc567f4ae2ae68a3fab5db41d0, type: 2}
+--- !u!1 &2000730
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000731}
+  - component: {fileID: 2000732}
+  - component: {fileID: 2000733}
+  - component: {fileID: 2000734}
+  m_Layer: 0
+  m_Name: Tree trunk
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000731
+Transform:
+  m_GameObject: {fileID: 2000730}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -5.2, y: 0.7200000000000001, z: -1.5}
+  m_LocalScale: {x: 0.24, y: 1.6, z: 0.24}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000732
+MeshFilter:
+  m_GameObject: {fileID: 2000730}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000733
+MeshRenderer:
+  m_GameObject: {fileID: 2000730}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: c3a3e9cc544f4f8cbca8725d96ba7cd0, type: 2}
+--- !u!65 &2000734
+BoxCollider:
+  m_GameObject: {fileID: 2000730}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &2000740
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000741}
+  - component: {fileID: 2000742}
+  - component: {fileID: 2000743}
+  m_Layer: 0
+  m_Name: Tree crown
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000741
+Transform:
+  m_GameObject: {fileID: 2000740}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -5.2, y: 1.6, z: -1.5}
+  m_LocalScale: {x: 1.5, y: 1.35, z: 1.5}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000742
+MeshFilter:
+  m_GameObject: {fileID: 2000740}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000743
+MeshRenderer:
+  m_GameObject: {fileID: 2000740}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: e69591cc567f4ae2ae68a3fab5db41d0, type: 2}
+--- !u!1 &2000750
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000751}
+  - component: {fileID: 2000752}
+  - component: {fileID: 2000753}
+  m_Layer: 0
+  m_Name: Tree crown
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000751
+Transform:
+  m_GameObject: {fileID: 2000750}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -5.6000000000000005, y: 1.75, z: -1.35}
+  m_LocalScale: {x: 1.1, y: 0.9900000000000001, z: 1.1}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000752
+MeshFilter:
+  m_GameObject: {fileID: 2000750}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000753
+MeshRenderer:
+  m_GameObject: {fileID: 2000750}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 574ee97bb13d49fa99796daf64d66583, type: 2}
+--- !u!1 &2000760
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000761}
+  - component: {fileID: 2000762}
+  - component: {fileID: 2000763}
+  m_Layer: 0
+  m_Name: Tree crown
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000761
+Transform:
+  m_GameObject: {fileID: 2000760}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -4.8500000000000005, y: 2.0500000000000003, z: -1.5}
+  m_LocalScale: {x: 1.15, y: 1.035, z: 1.15}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000762
+MeshFilter:
+  m_GameObject: {fileID: 2000760}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000763
+MeshRenderer:
+  m_GameObject: {fileID: 2000760}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: e69591cc567f4ae2ae68a3fab5db41d0, type: 2}
+--- !u!1 &2000770
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000771}
+  - component: {fileID: 2000772}
+  - component: {fileID: 2000773}
+  - component: {fileID: 2000774}
+  m_Layer: 0
+  m_Name: Tree trunk
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000771
+Transform:
+  m_GameObject: {fileID: 2000770}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 5.3, y: 0.7200000000000001, z: -1}
+  m_LocalScale: {x: 0.24, y: 1.6, z: 0.24}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000772
+MeshFilter:
+  m_GameObject: {fileID: 2000770}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000773
+MeshRenderer:
+  m_GameObject: {fileID: 2000770}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: c3a3e9cc544f4f8cbca8725d96ba7cd0, type: 2}
+--- !u!65 &2000774
+BoxCollider:
+  m_GameObject: {fileID: 2000770}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &2000780
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000781}
+  - component: {fileID: 2000782}
+  - component: {fileID: 2000783}
+  m_Layer: 0
+  m_Name: Tree crown
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000781
+Transform:
+  m_GameObject: {fileID: 2000780}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 5.3, y: 1.6, z: -1}
+  m_LocalScale: {x: 1.5, y: 1.35, z: 1.5}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000782
+MeshFilter:
+  m_GameObject: {fileID: 2000780}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000783
+MeshRenderer:
+  m_GameObject: {fileID: 2000780}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: e69591cc567f4ae2ae68a3fab5db41d0, type: 2}
+--- !u!1 &2000790
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000791}
+  - component: {fileID: 2000792}
+  - component: {fileID: 2000793}
+  m_Layer: 0
+  m_Name: Tree crown
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000791
+Transform:
+  m_GameObject: {fileID: 2000790}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 4.8999999999999995, y: 1.75, z: -0.85}
+  m_LocalScale: {x: 1.1, y: 0.9900000000000001, z: 1.1}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000792
+MeshFilter:
+  m_GameObject: {fileID: 2000790}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000793
+MeshRenderer:
+  m_GameObject: {fileID: 2000790}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 574ee97bb13d49fa99796daf64d66583, type: 2}
+--- !u!1 &2000800
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000801}
+  - component: {fileID: 2000802}
+  - component: {fileID: 2000803}
+  m_Layer: 0
+  m_Name: Tree crown
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000801
+Transform:
+  m_GameObject: {fileID: 2000800}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 5.6499999999999995, y: 2.0500000000000003, z: -1}
+  m_LocalScale: {x: 1.15, y: 1.035, z: 1.15}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000802
+MeshFilter:
+  m_GameObject: {fileID: 2000800}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000803
+MeshRenderer:
+  m_GameObject: {fileID: 2000800}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: e69591cc567f4ae2ae68a3fab5db41d0, type: 2}
+--- !u!1 &2000810
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000811}
+  - component: {fileID: 2000812}
+  - component: {fileID: 2000813}
+  m_Layer: 0
+  m_Name: Meadow tuft
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000811
+Transform:
+  m_GameObject: {fileID: 2000810}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 4.668777696588672, y: 0.08, z: 1.075480548856378}
+  m_LocalScale: {x: 0.18, y: 0.16, z: 0.18}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000812
+MeshFilter:
+  m_GameObject: {fileID: 2000810}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000813
+MeshRenderer:
+  m_GameObject: {fileID: 2000810}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: e69591cc567f4ae2ae68a3fab5db41d0, type: 2}
+--- !u!1 &2000820
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000821}
+  - component: {fileID: 2000822}
+  - component: {fileID: 2000823}
+  m_Layer: 0
+  m_Name: Wildflower
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000821
+Transform:
+  m_GameObject: {fileID: 2000820}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 4.668777696588672, y: 0.22, z: 1.075480548856378}
+  m_LocalScale: {x: 0.13, y: 0.13, z: 0.13}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000822
+MeshFilter:
+  m_GameObject: {fileID: 2000820}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000823
+MeshRenderer:
+  m_GameObject: {fileID: 2000820}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7a470617c19b44c7b068a13f299b8eec, type: 2}
+--- !u!1 &2000830
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000831}
+  - component: {fileID: 2000832}
+  - component: {fileID: 2000833}
+  m_Layer: 0
+  m_Name: Meadow tuft
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000831
+Transform:
+  m_GameObject: {fileID: 2000830}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 4.8831706625498, y: 0.08, z: -0.09410052488067944}
+  m_LocalScale: {x: 0.18, y: 0.16, z: 0.18}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000832
+MeshFilter:
+  m_GameObject: {fileID: 2000830}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000833
+MeshRenderer:
+  m_GameObject: {fileID: 2000830}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: e69591cc567f4ae2ae68a3fab5db41d0, type: 2}
+--- !u!1 &2000840
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000841}
+  - component: {fileID: 2000842}
+  - component: {fileID: 2000843}
+  m_Layer: 0
+  m_Name: Meadow tuft
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000841
+Transform:
+  m_GameObject: {fileID: 2000840}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -5.474590993377461, y: 0.08, z: 1.8103876692475307}
+  m_LocalScale: {x: 0.18, y: 0.16, z: 0.18}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000842
+MeshFilter:
+  m_GameObject: {fileID: 2000840}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000843
+MeshRenderer:
+  m_GameObject: {fileID: 2000840}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: e69591cc567f4ae2ae68a3fab5db41d0, type: 2}
+--- !u!1 &2000850
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000851}
+  - component: {fileID: 2000852}
+  - component: {fileID: 2000853}
+  m_Layer: 0
+  m_Name: Meadow tuft
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000851
+Transform:
+  m_GameObject: {fileID: 2000850}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -4.600689157025421, y: 0.08, z: 3.7985460188911233}
+  m_LocalScale: {x: 0.18, y: 0.16, z: 0.18}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000852
+MeshFilter:
+  m_GameObject: {fileID: 2000850}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000853
+MeshRenderer:
+  m_GameObject: {fileID: 2000850}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: e69591cc567f4ae2ae68a3fab5db41d0, type: 2}
+--- !u!1 &2000860
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000861}
+  - component: {fileID: 2000862}
+  - component: {fileID: 2000863}
+  m_Layer: 0
+  m_Name: Wildflower
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000861
+Transform:
+  m_GameObject: {fileID: 2000860}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -4.600689157025421, y: 0.22, z: 3.7985460188911233}
+  m_LocalScale: {x: 0.13, y: 0.13, z: 0.13}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000862
+MeshFilter:
+  m_GameObject: {fileID: 2000860}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000863
+MeshRenderer:
+  m_GameObject: {fileID: 2000860}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000870
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000871}
+  - component: {fileID: 2000872}
+  - component: {fileID: 2000873}
+  m_Layer: 0
+  m_Name: Meadow tuft
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000871
+Transform:
+  m_GameObject: {fileID: 2000870}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 5.396243311474894, y: 0.08, z: -2.736049681739312}
+  m_LocalScale: {x: 0.18, y: 0.16, z: 0.18}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000872
+MeshFilter:
+  m_GameObject: {fileID: 2000870}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000873
+MeshRenderer:
+  m_GameObject: {fileID: 2000870}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: e69591cc567f4ae2ae68a3fab5db41d0, type: 2}
+--- !u!1 &2000880
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000881}
+  - component: {fileID: 2000882}
+  - component: {fileID: 2000883}
+  m_Layer: 0
+  m_Name: Meadow tuft
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000881
+Transform:
+  m_GameObject: {fileID: 2000880}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 5.224325029331962, y: 0.08, z: -1.1896713356361328}
+  m_LocalScale: {x: 0.18, y: 0.16, z: 0.18}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000882
+MeshFilter:
+  m_GameObject: {fileID: 2000880}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000883
+MeshRenderer:
+  m_GameObject: {fileID: 2000880}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: e69591cc567f4ae2ae68a3fab5db41d0, type: 2}
+--- !u!1 &2000890
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000891}
+  - component: {fileID: 2000892}
+  - component: {fileID: 2000893}
+  m_Layer: 0
+  m_Name: Meadow tuft
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000891
+Transform:
+  m_GameObject: {fileID: 2000890}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 5.086443100523502, y: 0.08, z: -1.1056582418616956}
+  m_LocalScale: {x: 0.18, y: 0.16, z: 0.18}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000892
+MeshFilter:
+  m_GameObject: {fileID: 2000890}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000893
+MeshRenderer:
+  m_GameObject: {fileID: 2000890}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: e69591cc567f4ae2ae68a3fab5db41d0, type: 2}
+--- !u!1 &2000900
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000901}
+  - component: {fileID: 2000902}
+  - component: {fileID: 2000903}
+  m_Layer: 0
+  m_Name: Wildflower
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000901
+Transform:
+  m_GameObject: {fileID: 2000900}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 5.086443100523502, y: 0.22, z: -1.1056582418616956}
+  m_LocalScale: {x: 0.13, y: 0.13, z: 0.13}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000902
+MeshFilter:
+  m_GameObject: {fileID: 2000900}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000903
+MeshRenderer:
+  m_GameObject: {fileID: 2000900}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7a470617c19b44c7b068a13f299b8eec, type: 2}
+--- !u!1 &2000910
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000911}
+  - component: {fileID: 2000912}
+  - component: {fileID: 2000913}
+  m_Layer: 0
+  m_Name: Meadow tuft
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000911
+Transform:
+  m_GameObject: {fileID: 2000910}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 5.388405438187432, y: 0.08, z: -0.32583197350182225}
+  m_LocalScale: {x: 0.18, y: 0.16, z: 0.18}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000912
+MeshFilter:
+  m_GameObject: {fileID: 2000910}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000913
+MeshRenderer:
+  m_GameObject: {fileID: 2000910}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: e69591cc567f4ae2ae68a3fab5db41d0, type: 2}
+--- !u!1 &2000920
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000921}
+  - component: {fileID: 2000922}
+  - component: {fileID: 2000923}
+  m_Layer: 0
+  m_Name: Meadow tuft
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000921
+Transform:
+  m_GameObject: {fileID: 2000920}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 5.213569484149019, y: 0.08, z: 2.5332882253220914}
+  m_LocalScale: {x: 0.18, y: 0.16, z: 0.18}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000922
+MeshFilter:
+  m_GameObject: {fileID: 2000920}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000923
+MeshRenderer:
+  m_GameObject: {fileID: 2000920}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: e69591cc567f4ae2ae68a3fab5db41d0, type: 2}
+--- !u!1 &2000930
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000931}
+  - component: {fileID: 2000932}
+  - component: {fileID: 2000933}
+  m_Layer: 0
+  m_Name: Meadow tuft
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000931
+Transform:
+  m_GameObject: {fileID: 2000930}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -5.467470183407413, y: 0.08, z: 2.304042361711538}
+  m_LocalScale: {x: 0.18, y: 0.16, z: 0.18}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000932
+MeshFilter:
+  m_GameObject: {fileID: 2000930}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000933
+MeshRenderer:
+  m_GameObject: {fileID: 2000930}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: e69591cc567f4ae2ae68a3fab5db41d0, type: 2}
+--- !u!1 &2000940
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000941}
+  - component: {fileID: 2000942}
+  - component: {fileID: 2000943}
+  m_Layer: 0
+  m_Name: Wildflower
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000941
+Transform:
+  m_GameObject: {fileID: 2000940}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -5.467470183407413, y: 0.22, z: 2.304042361711538}
+  m_LocalScale: {x: 0.13, y: 0.13, z: 0.13}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000942
+MeshFilter:
+  m_GameObject: {fileID: 2000940}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000943
+MeshRenderer:
+  m_GameObject: {fileID: 2000940}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2000950
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000951}
+  - component: {fileID: 2000952}
+  - component: {fileID: 2000953}
+  m_Layer: 0
+  m_Name: Meadow tuft
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000951
+Transform:
+  m_GameObject: {fileID: 2000950}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -4.7380495448955955, y: 0.08, z: -2.1143705014894127}
+  m_LocalScale: {x: 0.18, y: 0.16, z: 0.18}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000952
+MeshFilter:
+  m_GameObject: {fileID: 2000950}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000953
+MeshRenderer:
+  m_GameObject: {fileID: 2000950}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: e69591cc567f4ae2ae68a3fab5db41d0, type: 2}
+--- !u!1 &2000960
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000961}
+  - component: {fileID: 2000962}
+  - component: {fileID: 2000963}
+  m_Layer: 0
+  m_Name: Meadow tuft
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000961
+Transform:
+  m_GameObject: {fileID: 2000960}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 5.159136346683958, y: 0.08, z: 2.89090066678704}
+  m_LocalScale: {x: 0.18, y: 0.16, z: 0.18}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000962
+MeshFilter:
+  m_GameObject: {fileID: 2000960}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000963
+MeshRenderer:
+  m_GameObject: {fileID: 2000960}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: e69591cc567f4ae2ae68a3fab5db41d0, type: 2}
+--- !u!1 &2000970
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000971}
+  - component: {fileID: 2000972}
+  - component: {fileID: 2000973}
+  m_Layer: 0
+  m_Name: Meadow tuft
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000971
+Transform:
+  m_GameObject: {fileID: 2000970}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -5.313689326190499, y: 0.08, z: 3.3677818342201746}
+  m_LocalScale: {x: 0.18, y: 0.16, z: 0.18}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000972
+MeshFilter:
+  m_GameObject: {fileID: 2000970}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000973
+MeshRenderer:
+  m_GameObject: {fileID: 2000970}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: e69591cc567f4ae2ae68a3fab5db41d0, type: 2}
+--- !u!1 &2000980
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000981}
+  - component: {fileID: 2000982}
+  - component: {fileID: 2000983}
+  m_Layer: 0
+  m_Name: Wildflower
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000981
+Transform:
+  m_GameObject: {fileID: 2000980}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -5.313689326190499, y: 0.22, z: 3.3677818342201746}
+  m_LocalScale: {x: 0.13, y: 0.13, z: 0.13}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000982
+MeshFilter:
+  m_GameObject: {fileID: 2000980}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000983
+MeshRenderer:
+  m_GameObject: {fileID: 2000980}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7a470617c19b44c7b068a13f299b8eec, type: 2}
+--- !u!1 &2000990
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000991}
+  - component: {fileID: 2000992}
+  - component: {fileID: 2000993}
+  m_Layer: 0
+  m_Name: Meadow tuft
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000991
+Transform:
+  m_GameObject: {fileID: 2000990}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 4.84040930284659, y: 0.08, z: 2.409252869866936}
+  m_LocalScale: {x: 0.18, y: 0.16, z: 0.18}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2000992
+MeshFilter:
+  m_GameObject: {fileID: 2000990}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2000993
+MeshRenderer:
+  m_GameObject: {fileID: 2000990}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: e69591cc567f4ae2ae68a3fab5db41d0, type: 2}
+--- !u!1 &2001000
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001001}
+  - component: {fileID: 2001002}
+  - component: {fileID: 2001003}
+  m_Layer: 0
+  m_Name: Meadow tuft
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2001001
+Transform:
+  m_GameObject: {fileID: 2001000}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 5.265120688739076, y: 0.08, z: 1.923982238072587}
+  m_LocalScale: {x: 0.18, y: 0.16, z: 0.18}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2001002
+MeshFilter:
+  m_GameObject: {fileID: 2001000}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2001003
+MeshRenderer:
+  m_GameObject: {fileID: 2001000}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: e69591cc567f4ae2ae68a3fab5db41d0, type: 2}
+--- !u!1 &2001010
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001011}
+  - component: {fileID: 2001012}
+  - component: {fileID: 2001013}
+  m_Layer: 0
+  m_Name: Meadow tuft
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2001011
+Transform:
+  m_GameObject: {fileID: 2001010}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 5.567064706610363, y: 0.08, z: 2.8697337826556018}
+  m_LocalScale: {x: 0.18, y: 0.16, z: 0.18}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2001012
+MeshFilter:
+  m_GameObject: {fileID: 2001010}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2001013
+MeshRenderer:
+  m_GameObject: {fileID: 2001010}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: e69591cc567f4ae2ae68a3fab5db41d0, type: 2}
+--- !u!1 &2001020
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001021}
+  - component: {fileID: 2001022}
+  - component: {fileID: 2001023}
+  m_Layer: 0
+  m_Name: Wildflower
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2001021
+Transform:
+  m_GameObject: {fileID: 2001020}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 5.567064706610363, y: 0.22, z: 2.8697337826556018}
+  m_LocalScale: {x: 0.13, y: 0.13, z: 0.13}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2001022
+MeshFilter:
+  m_GameObject: {fileID: 2001020}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2001023
+MeshRenderer:
+  m_GameObject: {fileID: 2001020}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2001030
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001031}
+  - component: {fileID: 2001032}
+  - component: {fileID: 2001033}
+  m_Layer: 0
+  m_Name: Meadow tuft
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2001031
+Transform:
+  m_GameObject: {fileID: 2001030}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 4.992637579038387, y: 0.08, z: 1.1576858153996512}
+  m_LocalScale: {x: 0.18, y: 0.16, z: 0.18}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2001032
+MeshFilter:
+  m_GameObject: {fileID: 2001030}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2001033
+MeshRenderer:
+  m_GameObject: {fileID: 2001030}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: e69591cc567f4ae2ae68a3fab5db41d0, type: 2}
+--- !u!1 &2001040
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001041}
+  - component: {fileID: 2001042}
+  - component: {fileID: 2001043}
+  m_Layer: 0
+  m_Name: Meadow tuft
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2001041
+Transform:
+  m_GameObject: {fileID: 2001040}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 4.943427309535533, y: 0.08, z: 2.657650279762932}
+  m_LocalScale: {x: 0.18, y: 0.16, z: 0.18}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2001042
+MeshFilter:
+  m_GameObject: {fileID: 2001040}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2001043
+MeshRenderer:
+  m_GameObject: {fileID: 2001040}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: e69591cc567f4ae2ae68a3fab5db41d0, type: 2}
+--- !u!1 &2001050
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001051}
+  - component: {fileID: 2001052}
+  - component: {fileID: 2001053}
+  m_Layer: 0
+  m_Name: Meadow tuft
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2001051
+Transform:
+  m_GameObject: {fileID: 2001050}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 5.639095895761491, y: 0.08, z: 0.8357934742964988}
+  m_LocalScale: {x: 0.18, y: 0.16, z: 0.18}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2001052
+MeshFilter:
+  m_GameObject: {fileID: 2001050}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2001053
+MeshRenderer:
+  m_GameObject: {fileID: 2001050}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: e69591cc567f4ae2ae68a3fab5db41d0, type: 2}
+--- !u!1 &2001060
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001061}
+  - component: {fileID: 2001062}
+  - component: {fileID: 2001063}
+  m_Layer: 0
+  m_Name: Wildflower
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2001061
+Transform:
+  m_GameObject: {fileID: 2001060}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 5.639095895761491, y: 0.22, z: 0.8357934742964988}
+  m_LocalScale: {x: 0.13, y: 0.13, z: 0.13}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2001062
+MeshFilter:
+  m_GameObject: {fileID: 2001060}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2001063
+MeshRenderer:
+  m_GameObject: {fileID: 2001060}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7a470617c19b44c7b068a13f299b8eec, type: 2}
+--- !u!1 &2001070
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001071}
+  - component: {fileID: 2001072}
+  - component: {fileID: 2001073}
+  m_Layer: 0
+  m_Name: Meadow tuft
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2001071
+Transform:
+  m_GameObject: {fileID: 2001070}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -5.266979326496491, y: 0.08, z: 1.5918502918632917}
+  m_LocalScale: {x: 0.18, y: 0.16, z: 0.18}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2001072
+MeshFilter:
+  m_GameObject: {fileID: 2001070}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2001073
+MeshRenderer:
+  m_GameObject: {fileID: 2001070}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: e69591cc567f4ae2ae68a3fab5db41d0, type: 2}
+--- !u!1 &2001080
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001081}
+  - component: {fileID: 2001082}
+  - component: {fileID: 2001083}
+  m_Layer: 0
+  m_Name: Meadow tuft
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2001081
+Transform:
+  m_GameObject: {fileID: 2001080}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -5.017853993430276, y: 0.08, z: -1.0280290071934102}
+  m_LocalScale: {x: 0.18, y: 0.16, z: 0.18}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2001082
+MeshFilter:
+  m_GameObject: {fileID: 2001080}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2001083
+MeshRenderer:
+  m_GameObject: {fileID: 2001080}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: e69591cc567f4ae2ae68a3fab5db41d0, type: 2}
+--- !u!1 &2001090
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001091}
+  - component: {fileID: 2001092}
+  - component: {fileID: 2001093}
+  m_Layer: 0
+  m_Name: Meadow tuft
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2001091
+Transform:
+  m_GameObject: {fileID: 2001090}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -5.088274998342315, y: 0.08, z: 4.067892669082204}
+  m_LocalScale: {x: 0.18, y: 0.16, z: 0.18}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2001092
+MeshFilter:
+  m_GameObject: {fileID: 2001090}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2001093
+MeshRenderer:
+  m_GameObject: {fileID: 2001090}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: e69591cc567f4ae2ae68a3fab5db41d0, type: 2}
+--- !u!1 &2001100
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001101}
+  - component: {fileID: 2001102}
+  - component: {fileID: 2001103}
+  m_Layer: 0
+  m_Name: Wildflower
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2001101
+Transform:
+  m_GameObject: {fileID: 2001100}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -5.088274998342315, y: 0.22, z: 4.067892669082204}
+  m_LocalScale: {x: 0.13, y: 0.13, z: 0.13}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2001102
+MeshFilter:
+  m_GameObject: {fileID: 2001100}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2001103
+MeshRenderer:
+  m_GameObject: {fileID: 2001100}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2001110
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001111}
+  - component: {fileID: 2001112}
+  - component: {fileID: 2001113}
+  m_Layer: 0
+  m_Name: Meadow tuft
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2001111
+Transform:
+  m_GameObject: {fileID: 2001110}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -4.682065235021151, y: 0.08, z: 0.778643938069}
+  m_LocalScale: {x: 0.18, y: 0.16, z: 0.18}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2001112
+MeshFilter:
+  m_GameObject: {fileID: 2001110}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2001113
+MeshRenderer:
+  m_GameObject: {fileID: 2001110}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: e69591cc567f4ae2ae68a3fab5db41d0, type: 2}
+--- !u!1 &2001120
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001121}
+  - component: {fileID: 2001122}
+  - component: {fileID: 2001123}
+  m_Layer: 0
+  m_Name: Meadow tuft
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2001121
+Transform:
+  m_GameObject: {fileID: 2001120}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 5.460569512710405, y: 0.08, z: 0.24929043769128834}
+  m_LocalScale: {x: 0.18, y: 0.16, z: 0.18}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2001122
+MeshFilter:
+  m_GameObject: {fileID: 2001120}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2001123
+MeshRenderer:
+  m_GameObject: {fileID: 2001120}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: e69591cc567f4ae2ae68a3fab5db41d0, type: 2}
+--- !u!1 &2001130
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001131}
+  - component: {fileID: 2001132}
+  - component: {fileID: 2001133}
+  m_Layer: 0
+  m_Name: Meadow tuft
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2001131
+Transform:
+  m_GameObject: {fileID: 2001130}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -5.268569593068323, y: 0.08, z: 3.4943535634133394}
+  m_LocalScale: {x: 0.18, y: 0.16, z: 0.18}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2001132
+MeshFilter:
+  m_GameObject: {fileID: 2001130}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2001133
+MeshRenderer:
+  m_GameObject: {fileID: 2001130}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: e69591cc567f4ae2ae68a3fab5db41d0, type: 2}
+--- !u!1 &2001140
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001141}
+  - component: {fileID: 2001142}
+  - component: {fileID: 2001143}
+  m_Layer: 0
+  m_Name: Wildflower
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2001141
+Transform:
+  m_GameObject: {fileID: 2001140}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -5.268569593068323, y: 0.22, z: 3.4943535634133394}
+  m_LocalScale: {x: 0.13, y: 0.13, z: 0.13}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2001142
+MeshFilter:
+  m_GameObject: {fileID: 2001140}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2001143
+MeshRenderer:
+  m_GameObject: {fileID: 2001140}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7a470617c19b44c7b068a13f299b8eec, type: 2}
+--- !u!1 &2001150
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001151}
+  - component: {fileID: 2001152}
+  - component: {fileID: 2001153}
+  m_Layer: 0
+  m_Name: Meadow tuft
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2001151
+Transform:
+  m_GameObject: {fileID: 2001150}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 5.6058642937168806, y: 0.08, z: 1.6682681976954}
+  m_LocalScale: {x: 0.18, y: 0.16, z: 0.18}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2001152
+MeshFilter:
+  m_GameObject: {fileID: 2001150}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2001153
+MeshRenderer:
+  m_GameObject: {fileID: 2001150}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: e69591cc567f4ae2ae68a3fab5db41d0, type: 2}
+--- !u!1 &2001160
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001161}
+  - component: {fileID: 2001162}
+  - component: {fileID: 2001163}
+  m_Layer: 0
+  m_Name: Meadow tuft
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2001161
+Transform:
+  m_GameObject: {fileID: 2001160}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 5.51248236987335, y: 0.08, z: 1.2384456120516125}
+  m_LocalScale: {x: 0.18, y: 0.16, z: 0.18}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2001162
+MeshFilter:
+  m_GameObject: {fileID: 2001160}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2001163
+MeshRenderer:
+  m_GameObject: {fileID: 2001160}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: e69591cc567f4ae2ae68a3fab5db41d0, type: 2}
+--- !u!1 &2001170
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001171}
+  - component: {fileID: 2001172}
+  - component: {fileID: 2001173}
+  m_Layer: 0
+  m_Name: Meadow tuft
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2001171
+Transform:
+  m_GameObject: {fileID: 2001170}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -4.980560788324484, y: 0.08, z: 4.156579498090364}
+  m_LocalScale: {x: 0.18, y: 0.16, z: 0.18}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2001172
+MeshFilter:
+  m_GameObject: {fileID: 2001170}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2001173
+MeshRenderer:
+  m_GameObject: {fileID: 2001170}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: e69591cc567f4ae2ae68a3fab5db41d0, type: 2}
+--- !u!1 &2001180
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001181}
+  - component: {fileID: 2001182}
+  - component: {fileID: 2001183}
+  m_Layer: 0
+  m_Name: Wildflower
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2001181
+Transform:
+  m_GameObject: {fileID: 2001180}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -4.980560788324484, y: 0.22, z: 4.156579498090364}
+  m_LocalScale: {x: 0.13, y: 0.13, z: 0.13}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2001182
+MeshFilter:
+  m_GameObject: {fileID: 2001180}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2001183
+MeshRenderer:
+  m_GameObject: {fileID: 2001180}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2001190
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001191}
+  - component: {fileID: 2001192}
+  - component: {fileID: 2001193}
+  m_Layer: 0
+  m_Name: Garden timber
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2001191
+Transform:
+  m_GameObject: {fileID: 2001190}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 1.5, y: 0.18, z: -1.3}
+  m_LocalScale: {x: 2.85, y: 0.22, z: 0.13}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2001192
+MeshFilter:
+  m_GameObject: {fileID: 2001190}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2001193
+MeshRenderer:
+  m_GameObject: {fileID: 2001190}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: c3a3e9cc544f4f8cbca8725d96ba7cd0, type: 2}
+--- !u!1 &2001200
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001201}
+  - component: {fileID: 2001202}
+  - component: {fileID: 2001203}
+  m_Layer: 0
+  m_Name: Garden timber
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2001201
+Transform:
+  m_GameObject: {fileID: 2001200}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 1.5, y: 0.18, z: 1.3}
+  m_LocalScale: {x: 2.85, y: 0.22, z: 0.13}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2001202
+MeshFilter:
+  m_GameObject: {fileID: 2001200}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2001203
+MeshRenderer:
+  m_GameObject: {fileID: 2001200}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: c3a3e9cc544f4f8cbca8725d96ba7cd0, type: 2}
+--- !u!1 &2001210
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001211}
+  - component: {fileID: 2001212}
+  - component: {fileID: 2001213}
+  m_Layer: 0
+  m_Name: Garden timber
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2001211
+Transform:
+  m_GameObject: {fileID: 2001210}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 0.15, y: 0.18, z: 0}
+  m_LocalScale: {x: 0.13, y: 0.22, z: 2.7}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2001212
+MeshFilter:
+  m_GameObject: {fileID: 2001210}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2001213
+MeshRenderer:
+  m_GameObject: {fileID: 2001210}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: c3a3e9cc544f4f8cbca8725d96ba7cd0, type: 2}
+--- !u!1 &2001220
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001221}
+  - component: {fileID: 2001222}
+  - component: {fileID: 2001223}
+  m_Layer: 0
+  m_Name: Garden timber
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2001221
+Transform:
+  m_GameObject: {fileID: 2001220}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 2.85, y: 0.18, z: 0}
+  m_LocalScale: {x: 0.13, y: 0.22, z: 2.7}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2001222
+MeshFilter:
+  m_GameObject: {fileID: 2001220}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2001223
+MeshRenderer:
+  m_GameObject: {fileID: 2001220}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: c3a3e9cc544f4f8cbca8725d96ba7cd0, type: 2}
+--- !u!1 &2001230
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001231}
+  - component: {fileID: 2001232}
+  - component: {fileID: 2001233}
+  m_Layer: 0
+  m_Name: Soil furrow
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2001231
+Transform:
+  m_GameObject: {fileID: 2001230}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 1.5, y: 0.309, z: -0.95}
+  m_LocalScale: {x: 2.25, y: 0.022, z: 0.05}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2001232
+MeshFilter:
+  m_GameObject: {fileID: 2001230}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2001233
+MeshRenderer:
+  m_GameObject: {fileID: 2001230}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 07a00c21d47a4b6db26d4ec4ab739b51, type: 2}
+--- !u!1 &2001240
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001241}
+  - component: {fileID: 2001242}
+  - component: {fileID: 2001243}
+  m_Layer: 0
+  m_Name: Soil furrow
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2001241
+Transform:
+  m_GameObject: {fileID: 2001240}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 1.5, y: 0.309, z: -0.48}
+  m_LocalScale: {x: 2.25, y: 0.022, z: 0.05}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2001242
+MeshFilter:
+  m_GameObject: {fileID: 2001240}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2001243
+MeshRenderer:
+  m_GameObject: {fileID: 2001240}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 07a00c21d47a4b6db26d4ec4ab739b51, type: 2}
+--- !u!1 &2001250
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001251}
+  - component: {fileID: 2001252}
+  - component: {fileID: 2001253}
+  m_Layer: 0
+  m_Name: Soil furrow
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2001251
+Transform:
+  m_GameObject: {fileID: 2001250}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 1.5, y: 0.309, z: -0.010000000000000009}
+  m_LocalScale: {x: 2.25, y: 0.022, z: 0.05}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2001252
+MeshFilter:
+  m_GameObject: {fileID: 2001250}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2001253
+MeshRenderer:
+  m_GameObject: {fileID: 2001250}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 07a00c21d47a4b6db26d4ec4ab739b51, type: 2}
+--- !u!1 &2001260
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001261}
+  - component: {fileID: 2001262}
+  - component: {fileID: 2001263}
+  m_Layer: 0
+  m_Name: Soil furrow
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2001261
+Transform:
+  m_GameObject: {fileID: 2001260}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 1.5, y: 0.309, z: 0.45999999999999996}
+  m_LocalScale: {x: 2.25, y: 0.022, z: 0.05}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2001262
+MeshFilter:
+  m_GameObject: {fileID: 2001260}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2001263
+MeshRenderer:
+  m_GameObject: {fileID: 2001260}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 07a00c21d47a4b6db26d4ec4ab739b51, type: 2}
+--- !u!1 &2001270
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001271}
+  - component: {fileID: 2001272}
+  - component: {fileID: 2001273}
+  m_Layer: 0
+  m_Name: Soil furrow
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2001271
+Transform:
+  m_GameObject: {fileID: 2001270}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 1.5, y: 0.309, z: 0.9299999999999999}
+  m_LocalScale: {x: 2.25, y: 0.022, z: 0.05}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2001272
+MeshFilter:
+  m_GameObject: {fileID: 2001270}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2001273
+MeshRenderer:
+  m_GameObject: {fileID: 2001270}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 07a00c21d47a4b6db26d4ec4ab739b51, type: 2}
+--- !u!1 &2001280
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001281}
+  - component: {fileID: 2001282}
+  - component: {fileID: 2001283}
+  m_Layer: 0
+  m_Name: Stepping stone
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2001281
+Transform:
+  m_GameObject: {fileID: 2001280}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -2.7, y: 0.04, z: -1.7}
+  m_LocalScale: {x: 0.55, y: 0.08, z: 0.4}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2001282
+MeshFilter:
+  m_GameObject: {fileID: 2001280}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2001283
+MeshRenderer:
+  m_GameObject: {fileID: 2001280}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: b0dc635b2623430393ee8c6657e87b01, type: 2}
+--- !u!1 &2001290
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001291}
+  - component: {fileID: 2001292}
+  - component: {fileID: 2001293}
+  m_Layer: 0
+  m_Name: Stepping stone
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2001291
+Transform:
+  m_GameObject: {fileID: 2001290}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.07845909572784494, z: 0.0, w: 0.996917333733128}
+  m_LocalPosition: {x: -2.7, y: 0.04, z: -1.1}
+  m_LocalScale: {x: 0.55, y: 0.08, z: 0.4}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2001292
+MeshFilter:
+  m_GameObject: {fileID: 2001290}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2001293
+MeshRenderer:
+  m_GameObject: {fileID: 2001290}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: b0dc635b2623430393ee8c6657e87b01, type: 2}
+--- !u!1 &2001300
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001301}
+  - component: {fileID: 2001302}
+  - component: {fileID: 2001303}
+  m_Layer: 0
+  m_Name: Stepping stone
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2001301
+Transform:
+  m_GameObject: {fileID: 2001300}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.15643446504023087, z: 0.0, w: 0.9876883405951378}
+  m_LocalPosition: {x: -2.7, y: 0.04, z: -0.5}
+  m_LocalScale: {x: 0.55, y: 0.08, z: 0.4}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2001302
+MeshFilter:
+  m_GameObject: {fileID: 2001300}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2001303
+MeshRenderer:
+  m_GameObject: {fileID: 2001300}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: b0dc635b2623430393ee8c6657e87b01, type: 2}
+--- !u!1 &2001310
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001311}
+  - component: {fileID: 2001312}
+  - component: {fileID: 2001313}
+  m_Layer: 0
+  m_Name: Stepping stone
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2001311
+Transform:
+  m_GameObject: {fileID: 2001310}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.2334453638559054, z: 0.0, w: 0.9723699203976766}
+  m_LocalPosition: {x: -2.7, y: 0.04, z: 0.09999999999999987}
+  m_LocalScale: {x: 0.55, y: 0.08, z: 0.4}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2001312
+MeshFilter:
+  m_GameObject: {fileID: 2001310}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2001313
+MeshRenderer:
+  m_GameObject: {fileID: 2001310}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: b0dc635b2623430393ee8c6657e87b01, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -628,5 +5270,5 @@ SceneRoots:
   - {fileID: 832575519}
   - {fileID: 900002}
   - {fileID: 910001}
-  - {fileID: 910011}
   - {fileID: 910021}
+  - {fileID: 1999991}

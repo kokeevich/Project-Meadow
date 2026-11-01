@@ -16,6 +16,6 @@ Material:
     m_Ints: []
     m_Floats:
     - _Surface: 0
-    - _Smoothness: 0.2
+    - _Smoothness: 0.12
     m_Colors:
-    - _BaseColor: {r: 0.4, g: 0.22, b: 0.1, a: 1}
+    - _BaseColor: {r: 0.4470588235294118, g: 0.3137254901960784, b: 0.23921568627450981, a: 1}

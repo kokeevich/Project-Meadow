@@ -43,9 +43,7 @@ namespace ProjectMeadow.Farming
         private void Refresh()
         {
             if (surface == null) return;
-            Color color = State == GrowthState.Empty ? new Color(0.4f, 0.22f, 0.1f)
-                : State == GrowthState.Ready ? new Color(0.95f, 0.8f, 0.2f)
-                : Color.Lerp(new Color(0.3f, 0.45f, 0.15f), new Color(0.3f, 0.8f, 0.2f), Progress);
+            Color color = new Color(.38f, .25f, .17f);
             properties.SetColor("_BaseColor", color);
             surface.SetPropertyBlock(properties);
         }
