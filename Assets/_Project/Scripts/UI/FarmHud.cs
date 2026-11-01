@@ -13,6 +13,10 @@ namespace ProjectMeadow.UI
         private ChickenPrototype chickens;
         private FoodPlot plot;
         private Truck truck;
+        private ProjectMeadow.Levels.LevelController level;
+        private ProjectMeadow.Audio.LevelAudio audioPlayer;
+        private bool tutorialHidden;
+        private int tutorialStep;
         private int quantity = 1;
         private bool muted;
         private string toast;
@@ -27,15 +31,21 @@ namespace ProjectMeadow.UI
         private float Width => Screen.safeArea.width / Scale;
         private float Height => Screen.safeArea.height / Scale;
         private Rect Market => new Rect(Width - 358, 112, 334, 380);
-        public void Initialize(InventoryController storage, EconomyService trading, ChickenPrototype flock, FoodPlot food, Truck vehicle)
-        { warehouse = storage; economy = trading; chickens = flock; plot = food; truck = vehicle; }
+        public void Initialize(InventoryController storage, EconomyService trading, ChickenPrototype flock, FoodPlot food, Truck vehicle, ProjectMeadow.Levels.LevelController currentLevel, ProjectMeadow.Audio.LevelAudio sound)
+        {
+            warehouse = storage; economy = trading; chickens = flock; plot = food; truck = vehicle;
+            level = currentLevel; audioPlayer = sound; muted = sound.Muted;
+            warehouse.GetComponent<AudioSource>().mute = muted;
+        }
         public bool BlocksScreenPoint(Vector2 point)
         {
+            if (level != null && level.Complete) return true;
             Rect safe = Screen.safeArea;
             if (!safe.Contains(point)) return true;
             Vector2 p = new Vector2((point.x - safe.x) / Scale, (safe.yMax - point.y) / Scale);
             return new Rect(20, 20, Width - 40, 72).Contains(p)
                 || new Rect(20, Height - 102, Width - 40, 82).Contains(p)
+                || new Rect(20, 112, 320, tutorialHidden ? 105 : 220).Contains(p)
                 || (truck != null && truck.Selected && Market.Contains(p));
         }
         private void SetupStyles()
@@ -112,6 +122,8 @@ namespace ProjectMeadow.UI
         }
         private void Draw()
         {
+            if (level != null && level.Complete) { DrawComplete(); return; }
+            DrawObjective();
             var inventory = warehouse.Inventory;
             Panel(new Rect(20, 20, Width - 40, 72), paper);
             GUI.Label(new Rect(42, 26, 230, 35), "Луговая ферма", title);
@@ -125,7 +137,7 @@ namespace ProjectMeadow.UI
             GUI.Label(new Rect(left + 365, 28, 120, 24), "КУРИЦЫ", small);
             GUI.Label(new Rect(left + 365, 51, 130, 32), chickens.ChickenCount.ToString(), number);
             if (Action(new Rect(Width - 190, 34, 150, 44), muted ? "Звук: выкл." : "Звук: вкл.", true, green))
-            { muted = !muted; warehouse.GetComponent<AudioSource>().mute = muted; }
+            { muted = !muted; warehouse.GetComponent<AudioSource>().mute = muted; audioPlayer.SetMuted(muted); }
 
             Panel(new Rect(20, Height - 102, Width - 40, 82), paper);
             string foodTitle = plot == null ? "Добро пожаловать" : plot.State == FoodPlot.GrowthState.Empty ? "Посадите корм" : plot.State == FoodPlot.GrowthState.Growing ? "Корм подрастает" : "Угощение готово";
@@ -149,6 +161,41 @@ namespace ProjectMeadow.UI
                 text.normal.textColor = Color.white;
                 GUI.Label(box, warehouse.FullFeedback ? "Склад заполнен — отправьте яйца на рынок" : toast, text);
             }
+        }
+        private void DrawObjective()
+        {
+            if (level == null || level.Objective == null) return;
+            var objective = level.Objective;
+            Panel(new Rect(20, 112, 320, tutorialHidden ? 105 : 220), paper);
+            FitLabel(new Rect(38, 121, 205, 28), level.Title, title);
+            if (Action(new Rect(250, 122, 72, 30), "Заново", true, green)) level.Restart();
+            FitLabel(new Rect(38, 159, 282, 26), "Продайте яйца: " + objective.Progress + " / " + objective.Target, body);
+            Fill(new Rect(38, 194, 282, 6), new Color(.83f, .85f, .76f));
+            Fill(new Rect(38, 194, 282f * objective.Progress / objective.Target, 6), green);
+            if (tutorialHidden) return;
+            if (plot != null && plot.State != FoodPlot.GrowthState.Empty) tutorialStep = Mathf.Max(tutorialStep, 1);
+            if (warehouse.Inventory.Count("egg") > 0) tutorialStep = Mathf.Max(tutorialStep, 2);
+            if (economy.Busy || economy.EggsSold > 0) tutorialStep = 3;
+            string[] tips = {
+                "1. Нажмите на грядку, чтобы вырастить корм.",
+                "2. Курицы поедят и снесут яйца. Нажмите на яйцо, чтобы собрать его.",
+                "3. Откройте рынок, выберите яйца и отправьте грузовик.",
+                "4. Дождитесь возвращения грузовика. Продажи засчитываются после доставки."
+            };
+            GUI.Label(new Rect(38, 214, 282, 66), tips[tutorialStep], small);
+            if (Action(new Rect(38, 286, 282, 30), "Понятно, скрыть подсказки", true, green)) tutorialHidden = true;
+        }
+        private void DrawComplete()
+        {
+            Fill(new Rect(0, 0, Width, Height), new Color(.12f, .2f, .16f, .65f));
+            Rect card = new Rect((Width - 520) / 2, (Height - 330) / 2, 520, 330);
+            Panel(card, paper);
+            var centeredTitle = new GUIStyle(title) { alignment = TextAnchor.MiddleCenter };
+            var centeredBody = new GUIStyle(body) { alignment = TextAnchor.MiddleCenter };
+            GUI.Label(new Rect(card.x + 30, card.y + 28, 460, 48), "Первый урожай продан!", centeredTitle);
+            GUI.Label(new Rect(card.x + 40, card.y + 92, 440, 60), "Уровень завершён. Ваша ферма сделала первые шаги!", centeredBody);
+            GUI.Label(new Rect(card.x + 40, card.y + 166, 440, 35), "Продано яиц: " + economy.EggsSold + "   ·   Монеты: " + economy.Currency.Balance, centeredBody);
+            if (Action(new Rect(card.x + 60, card.y + 244, 400, 54), "Сыграть ещё раз", true, green)) level.Restart();
         }
         private void DrawMarket()
         {

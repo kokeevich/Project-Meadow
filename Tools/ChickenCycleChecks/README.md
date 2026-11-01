@@ -6,7 +6,7 @@ Run with .NET 8 SDK:
 dotnet run --project Tools/ChickenCycleChecks/CycleChecks.csproj
 ```
 
-Uses the actual ChickenCycle.cs source and checks 26 inventory, economy and production checks without Unity.
+Uses the actual ChickenCycle.cs source and checks 35 objective, inventory, economy and production checks without Unity.
 Unity EditMode tests also cover the cycle and single-serving food consumption.
 
 ## Unity smoke check
@@ -30,3 +30,15 @@ Storage frees immediately; coins stay at zero until the five-second trip complet
 Buy a chicken: the balance becomes zero and a third chicken joins the farm.
 Repeat up to the explicit limit of 12 chickens. Invalid sales and purchases must be disabled.
 Visual redesign is the next milestone before Phase 6.
+
+## First level smoke check (Unity)
+
+Play MVP_Farm. Follow the garden/collection/truck hints; hide them if desired.
+Collect and deliver ten eggs (one full truck or multiple partial trips).
+The objective must advance only on truck return. Victory should display once,
+freeze the farm, stop the background melody and play the success sound.
+Click Play Again: storage, coins, sales, objective, tutorial and chickens reset;
+NavMesh and input must still work and music must restart. Mute should persist.
+Repeat with sound disabled. Inspect Console throughout.
+
+The CLI tests cannot validate scene reload, Unity audio or the victory UI.

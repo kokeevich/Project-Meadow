@@ -9,6 +9,7 @@ namespace ProjectMeadow.Core
     public sealed class InteractionPrototype : MonoBehaviour
     {
         [SerializeField] private Material cream, teal, wood, dark, glass, gold, leaves;
+        [SerializeField] private ProjectMeadow.Levels.LevelData levelData;
         private EconomyService economy;
         private void Awake()
         {
@@ -20,7 +21,10 @@ namespace ProjectMeadow.Core
             if (camera == null) { Debug.LogError("Main Camera missing.", this); return; }
             var truck = CreateTruck();
             var hud = gameObject.AddComponent<FarmHud>();
-            hud.Initialize(warehouse, economy, chickens, plot, truck);
+            var audioPlayer = gameObject.AddComponent<ProjectMeadow.Audio.LevelAudio>();
+            var level = gameObject.AddComponent<ProjectMeadow.Levels.LevelController>();
+            level.Initialize(levelData, economy, audioPlayer);
+            hud.Initialize(warehouse, economy, chickens, plot, truck, level, audioPlayer);
             camera.gameObject.AddComponent<ProjectMeadow.Camera.CameraZoom>().Initialize(hud);
             gameObject.AddComponent<InteractionSystem>().Initialize(camera, hud);
             if (plot != null)

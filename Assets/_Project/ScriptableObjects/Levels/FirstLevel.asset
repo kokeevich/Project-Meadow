@@ -1,0 +1,9 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c347665e0ab4a59a7694e72733af535, type: 3}
+  m_Name: FirstLevel
+  title: Первые яйца
+  eggsToSell: 10

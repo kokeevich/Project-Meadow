@@ -464,6 +464,7 @@ MonoBehaviour:
   glass: {fileID: 2100000, guid: fd24c36884fe40b9ada2be198c668c3d, type: 2}
   gold: {fileID: 2100000, guid: 825a88434f644f23b930d7e06ffd9f20, type: 2}
   leaves: {fileID: 2100000, guid: e69591cc567f4ae2ae68a3fab5db41d0, type: 2}
+  levelData: {fileID: 11400000, guid: bb1b0a8b09464400a0b9498eb013bd0a, type: 2}
 --- !u!1 &910000
 GameObject:
   m_ObjectHideFlags: 0

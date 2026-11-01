@@ -36,6 +36,25 @@ class Program
         Check(!economy.TryBuyChicken(() => { spawned++; return true; }) && spawned == 1, "Insufficient funds never spawn chicken");
         var wallet = new ProjectMeadow.Economy.CurrencyService();
         Check(!wallet.TryCredit(-1) && wallet.TryCredit(int.MaxValue) && !wallet.TryCredit(1), "Currency rejects negatives and overflow");
+        var levelStock = new ProjectMeadow.Inventory.InventoryService(10);
+        var levelEconomy = new ProjectMeadow.Economy.EconomyService(levelStock);
+        var objective = new ProjectMeadow.Objectives.SellObjective(10);
+        Check(!objective.Observe(-5) && objective.Progress == 0, "Negative progress ignored");
+        levelStock.TryAdd("egg", 10);
+        Check(!objective.Observe(levelEconomy.EggsSold), "Collecting eggs does not complete objective");
+        levelEconomy.TryDispatch("egg", 5);
+        Check(!objective.Observe(levelEconomy.EggsSold), "Cargo in transit does not count");
+        levelEconomy.Tick(5);
+        Check(!objective.Observe(levelEconomy.EggsSold) && objective.Progress == 5, "Partial delivered sale updates objective");
+        objective.Observe(0);
+        Check(objective.Progress == 5, "Objective progress cannot regress");
+        levelEconomy.TryDispatch("egg", 5); levelEconomy.Tick(5);
+        Check(objective.Observe(levelEconomy.EggsSold) && objective.Complete, "Ten delivered eggs complete level");
+        Check(!objective.Observe(10) && !objective.Observe(100) && objective.Progress == 10, "Completion fires once and clamps progress");
+        Check(!new ProjectMeadow.Objectives.SellObjective(10).Complete, "New level starts incomplete");
+        bool rejectedTarget = false;
+        try { new ProjectMeadow.Objectives.SellObjective(0); } catch (ArgumentOutOfRangeException) { rejectedTarget = true; }
+        Check(rejectedTarget, "Invalid level target rejected");
         var c = new ChickenCycle(2, 5);
         Check(!c.Tick(100), "No production without food");
         Check(c.BeginMeal() && !c.BeginMeal(), "No overlapping meals");

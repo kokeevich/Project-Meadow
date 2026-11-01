@@ -1855,16 +1855,16 @@ Balance.md — стоимость, время производства и эко
 
 ## PHASE 6 — First Complete Level
 
-- [ ] LevelData;
-- [ ] LevelController;
-- [ ] Objective system;
-- [ ] цель «Продать 10 яиц»;
-- [ ] victory condition;
-- [ ] LevelCompletePanel;
-- [ ] restart;
-- [ ] базовый tutorial;
-- [ ] звуки;
-- [ ] временная музыка.
+- [x] LevelData;
+- [x] LevelController;
+- [x] Objective system;
+- [x] цель «Продать 10 яиц»;
+- [x] victory condition;
+- [x] LevelCompletePanel;
+- [x] restart;
+- [x] базовый tutorial;
+- [x] звуки;
+- [x] временная музыка.
 
 Результат:
 
@@ -1873,6 +1873,8 @@ Balance.md — стоимость, время производства и эко
 Это главный milestone MVP.
 
 ---
+
+> Реализация PHASE 6: цель по доставленным продажам, победа, перезапуск сцены, обучение и оригинальная временная музыка. Финальное прохождение и импорт необходимо проверить в Unity.
 
 ## PHASE 7 — MVP Playtest
 
