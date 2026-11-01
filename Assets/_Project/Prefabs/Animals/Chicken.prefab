@@ -47,3 +47,4 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: 22d15710146f4c2486b9b0bf92b595c6, type: 2}
   bodyMaterial: {fileID: 2100000, guid: f92291204431491e92914c72dedf6b4e, type: 2}
   beakMaterial: {fileID: 2100000, guid: eb861de26e224488b9c2a715c06cb491, type: 2}
+  eggData: {fileID: 11400000, guid: 110efa523171486e99bc89a64fb34996, type: 2}

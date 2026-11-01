@@ -8,6 +8,7 @@ namespace ProjectMeadow.Animals
     public sealed class ChickenController : MonoBehaviour
     {
         [SerializeField] private AnimalData data;
+        [SerializeField] private ProjectMeadow.Items.ItemData eggData;
         [SerializeField] private Material bodyMaterial;
         [SerializeField] private Material beakMaterial;
         private NavMeshAgent agent;
@@ -98,7 +99,10 @@ namespace ProjectMeadow.Animals
             egg.transform.position = transform.position - transform.forward * .6f + Vector3.up * .4f;
             egg.transform.localScale = new Vector3(.25f, .35f, .25f);
             egg.GetComponent<Renderer>().sharedMaterial = bodyMaterial;
-            egg.AddComponent<Rigidbody>();
+            var physics = egg.AddComponent<Rigidbody>();
+            physics.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+            egg.AddComponent<ProjectMeadow.Items.WorldItem>().Initialize(eggData,
+                FindFirstObjectByType<ProjectMeadow.Inventory.InventoryController>());
             EggsProduced++;
         }
     }

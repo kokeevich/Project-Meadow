@@ -27,7 +27,7 @@ namespace ProjectMeadow.Interaction
                 position = mouse.position.ReadValue();
             }
             // Reserve the prototype HUD area; clicks there must not hit the world.
-            if (position.y > Screen.height - 235 && position.x < 340) return;
+            if (position.y > Screen.height - 295 && position.x < 340) return;
             if (viewCamera == null) return;
             if (!Physics.Raycast(viewCamera.ScreenPointToRay(position), out var hit, 200f,
                 Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore)) return;

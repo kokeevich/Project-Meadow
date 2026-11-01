@@ -1799,21 +1799,23 @@ Balance.md — стоимость, время производства и эко
 
 ## PHASE 4 — Item Collection
 
-- [ ] ItemData;
-- [ ] WorldItem;
-- [ ] яйцо;
-- [ ] сбор кликом;
-- [ ] collect animation;
-- [ ] collect SFX;
-- [ ] InventoryService;
-- [ ] лимит склада;
-- [ ] HUD склада.
+- [x] ItemData;
+- [x] WorldItem;
+- [x] яйцо;
+- [x] сбор кликом;
+- [x] collect animation;
+- [x] collect SFX;
+- [x] InventoryService;
+- [x] лимит склада;
+- [x] HUD склада.
 
 Результат:
 
 игрок собирает яйца, которые поступают на склад.
 
 ---
+
+> Реализован сбор яиц, склад на 10 единиц, HUD, анимация и оригинальный синтезированный звук. При полном складе яйцо остаётся в мире. Проверка Unity/устройства остаётся необходимой.
 
 ## PHASE 5 — Economy
 
