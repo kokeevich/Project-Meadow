@@ -40,3 +40,19 @@ The next milestone is review/refinement of this visual direction, not Phase 6.
 
 This is a Blender render of the persisted scene geometry for composition review,
 not a Unity screenshot. Runtime chickens, truck, crops and HUD are not shown.
+
+## Production district
+
+The island now extends east to a separate wheat patch and windmill. WASD/arrows,
+middle-button drag, or a two-finger gesture pan within bounds; wheel/pinch zooms.
+A one-finger tap activates world objects on release, and multi-touch cancels taps.
+The windmill rotor animates only while processing. Harvest yields two grain;
+recipes reserve ingredients at enqueue time. Ready output waits if storage is full.
+
+The truck travels beyond the island, hides during the delivery interval, then
+returns facing back toward the farm. Scene labels identify food, wheat and mill.
+Materials and new geometry remain original project content.
+
+![Production district layout, Blender composition preview](Production-layout-preview.png)
+
+This image is a static Blender layout preview, not Unity gameplay validation.

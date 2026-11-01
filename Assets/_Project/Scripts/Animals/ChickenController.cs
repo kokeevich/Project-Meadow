@@ -18,6 +18,7 @@ namespace ProjectMeadow.Animals
         private FoodPlot target;
         private Transform body;
         private float nextSearch;
+        private float seekDeadline;
         public string State => cycle == null ? "Idle" : cycle.State != ChickenCycle.Phase.Idle
             ? cycle.State.ToString() : target != null ? "MoveToFood" : "Idle";
         public int EggsProduced { get; private set; }
@@ -56,6 +57,10 @@ namespace ProjectMeadow.Animals
             part.transform.localScale = scale;
             part.GetComponent<Renderer>().sharedMaterial = material;
             var collider = part.GetComponent<Collider>(); collider.enabled = false; Destroy(collider);
+            if ((label == "Beak" || label == "Comb" || label == "Wattle" || label == "Eye" || label == "Eye glint") && head != null)
+                part.transform.SetParent(head, true);
+            if ((label == "Wing" || label == "Tail feathers") && body != null)
+                part.transform.SetParent(body, true);
             return part.transform;
         }
         private void Update()
@@ -63,16 +68,17 @@ namespace ProjectMeadow.Animals
             if (cycle == null || !agent.isOnNavMesh) return;
             if (cycle.Tick(Time.deltaTime)) SpawnEgg();
             bool eating = cycle.State == ChickenCycle.Phase.Eat;
-            float bob = eating ? Mathf.Sin(Time.time * 12f) * .06f : agent.velocity.magnitude > .1f ? Mathf.Sin(Time.time * 10f) * .04f : 0;
+            float bob = eating ? Mathf.Sin(Time.time * 7f) * .025f : agent.velocity.magnitude > .1f ? Mathf.Sin(Time.time * 8f) * .02f : 0;
             body.localPosition = new Vector3(0, .5f + bob, 0);
-            body.localRotation = Quaternion.Euler(eating ? 18f + Mathf.Sin(Time.time * 12f) * 12f : 0, 0, 0);
+            body.localRotation = Quaternion.Euler(eating ? 6f + Mathf.Sin(Time.time * 7f) * 4f : 0, 0, 0);
             head.localPosition = new Vector3(0, .83f + (eating ? bob * 2 : bob), .36f + (eating ? .07f : 0));
-            float step = agent.velocity.magnitude > .1f ? Mathf.Sin(Time.time * 12f) * .07f : 0;
+            float step = agent.velocity.magnitude > .1f ? Mathf.Sin(Time.time * 8f) * .045f : 0;
             leftFoot.localPosition = new Vector3(-.16f, .08f + Mathf.Max(0, step), .05f + step);
             rightFoot.localPosition = new Vector3(.16f, .08f + Mathf.Max(0, -step), .05f - step);
             if (cycle.State != ChickenCycle.Phase.Idle) return;
             if (target != null)
             {
+                if (Time.time > seekDeadline) { StopSeeking(); return; }
                 if (target.State != FoodPlot.GrowthState.Ready) { StopSeeking(); return; }
                 if (agent.pathPending) return;
                 if (agent.pathStatus != NavMeshPathStatus.PathComplete) { StopSeeking(); return; }
@@ -91,7 +97,7 @@ namespace ProjectMeadow.Animals
             float best = float.PositiveInfinity;
             foreach (var plot in FindObjectsByType<FoodPlot>(FindObjectsSortMode.None))
             {
-                if (plot.State != FoodPlot.GrowthState.Ready) continue;
+                if (!plot.IsAvailableFor(this)) continue;
                 var collider = plot.GetComponent<Collider>();
                 if (collider == null) continue;
                 Vector3 point = collider.ClosestPoint(transform.position);
@@ -103,13 +109,19 @@ namespace ProjectMeadow.Animals
                 if (!agent.CalculatePath(hit.position, path) || path.status != NavMeshPathStatus.PathComplete) continue;
                 nearest = plot; destination = hit.position; best = distance;
             }
-            if (nearest != null && agent.SetDestination(destination)) target = nearest;
+            if (nearest != null && nearest.TryReserve(this))
+            {
+                if (agent.SetDestination(destination)) { target = nearest; seekDeadline = Time.time + Mathf.Max(8, Vector3.Distance(transform.position, destination) / Mathf.Max(.1f, agent.speed) + 4); }
+                else nearest.Release(this);
+            }
         }
         private void StopSeeking()
         {
+            if (target != null) target.Release(this);
             target = null;
-            agent.ResetPath();
+            if (agent != null && agent.enabled && agent.isOnNavMesh) agent.ResetPath();
         }
+        private void OnDisable() => StopSeeking();
         private void SpawnEgg()
         {
             var egg = GameObject.CreatePrimitive(PrimitiveType.Sphere);

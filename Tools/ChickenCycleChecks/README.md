@@ -6,7 +6,7 @@ Run with .NET 8 SDK:
 dotnet run --project Tools/ChickenCycleChecks/CycleChecks.csproj
 ```
 
-Uses the actual ChickenCycle.cs source and checks 35 objective, inventory, economy and production checks without Unity.
+Uses the actual ChickenCycle.cs source and checks 52 production, route, objective, inventory and economy checks without Unity.
 Unity EditMode tests also cover the cycle and single-serving food consumption.
 
 ## Unity smoke check
@@ -42,3 +42,19 @@ NavMesh and input must still work and music must restart. Mute should persist.
 Repeat with sound disabled. Inspect Console throughout.
 
 The CLI tests cannot validate scene reload, Unity audio or the victory UI.
+
+## Production and expanded map smoke check (Unity)
+
+- Move right using WASD/arrows/middle mouse or two fingers. Bounds must stop the camera.
+- Tap the wheat patch by the mill, wait five seconds, tap to harvest two grain.
+- Open the mill through its model or bottom button. Queue one flour (six seconds).
+- Queue three jobs; verify the fourth is rejected without consuming more grain.
+- Fill storage while milling: completed flour must remain pending until a sale frees space.
+- Use the market tabs for grain/flour; check prices 2/14 and that egg goal does not advance.
+- Upgrade for 20 and 40 coins: subsequent jobs take 4.8 and 4 seconds; an active job keeps its duration.
+- Watch the truck leave, disappear during delivery and return facing the farm.
+- Replant chicken food and watch both hens over several cycles. One reserves each serving.
+- Check facial features follow the head, and gestures over UI do not move the world or plant crops.
+- Restart after victory; all inventory, queues, upgrades and navigation must reset.
+
+Scene navigation, input, animation and sound still require Unity; the CLI tests do not cover them.

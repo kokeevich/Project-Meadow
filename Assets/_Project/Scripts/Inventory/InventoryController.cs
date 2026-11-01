@@ -27,9 +27,10 @@ namespace ProjectMeadow.Inventory
             collectSound = AudioClip.Create("Original collection chime", samples.Length, 1, rate, false);
             collectSound.SetData(samples, 0);
         }
-        public bool TryCollect(string id)
+        public bool TryCollect(string id) => TryStore(id, 1);
+        public bool TryStore(string id, int amount)
         {
-            if (!Inventory.TryAdd(id)) { feedbackUntil = Time.unscaledTime + 2; return false; }
+            if (!Inventory.TryAdd(id, amount)) { feedbackUntil = Time.unscaledTime + 2; return false; }
             source.PlayOneShot(collectSound);
             return true;
         }

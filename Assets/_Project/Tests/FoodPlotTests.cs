@@ -21,6 +21,17 @@ namespace ProjectMeadow.Tests
             Assert.AreEqual(FoodPlot.GrowthState.Empty, plot.State);
             Assert.AreEqual(0f, plot.Progress);
         }
+        [Test] public void OnlyOneAnimalCanReserveReadyFood()
+        {
+            Assert.IsFalse(plot.TryReserve(owner));
+            plot.Interact(); plot.AdvanceGrowth(5);
+            Assert.IsTrue(plot.TryReserve(owner));
+            Assert.IsFalse(plot.TryReserve(owner.transform));
+            plot.Release(owner);
+            Assert.IsTrue(plot.TryReserve(owner.transform));
+            Assert.IsTrue(plot.TryConsume());
+            Assert.IsFalse(plot.IsAvailableFor(owner));
+        }
         [Test] public void TwoChickensCannotConsumeTheSameServing()
         {
             plot.Interact();

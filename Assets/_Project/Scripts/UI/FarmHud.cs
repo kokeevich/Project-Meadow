@@ -15,6 +15,12 @@ namespace ProjectMeadow.UI
         private Truck truck;
         private ProjectMeadow.Levels.LevelController level;
         private ProjectMeadow.Audio.LevelAudio audioPlayer;
+        private ProjectMeadow.Production.ProductionBuilding mill;
+        private ProjectMeadow.Farming.GrainPlot grain;
+        private int marketItem;
+        private readonly string[] itemIds = { "egg", "grain", "flour" };
+        private readonly string[] itemNames = { "Яйца", "Зерно", "Мука" };
+        public bool WorldBlocked => level != null && level.Complete;
         private bool tutorialHidden;
         private int tutorialStep;
         private int quantity = 1;
@@ -31,9 +37,10 @@ namespace ProjectMeadow.UI
         private float Width => Screen.safeArea.width / Scale;
         private float Height => Screen.safeArea.height / Scale;
         private Rect Market => new Rect(Width - 358, 112, 334, 380);
-        public void Initialize(InventoryController storage, EconomyService trading, ChickenPrototype flock, FoodPlot food, Truck vehicle, ProjectMeadow.Levels.LevelController currentLevel, ProjectMeadow.Audio.LevelAudio sound)
+        public void Initialize(InventoryController storage, EconomyService trading, ChickenPrototype flock, FoodPlot food, Truck vehicle, ProjectMeadow.Levels.LevelController currentLevel, ProjectMeadow.Audio.LevelAudio sound, ProjectMeadow.Production.ProductionBuilding production, ProjectMeadow.Farming.GrainPlot wheat)
         {
             warehouse = storage; economy = trading; chickens = flock; plot = food; truck = vehicle;
+            mill = production; grain = wheat;
             level = currentLevel; audioPlayer = sound; muted = sound.Muted;
             warehouse.GetComponent<AudioSource>().mute = muted;
         }
@@ -46,7 +53,7 @@ namespace ProjectMeadow.UI
             return new Rect(20, 20, Width - 40, 72).Contains(p)
                 || new Rect(20, Height - 102, Width - 40, 82).Contains(p)
                 || new Rect(20, 112, 320, tutorialHidden ? 105 : 220).Contains(p)
-                || (truck != null && truck.Selected && Market.Contains(p));
+                || (((truck != null && truck.Selected) || (mill != null && mill.Selected)) && Market.Contains(p));
         }
         private void SetupStyles()
         {
@@ -127,13 +134,13 @@ namespace ProjectMeadow.UI
             var inventory = warehouse.Inventory;
             Panel(new Rect(20, 20, Width - 40, 72), paper);
             GUI.Label(new Rect(42, 26, 230, 35), "Луговая ферма", title);
-            GUI.Label(new Rect(43, 60, 240, 22), "УЮТ В КАЖДОМ ДНЕ", small);
+            FitLabel(new Rect(43, 60, 240, 22), "КАМЕРА: WASD / СКМ / ДВА ПАЛЬЦА", small);
             float left = Width - 720;
             Fill(new Rect(left - 20, 36, 1, 40), new Color(.8f, .82f, .72f));
             GUI.Label(new Rect(left, 28, 150, 24), "МОНЕТЫ", small);
             GUI.Label(new Rect(left, 51, 160, 32), economy.Currency.Balance.ToString(), number);
-            GUI.Label(new Rect(left + 170, 28, 160, 24), "ЯЙЦА НА СКЛАДЕ", small);
-            GUI.Label(new Rect(left + 170, 51, 170, 32), inventory.Count("egg") + " / " + inventory.Capacity, number);
+            GUI.Label(new Rect(left + 170, 28, 160, 24), "СКЛАД", small);
+            GUI.Label(new Rect(left + 170, 51, 170, 32), inventory.Used + " / " + inventory.Capacity, number);
             GUI.Label(new Rect(left + 365, 28, 120, 24), "КУРИЦЫ", small);
             GUI.Label(new Rect(left + 365, 51, 130, 32), chickens.ChickenCount.ToString(), number);
             if (Action(new Rect(Width - 190, 34, 150, 44), muted ? "Звук: выкл." : "Звук: вкл.", true, green))
@@ -142,24 +149,26 @@ namespace ProjectMeadow.UI
             Panel(new Rect(20, Height - 102, Width - 40, 82), paper);
             string foodTitle = plot == null ? "Добро пожаловать" : plot.State == FoodPlot.GrowthState.Empty ? "Посадите корм" : plot.State == FoodPlot.GrowthState.Growing ? "Корм подрастает" : "Угощение готово";
             string foodHint = plot == null ? "Ваша маленькая ферма" : plot.State == FoodPlot.GrowthState.Empty ? "Нажмите на грядку — курицы ждут угощение" : plot.State == FoodPlot.GrowthState.Growing ? "Скоро курицы смогут поесть" : "Курицы сами найдут корм. Собирайте яйца нажатием.";
-            FitLabel(new Rect(42, Height - 94, Width - 690, 30), foodTitle, title);
-            FitLabel(new Rect(42, Height - 61, Width - 690, 25), foodHint, small);
+            FitLabel(new Rect(42, Height - 94, Width - 740, 30), foodTitle, title);
+            FitLabel(new Rect(42, Height - 61, Width - 740, 25), foodHint, small);
             if (plot != null && plot.State == FoodPlot.GrowthState.Growing)
             {
                 Fill(new Rect(42, Height - 29, 240, 4), new Color(.85f, .86f, .77f));
                 Fill(new Rect(42, Height - 29, 240 * plot.Progress, 4), green);
             }
-            if (Action(new Rect(Width - 590, Height - 84, 270, 48), "Купить курицу · 25", economy.Currency.Balance >= EconomyService.ChickenPrice && chickens.ChickenCount < ChickenPrototype.MaximumChickens, green))
+            if (Action(new Rect(Width - 650, Height - 84, 210, 48), "Курица · 25 монет", economy.Currency.Balance >= EconomyService.ChickenPrice && chickens.ChickenCount < ChickenPrototype.MaximumChickens, green))
                 Notify(economy.TryBuyChicken(chickens.TrySpawnPurchasedChicken) ? "На ферме новая курица!" : "Не удалось разместить курицу");
-            if (Action(new Rect(Width - 300, Height - 84, 258, 48), economy.Busy ? "Грузовик в пути…" : "Продать урожай", true, new Color(.66f, .42f, .24f))) truck.Selected = !truck.Selected;
-            if (truck.Selected) DrawMarket();
+            if (Action(new Rect(Width - 230, Height - 84, 188, 48), economy.Busy ? "Грузовик в пути…" : "Продать урожай", true, new Color(.66f, .42f, .24f))) { truck.Selected = !truck.Selected; if (mill != null) mill.Selected = false; }
+            if (mill != null && Action(new Rect(Width - 425, Height - 84, 180, 48), "Мельница", true, green)) mill.Selected = !mill.Selected;
+            if (mill != null && mill.Selected) { truck.Selected = false; DrawMill(); }
+            else if (truck.Selected) DrawMarket();
             if (warehouse.FullFeedback || Time.unscaledTime < toastUntil)
             {
                 var box = new Rect((Width - 520) / 2, Height - 163, 520, 44);
                 Panel(box, green);
                 var text = new GUIStyle(body) { alignment = TextAnchor.MiddleCenter };
                 text.normal.textColor = Color.white;
-                GUI.Label(box, warehouse.FullFeedback ? "Склад заполнен — отправьте яйца на рынок" : toast, text);
+                GUI.Label(box, warehouse.FullFeedback ? "Склад заполнен — продайте товары на рынке" : toast, text);
             }
         }
         private void DrawObjective()
@@ -197,13 +206,31 @@ namespace ProjectMeadow.UI
             GUI.Label(new Rect(card.x + 40, card.y + 166, 440, 35), "Продано яиц: " + economy.EggsSold + "   ·   Монеты: " + economy.Currency.Balance, centeredBody);
             if (Action(new Rect(card.x + 60, card.y + 244, 400, 54), "Сыграть ещё раз", true, green)) level.Restart();
         }
+        private void DrawMill()
+        {
+            if (mill.Service == null) return;
+            var service = mill.Service;
+            Rect r = Market; Panel(r, paper); float x = r.x + 24, y = r.y;
+            FitLabel(new Rect(x, y + 18, r.width - 94, 38), "Мельница", title);
+            if (Action(new Rect(r.xMax - 58, y + 16, 40, 40), "×", true, green)) mill.Selected = false;
+            FitLabel(new Rect(x, y + 66, 285, 28), "2 зерна → 1 мука · " + service.NextDuration.ToString("0.#") + " сек.", body);
+            FitLabel(new Rect(x, y + 102, 285, 28), "Зерно: " + warehouse.Inventory.Count("grain") + "    Мука: " + warehouse.Inventory.Count("flour"), body);
+            GUI.Label(new Rect(x, y + 139, 285, 28), "В очереди: " + service.Queued + " / 3", body);
+            Fill(new Rect(x, y + 180, 285, 8), new Color(.83f, .85f, .76f));
+            Fill(new Rect(x, y + 180, 285 * service.Progress, 8), green);
+            if (Action(new Rect(x, y + 207, 285, 48), "Смолоть зерно", service.Queued < 3 && warehouse.Inventory.Count("grain") >= 2, green)) service.TryQueue();
+            if (Action(new Rect(x, y + 270, 285, 48), service.UpgradeLevel >= 2 ? "Мельница улучшена" : "Улучшить · " + service.UpgradeCost + " монет", service.UpgradeLevel < 2 && economy.Currency.Balance >= service.UpgradeCost, green)) service.TryUpgrade();
+            string hint = service.OutputBlocked ? "Освободите место на складе для муки" : grain != null && grain.Ready ? "Пшеница созрела. Нажмите на неё для сбора." : "Посадите пшеницу на грядке у мельницы.";
+            GUI.Label(new Rect(x, y + 329, 285, 42), hint, small);
+        }
         private void DrawMarket()
         {
             Rect r = Market; Panel(r, paper); float x = r.x + 24, y = r.y;
             FitLabel(new Rect(x, y + 18, r.width - 94, 38), "Фермерский рынок", title);
             if (Action(new Rect(r.xMax - 58, y + 16, 40, 40), "×", true, green)) truck.Selected = false;
-            FitLabel(new Rect(x, y + 64, 285, 26), "Свежие яйца · 5 монет за штуку", body);
-            GUI.Label(new Rect(x, y + 99, 285, 24), "На складе: " + warehouse.Inventory.Count("egg"), small);
+            FitLabel(new Rect(x, y + 64, 285, 26), itemNames[marketItem] + " · " + EconomyService.Price(itemIds[marketItem]) + " монет · В наличии: " + warehouse.Inventory.Count(itemIds[marketItem]), body);
+            for (int i = 0; i < itemIds.Length; i++)
+                if (Action(new Rect(x + i * 96, y + 99, 90, 30), itemNames[i], !economy.Busy, i == marketItem ? green : new Color(.6f, .62f, .5f))) { marketItem = i; quantity = 1; }
             if (economy.Busy)
             {
                 GUI.Label(new Rect(x, y + 143, 285, 44), "Везём на рынок: " + economy.Cargo, title);
@@ -213,15 +240,15 @@ namespace ProjectMeadow.UI
                 GUI.Label(new Rect(x, y + 294, 285, 55), "Деньги поступят, когда грузовик вернётся.", small);
                 return;
             }
-            int available = warehouse.Inventory.Count("egg");
+            int available = warehouse.Inventory.Count(itemIds[marketItem]);
             quantity = Mathf.Clamp(quantity, 1, Mathf.Max(1, available));
             if (Action(new Rect(x, y + 143, 54, 48), "−", quantity > 1, green)) quantity--;
             var centered = new GUIStyle(number) { alignment = TextAnchor.MiddleCenter };
             GUI.Label(new Rect(x + 64, y + 143, 150, 48), quantity.ToString(), centered);
             if (Action(new Rect(x + 230, y + 143, 54, 48), "+", quantity < available, green)) quantity++;
             if (Action(new Rect(x, y + 207, 285, 44), "Выбрать все", available > 0, green)) quantity = available;
-            if (Action(new Rect(x, y + 270, 285, 54), "Отправить · +" + quantity * EconomyService.EggPrice + " монет", available >= quantity, new Color(.66f, .42f, .24f)))
-            { if (economy.TryDispatch("egg", quantity)) Notify("Грузовик отправился на рынок"); }
+            if (Action(new Rect(x, y + 270, 285, 54), "Отправить · +" + quantity * EconomyService.Price(itemIds[marketItem]) + " монет", available >= quantity, new Color(.66f, .42f, .24f)))
+            { if (economy.TryDispatch(itemIds[marketItem], quantity)) Notify("Грузовик отправился на рынок"); }
             GUI.Label(new Rect(x, y + 334, 285, 28), "Поездка занимает 5 секунд", small);
         }
         private void OnDestroy() { if (rounded != null) Destroy(rounded); }

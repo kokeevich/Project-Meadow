@@ -6,6 +6,8 @@ namespace ProjectMeadow.Interaction
     public sealed class InteractionSystem : MonoBehaviour
     {
         [SerializeField] private UnityEngine.Camera viewCamera;
+        private bool pendingTap;
+        private Vector2 tapStart;
         private ProjectMeadow.UI.FarmHud hud;
         public void Initialize(UnityEngine.Camera camera, ProjectMeadow.UI.FarmHud interfaceView)
         { viewCamera = camera; hud = interfaceView; }
@@ -14,13 +16,21 @@ namespace ProjectMeadow.Interaction
         {
             Vector2 position;
             var touch = Touchscreen.current;
-            if (touch != null && touch.primaryTouch.press.isPressed)
+            int activeTouches = 0;
+            if (touch != null) foreach (var finger in touch.touches) if (finger.press.isPressed) activeTouches++;
+            if (activeTouches > 1) { pendingTap = false; return; }
+            if (touch != null && (touch.primaryTouch.press.isPressed || touch.primaryTouch.press.wasReleasedThisFrame || pendingTap))
             {
-                int activeTouches = 0;
-                foreach (var finger in touch.touches) if (finger.press.isPressed) activeTouches++;
-                if (activeTouches > 1) return;
-                if (!touch.primaryTouch.press.wasPressedThisFrame) return;
                 position = touch.primaryTouch.position.ReadValue();
+                if (touch.primaryTouch.press.wasPressedThisFrame)
+                {
+                    tapStart = position;
+                    pendingTap = hud == null || !hud.BlocksScreenPoint(position);
+                }
+                if (Vector2.Distance(position, tapStart) > 16) pendingTap = false;
+                if (!touch.primaryTouch.press.wasReleasedThisFrame) return;
+                bool tap = pendingTap; pendingTap = false;
+                if (!tap) return;
             }
             else
             {

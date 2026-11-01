@@ -32,11 +32,13 @@ Material:
     m_Colors:
     - _BaseColor: {{r: {rgb[0]}, g: {rgb[1]}, b: {rgb[2]}, a: 1}}
 ''');meta(p,'NativeFormatImporter');mats[name]=guid(p)
-blocks=[];transforms=[];index=2000000
+blocks=[];transforms=[];childmap={};index=2000000
 # All decoration has no collision except architectural footprints; NavMesh sees those footprints.
-def part(name,pos,scale,color,shape='cube',angle=0,axis='z',solid=False):
+def part(name,pos,scale,color,shape='cube',angle=0,axis='z',solid=False,parent=1999991):
  global index
- n=index;index+=10;transforms.append(n+1)
+ n=index;index+=10
+ if parent==1999991:transforms.append(n+1)
+ else:childmap.setdefault(parent,[]).append(n+1)
  q=[0.,0.,0.];q['xyz'.index(axis)]=math.sin(math.radians(angle)/2);w=math.cos(math.radians(angle)/2)
  mesh={'cube':10202,'sphere':10207,'cylinder':10206}[shape]
  comps=[n+1,n+2,n+3]+([n+4] if solid else [])
@@ -58,7 +60,7 @@ Transform:
   m_LocalPosition: {{x: {pos[0]}, y: {pos[1]}, z: {pos[2]}}}
   m_LocalScale: {{x: {scale[0]}, y: {scale[1]}, z: {scale[2]}}}
   m_Children: []
-  m_Father: {{fileID: 1999991}}
+  m_Father: {{fileID: {parent}}}
 --- !u!33 &{n+2}
 MeshFilter:
   m_GameObject: {{fileID: {n}}}
@@ -82,8 +84,40 @@ BoxCollider:
   m_Center: {{x: 0, y: 0, z: 0}}
 '''
  blocks.append(b)
-part('Island soil edge',(0,-.48,0),(13,.65,11),'Earth')
-part('Market lane',(0,.015,-3.9),(12.5,.035,1.25),'Path')
+ return n
+
+def empty(name,pos,parent=1999991,script=None):
+ global index
+ n=index;index+=10
+ if parent==1999991:transforms.append(n+1)
+ else:childmap.setdefault(parent,[]).append(n+1)
+ b=f"""--- !u!1 &{n}
+GameObject:
+  serializedVersion: 6
+  m_Component:
+  - component: {{fileID: {n+1}}}
+"""+(f"  - component: {{fileID: {n+5}}}\n" if script else '')+f"""  m_Name: {name}
+  m_IsActive: 1
+--- !u!4 &{n+1}
+Transform:
+  m_GameObject: {{fileID: {n}}}
+  serializedVersion: 2
+  m_LocalRotation: {{x: 0, y: 0, z: 0, w: 1}}
+  m_LocalPosition: {{x: {pos[0]}, y: {pos[1]}, z: {pos[2]}}}
+  m_LocalScale: {{x: 1, y: 1, z: 1}}
+  m_Children: []
+  m_Father: {{fileID: {parent}}}
+"""
+ if script:b+=f"""--- !u!114 &{n+5}
+MonoBehaviour:
+  m_GameObject: {{fileID: {n}}}
+  m_Enabled: 1
+  m_Script: {{fileID: 11500000, guid: {script}, type: 3}}
+"""
+ blocks.append(b);return n
+
+part('Island soil edge',(3,-.48,0),(19,.65,11),'Earth')
+part('Market lane',(3,.015,-3.9),(18.5,.035,1.25),'Path')
 # Barn, facing the player, with pitched roof and cream trim.
 part('Barn',(-3,1.05,2.3),(2.8,2.1,2.3),'Barn',solid=True)
 for side in (-1,1):
@@ -105,11 +139,11 @@ for i in range(3):
  part('Harvest crate',(x,.25,.8),(.46,.5,.46),'Wood')
  for side in (-1,1):part('Crate band',(x,.25,.8+side*.24),(.48,.06,.04),'Cream')
 # Fence back and sides, leave front clear for the truck.
-for x in range(-6,7,2):
+for x in range(-6,13,2):
  part('Fence post',(x,.5,4.9),(.16,1,.16),'Cream')
- if x<6:
+ if x<12:
   for y in (.35,.73):part('Fence rail',(x+1,y,4.9),(2,.12,.12),'Cream')
-for x in (-6.1,6.1):
+for x in (-6.1,12.1):
  for z in (-2,0,2,4):
   part('Fence post',(x,.5,z),(.16,1,.16),'Cream')
   if z<4:
@@ -131,6 +165,39 @@ for x in (.15,2.85):part('Garden timber',(x,.18,0),(.13,.22,2.7),'Wood')
 for i in range(5):part('Soil furrow',(1.5,.309,-.95+i*.47),(2.25,.022,.05),'Earth')
 # Stepping stones toward the barn.
 for i in range(4):part('Stepping stone',(-2.7,.04,-1.7+i*.6),(.55,.08,.4),'Path',angle=i*9,axis='y')
+# New production district, a separate editable hierarchy.
+mill=empty('Windmill',(8,0,2),script=guid(r/'Scripts/Production/ProductionBuilding.cs'))
+part('Mill tower',(0,1.5,0),(2.2,3,2.2),'Cream',solid=True,parent=mill+1)
+part('Mill cap',(0,3.15,0),(2.5,.35,2.5),'Roof',parent=mill+1)
+part('Mill door',(0,.6,-1.12),(.7,1.2,.06),'Wood',parent=mill+1)
+rotor=empty('Mill rotor',(0,2.5,-1.3),parent=mill+1)
+part('Axle',(0,0,0),(.35,.35,.35),'Wood','sphere',parent=rotor+1)
+for angle in (0,90):part('Windmill sail',(0,0,0),(.23,4,.1),'Wood',angle=angle,parent=rotor+1)
+for angle in (0,90,180,270):
+ a=math.radians(angle)
+ part('Sail cloth',(-math.sin(a)*1.1,math.cos(a)*1.1,-.07),(.55,1.1,.06),'Cream',angle=angle,parent=rotor+1)
+grain=empty('Wheat plot',(7.5,0,-1.2),script=guid(r/'Scripts/Farming/GrainPlot.cs'))
+part('Wheat soil',(0,.15,0),(2.5,.3,2.2),'Soil',solid=True,parent=grain+1)
+for x in (-1.3,1.3):part('Wheat border',(x,.18,0),(.12,.22,2.4),'Wood',parent=grain+1)
+for z in (-1.15,1.15):part('Wheat border',(0,.18,z),(2.7,.22,.12),'Wood',parent=grain+1)
+wheat=empty('Wheat',(0,.3,0),parent=grain+1)
+for row in range(3):
+ for col in range(5):
+  x=-.9+col*.45;z=-.65+row*.65
+  part('Wheat stalk',(x,.22,z),(.04,.44,.04),'Leaves',parent=wheat+1)
+  part('Wheat ear',(x,.5,z),(.12,.26,.12),'Gold','sphere',parent=wheat+1)
+for i in range(4):part('Mill path',(8,.035,-2.5+i*.7),(.7,.07,.45),'Path')
+# Populate child lists for nested art groups.
+for i,b in enumerate(blocks):
+ for parent,children in childmap.items():
+  marker=f'--- !u!4 &{parent}\n'
+  if marker in b:
+   start=b.index(marker);end=b.find('--- !u!',start+5)
+   if end<0:end=len(b)
+   section=b[start:end].replace('  m_Children: []','  m_Children:\n'+'\n'.join(f'  - {{fileID: {c}}}' for c in children))
+   b=b[:start]+section+b[end:]
+ blocks[i]=b
+
 # Group lets the scene stay editable.
 group='''--- !u!1 &1999990
 GameObject:
@@ -153,7 +220,8 @@ s=scene.read_text()
 sections=re.split(r'(?=^--- !u!)',s,flags=re.M)
 s=''.join(section for section in sections if not (m:=re.match(r'--- !u!\d+ &(\d+)',section)) or not (1999990<=int(m[1])<3000000 or 910010<=int(m[1])<=910015))
 s=re.sub(r'^  - \{fileID: (?:1999991|910011)\}\n','',s,flags=re.M)
-s=s.replace('m_LocalScale: {x: 10, y: 0.3, z: 10}','m_LocalScale: {x: 13, y: 0.3, z: 11}')
+s=s.replace('m_LocalScale: {x: 10, y: 0.3, z: 10}','m_LocalScale: {x: 19, y: 0.3, z: 11}')
+s=s.replace('m_LocalScale: {x: 13, y: 0.3, z: 11}', 'm_LocalScale: {x: 19, y: 0.3, z: 11}').replace('m_LocalPosition: {x: 0, y: -0.15, z: 0}', 'm_LocalPosition: {x: 3, y: -0.15, z: 0}')
 s=s.replace('m_LocalPosition: {x: 0, y: 12, z: -12}','m_LocalPosition: {x: 0, y: 14, z: -14}').replace('field of view: 60','field of view: 48')
 s=s.replace('m_ClearFlags: 1','m_ClearFlags: 2').replace('m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}','m_BackGroundColor: {r: 0.73, g: 0.81, b: 0.76, a: 1}')
 s=s.replace('m_ColorTemperature: 5000','m_ColorTemperature: 5500')

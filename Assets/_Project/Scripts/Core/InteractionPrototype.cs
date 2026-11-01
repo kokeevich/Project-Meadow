@@ -10,6 +10,7 @@ namespace ProjectMeadow.Core
     {
         [SerializeField] private Material cream, teal, wood, dark, glass, gold, leaves;
         [SerializeField] private ProjectMeadow.Levels.LevelData levelData;
+        [SerializeField] private ProjectMeadow.Production.RecipeData flourRecipe;
         private EconomyService economy;
         private void Awake()
         {
@@ -24,7 +25,22 @@ namespace ProjectMeadow.Core
             var audioPlayer = gameObject.AddComponent<ProjectMeadow.Audio.LevelAudio>();
             var level = gameObject.AddComponent<ProjectMeadow.Levels.LevelController>();
             level.Initialize(levelData, economy, audioPlayer);
-            hud.Initialize(warehouse, economy, chickens, plot, truck, level, audioPlayer);
+            var mill = FindFirstObjectByType<ProjectMeadow.Production.ProductionBuilding>();
+            var grain = FindFirstObjectByType<ProjectMeadow.Farming.GrainPlot>();
+            if (mill != null && flourRecipe != null) mill.Initialize(warehouse.Inventory, economy.Currency, flourRecipe);
+            if (grain != null)
+            {
+                grain.Initialize(warehouse);
+                grain.gameObject.AddComponent<WorldLabel>().Initialize("ПШЕНИЦА · посадить / собрать", 1.2f);
+            }
+            if (mill != null) mill.gameObject.AddComponent<WorldLabel>().Initialize("МЕЛЬНИЦА", 4.2f);
+            if (plot != null)
+            {
+                var marker = new GameObject("Feed sign"); marker.transform.SetParent(transform, false);
+                marker.transform.position = plot.transform.position;
+                marker.AddComponent<WorldLabel>().Initialize("КОРМ ДЛЯ КУРИЦ", 1.15f);
+            }
+            hud.Initialize(warehouse, economy, chickens, plot, truck, level, audioPlayer, mill, grain);
             camera.gameObject.AddComponent<ProjectMeadow.Camera.CameraZoom>().Initialize(hud);
             gameObject.AddComponent<InteractionSystem>().Initialize(camera, hud);
             if (plot != null)

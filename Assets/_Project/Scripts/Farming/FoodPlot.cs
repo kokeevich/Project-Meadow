@@ -10,6 +10,14 @@ namespace ProjectMeadow.Farming
         [SerializeField, Min(0.1f)] private float growthSeconds = 5f;
         public GrowthState State { get; private set; }
         public float Progress { get; private set; }
+        private Object reservedBy;
+        public bool IsAvailableFor(Object animal) => State == GrowthState.Ready && (reservedBy == null || reservedBy == animal);
+        public bool TryReserve(Object animal)
+        {
+            if (animal == null || !IsAvailableFor(animal)) return false;
+            reservedBy = animal; return true;
+        }
+        public void Release(Object animal) { if (reservedBy == animal) reservedBy = null; }
         private Renderer surface;
         private MaterialPropertyBlock properties;
         private void Awake()
@@ -35,6 +43,7 @@ namespace ProjectMeadow.Farming
         public bool TryConsume()
         {
             if (State != GrowthState.Ready) return false;
+            reservedBy = null;
             State = GrowthState.Empty;
             Progress = 0f;
             Refresh();
