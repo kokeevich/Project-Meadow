@@ -1743,19 +1743,21 @@ Balance.md — стоимость, время производства и эко
 
 ## PHASE 1 — Interaction Prototype
 
-- [ ] InteractionSystem;
-- [ ] Raycast мышью;
-- [ ] Touch interaction;
-- [ ] IInteractable;
-- [ ] тестовый куб, реагирующий на клик;
-- [ ] базовый UI;
-- [ ] камера zoom.
+- [x] InteractionSystem;
+- [x] Raycast мышью;
+- [x] Touch interaction;
+- [x] IInteractable;
+- [x] тестовый куб, реагирующий на клик;
+- [x] базовый UI;
+- [x] камера zoom.
 
 Результат:
 
 игрок одинаково взаимодействует с объектами мышью и touch.
 
 ---
+
+> Реализация добавлена; проверки и запуск не выполнялись по просьбе пользователя. Проверить мышь, touch и zoom на ПК и Android. Земля, куб и временный HUD создаются при входе в Play Mode.
 
 ## PHASE 2 — Farming Prototype
 

@@ -1,5 +1,5 @@
 {
-  "name": "ProjectMeadow",
+  "name": "ProjectMeadow.Runtime",
   "rootNamespace": "ProjectMeadow",
   "references": [
     "Unity.InputSystem"
