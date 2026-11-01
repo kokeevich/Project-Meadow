@@ -15,6 +15,27 @@ class Program
         Check(inventory.TryRemove("egg") && inventory.TryAdd("milk"), "Removal frees capacity");
         Check(inventory.Count("egg") == 1 && inventory.Count("milk") == 1 && inventory.Used == 2, "Mixed inventory counts");
         Check(!inventory.TryAdd("egg", int.MaxValue), "Large additions cannot overflow capacity");
+        var stock = new ProjectMeadow.Inventory.InventoryService(10);
+        var economy = new ProjectMeadow.Economy.EconomyService(stock);
+        Check(!economy.TryDispatch("egg", 1) && !economy.TryBuyChicken(() => true), "Empty farm cannot sell or purchase");
+        stock.TryAdd("egg", 5);
+        Check(!economy.TryDispatch("milk", 1) && !economy.TryDispatch("egg", 0) && !economy.TryDispatch("egg", 6), "Invalid cargo rejected");
+        Check(economy.TryDispatch("egg", 5) && stock.Used == 0 && economy.Currency.Balance == 0, "Dispatch removes cargo without early payment");
+        Check(!economy.TryDispatch("egg", 1), "Truck cannot dispatch twice");
+        economy.Tick(float.NaN); economy.Tick(-1); economy.Tick(4);
+        Check(economy.Busy && economy.Currency.Balance == 0, "Invalid time ignored and trip takes full duration");
+        economy.Tick(1);
+        Check(!economy.Busy && economy.Currency.Balance == 25 && economy.EggsSold == 5, "Truck returns with exact payment");
+        economy.Tick(100);
+        Check(economy.Currency.Balance == 25, "No duplicate payment");
+        Check(!economy.TryBuyChicken(() => false) && economy.Currency.Balance == 25, "Failed spawn refunds coins");
+        try { economy.TryBuyChicken(() => throw new Exception("spawn failed")); } catch (Exception) {}
+        Check(economy.Currency.Balance == 25, "Spawn exception refunds coins");
+        int spawned = 0;
+        Check(economy.TryBuyChicken(() => { spawned++; return true; }) && economy.Currency.Balance == 0, "Successful purchase deducts price");
+        Check(!economy.TryBuyChicken(() => { spawned++; return true; }) && spawned == 1, "Insufficient funds never spawn chicken");
+        var wallet = new ProjectMeadow.Economy.CurrencyService();
+        Check(!wallet.TryCredit(-1) && wallet.TryCredit(int.MaxValue) && !wallet.TryCredit(1), "Currency rejects negatives and overflow");
         var c = new ChickenCycle(2, 5);
         Check(!c.Tick(100), "No production without food");
         Check(c.BeginMeal() && !c.BeginMeal(), "No overlapping meals");

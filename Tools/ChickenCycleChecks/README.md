@@ -6,7 +6,7 @@ Run with .NET 8 SDK:
 dotnet run --project Tools/ChickenCycleChecks/CycleChecks.csproj
 ```
 
-Uses the actual ChickenCycle.cs source and checks fourteen inventory and production invariants without Unity.
+Uses the actual ChickenCycle.cs source and checks 26 inventory, economy and production checks without Unity.
 Unity EditMode tests also cover the cycle and single-serving food consumption.
 
 ## Unity smoke check
@@ -22,3 +22,11 @@ once to check NavMesh cleanup. NavMesh and visuals require Unity and are not tes
 ## Asset availability
 
 Kenney Farm Kit and Food Kit are not included. On 2026-11-01 their official pages returned HTTP 403 after a successful proxy connection. No third-party archives or licenses were downloaded. The collection chime is synthesized by project code.
+
+## Economy smoke check
+
+Collect five eggs, open Market or click the truck, select five eggs and send it.
+Storage frees immediately; coins stay at zero until the five-second trip completes, then become 25.
+Buy a chicken: the balance becomes zero and a third chicken joins the farm.
+Repeat up to the explicit limit of 12 chickens. Invalid sales and purchases must be disabled.
+Visual redesign is the next milestone before Phase 6.

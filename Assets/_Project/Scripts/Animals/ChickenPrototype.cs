@@ -6,6 +6,9 @@ namespace ProjectMeadow.Animals
     public sealed class ChickenPrototype : MonoBehaviour
     {
         [SerializeField] private GameObject chickenPrefab;
+        public int ChickenCount { get; private set; }
+        public const int MaximumChickens = 12;
+        private int currentAgentType;
         private NavMeshData mesh;
         private NavMeshDataInstance instance;
         private void Start()
@@ -28,15 +31,23 @@ namespace ProjectMeadow.Animals
             mesh = NavMeshBuilder.BuildNavMeshData(settings, sources, new Bounds(Vector3.zero, new Vector3(14, 6, 14)), Vector3.zero, Quaternion.identity);
             if (mesh == null) { Debug.LogError("Cannot build prototype NavMesh.", this); return; }
             instance = NavMesh.AddNavMeshData(mesh);
+            currentAgentType = settings.agentTypeID;
             Spawn(new Vector3(-2, 0, -2), settings.agentTypeID);
             Spawn(new Vector3(2, 0, -2), settings.agentTypeID);
         }
-        private void Spawn(Vector3 position, int agentType)
+        public bool TrySpawnPurchasedChicken()
+        {
+            if (!instance.valid || chickenPrefab == null || ChickenCount >= MaximumChickens) return false;
+            return Spawn(new Vector3(-3 + ChickenCount % 6, 0, -3), currentAgentType);
+        }
+        private bool Spawn(Vector3 position, int agentType)
         {
             var filter = new NavMeshQueryFilter { agentTypeID = agentType, areaMask = NavMesh.AllAreas };
-            if (!NavMesh.SamplePosition(position, out var hit, 2f, filter)) { Debug.LogError("Chicken spawn is outside NavMesh.", this); return; }
+            if (!NavMesh.SamplePosition(position, out var hit, 2f, filter)) { Debug.LogError("Chicken spawn is outside NavMesh.", this); return false; }
             var chicken = Instantiate(chickenPrefab, hit.position, Quaternion.identity, transform);
             chicken.GetComponent<NavMeshAgent>().agentTypeID = agentType;
+            ChickenCount++;
+            return true;
         }
         private void OnDestroy()
         {
