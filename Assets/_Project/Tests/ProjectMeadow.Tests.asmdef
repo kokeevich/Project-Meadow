@@ -1,0 +1,12 @@
+{
+  "name": "ProjectMeadow.Tests",
+  "references": [
+    "ProjectMeadow.Runtime"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "optionalUnityReferences": [
+    "TestAssemblies"
+  ]
+}

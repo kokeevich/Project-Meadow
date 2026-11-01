@@ -14,6 +14,9 @@ namespace ProjectMeadow.Interaction
             var touch = Touchscreen.current;
             if (touch != null && touch.primaryTouch.press.isPressed)
             {
+                int activeTouches = 0;
+                foreach (var finger in touch.touches) if (finger.press.isPressed) activeTouches++;
+                if (activeTouches > 1) return;
                 if (!touch.primaryTouch.press.wasPressedThisFrame) return;
                 position = touch.primaryTouch.position.ReadValue();
             }
@@ -24,7 +27,7 @@ namespace ProjectMeadow.Interaction
                 position = mouse.position.ReadValue();
             }
             // Reserve the prototype HUD area; clicks there must not hit the world.
-            if (position.y > Screen.height - 110 && position.x < 340) return;
+            if (position.y > Screen.height - 170 && position.x < 340) return;
             if (viewCamera == null) return;
             if (!Physics.Raycast(viewCamera.ScreenPointToRay(position), out var hit, 200f,
                 Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore)) return;
