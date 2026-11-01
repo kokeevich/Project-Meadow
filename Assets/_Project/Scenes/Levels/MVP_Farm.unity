@@ -433,6 +433,7 @@ GameObject:
   m_Component:
   - component: {fileID: 900002}
   - component: {fileID: 900003}
+  - component: {fileID: 900004}
   m_Layer: 0
   m_Name: Interaction Prototype
   m_TagString: Untagged
@@ -612,6 +613,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14c41042a3144b998062126b22c75a38, type: 3}
   m_Name:
   m_EditorClassIdentifier:
+--- !u!114 &900004
+MonoBehaviour:
+  m_GameObject: {fileID: 900001}
+  m_Enabled: 1
+  m_Script: {fileID: 11500000, guid: 10b78bf1f9ff4b9181bda3a0f7216771, type: 3}
+  chickenPrefab: {fileID: 1000, guid: d766a7bffe174db6b3ae5758e83cc9f1, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
