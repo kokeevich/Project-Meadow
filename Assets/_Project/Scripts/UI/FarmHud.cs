@@ -23,7 +23,7 @@ namespace ProjectMeadow.UI
         private readonly Color mutedInk = new Color(.43f, .48f, .39f);
         private readonly Color paper = new Color(.98f, .96f, .88f);
         private readonly Color green = new Color(.28f, .43f, .33f);
-        private float Scale => Mathf.Max(.1f, Mathf.Min(Screen.safeArea.width / 1280f, Screen.safeArea.height / 720f));
+        private float Scale => Mathf.Max(.1f, Mathf.Min(Screen.safeArea.width / 1152f, Screen.safeArea.height / 648f));
         private float Width => Screen.safeArea.width / Scale;
         private float Height => Screen.safeArea.height / Scale;
         private Rect Market => new Rect(Width - 358, 112, 334, 380);
@@ -52,7 +52,7 @@ namespace ProjectMeadow.UI
             rounded.Apply();
             title = Text(25, FontStyle.Bold, ink);
             body = Text(18, FontStyle.Normal, ink);
-            small = Text(14, FontStyle.Normal, mutedInk);
+            small = Text(16, FontStyle.Normal, mutedInk);
             number = Text(26, FontStyle.Bold, ink);
             button = Text(18, FontStyle.Bold, Color.white);
             button.alignment = TextAnchor.MiddleCenter;
@@ -69,6 +69,15 @@ namespace ProjectMeadow.UI
         {
             var style = new GUIStyle(GUI.skin.label) { fontSize = size, fontStyle = weight, alignment = TextAnchor.MiddleLeft, wordWrap = true };
             style.normal.textColor = color; return style;
+        }
+        // Fit single-line labels using the actual font metrics, not character counts.
+        private void FitLabel(Rect rect, string text, GUIStyle source)
+        {
+            var fitted = new GUIStyle(source) { wordWrap = false, clipping = TextClipping.Clip };
+            var content = new GUIContent(text);
+            while (fitted.fontSize > 12 && fitted.CalcSize(content).x > rect.width - 4)
+                fitted.fontSize--;
+            GUI.Label(rect, content, fitted);
         }
         private void Fill(Rect rect, Color color)
         {
@@ -121,8 +130,8 @@ namespace ProjectMeadow.UI
             Panel(new Rect(20, Height - 102, Width - 40, 82), paper);
             string foodTitle = plot == null ? "Добро пожаловать" : plot.State == FoodPlot.GrowthState.Empty ? "Посадите корм" : plot.State == FoodPlot.GrowthState.Growing ? "Корм подрастает" : "Угощение готово";
             string foodHint = plot == null ? "Ваша маленькая ферма" : plot.State == FoodPlot.GrowthState.Empty ? "Нажмите на грядку — курицы ждут угощение" : plot.State == FoodPlot.GrowthState.Growing ? "Скоро курицы смогут поесть" : "Курицы сами найдут корм. Собирайте яйца нажатием.";
-            GUI.Label(new Rect(42, Height - 94, Width - 690, 30), foodTitle, title);
-            GUI.Label(new Rect(42, Height - 61, Width - 690, 25), foodHint, small);
+            FitLabel(new Rect(42, Height - 94, Width - 690, 30), foodTitle, title);
+            FitLabel(new Rect(42, Height - 61, Width - 690, 25), foodHint, small);
             if (plot != null && plot.State == FoodPlot.GrowthState.Growing)
             {
                 Fill(new Rect(42, Height - 29, 240, 4), new Color(.85f, .86f, .77f));
@@ -144,9 +153,9 @@ namespace ProjectMeadow.UI
         private void DrawMarket()
         {
             Rect r = Market; Panel(r, paper); float x = r.x + 24, y = r.y;
-            GUI.Label(new Rect(x, y + 18, 230, 34), "Фермерский рынок", title);
+            FitLabel(new Rect(x, y + 18, r.width - 94, 38), "Фермерский рынок", title);
             if (Action(new Rect(r.xMax - 58, y + 16, 40, 40), "×", true, green)) truck.Selected = false;
-            GUI.Label(new Rect(x, y + 64, 285, 26), "Свежие яйца · 5 монет за штуку", body);
+            FitLabel(new Rect(x, y + 64, 285, 26), "Свежие яйца · 5 монет за штуку", body);
             GUI.Label(new Rect(x, y + 99, 285, 24), "На складе: " + warehouse.Inventory.Count("egg"), small);
             if (economy.Busy)
             {
