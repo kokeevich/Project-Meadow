@@ -1722,14 +1722,14 @@ Balance.md — стоимость, время производства и эко
 ## PHASE 0 — Project Setup
 
 - [ ] установить выбранную Unity LTS;
-- [ ] создать URP 3D project;
-- [ ] создать Git repository;
-- [ ] добавить Unity `.gitignore`;
-- [ ] создать структуру папок;
-- [ ] создать namespace;
-- [ ] добавить тестовую сцену;
-- [ ] настроить Input System;
-- [ ] настроить базовую камеру;
+- [x] создать URP 3D project;
+- [x] создать Git repository;
+- [x] добавить Unity `.gitignore`;
+- [x] создать структуру папок;
+- [x] создать namespace;
+- [x] добавить тестовую сцену;
+- [x] настроить Input System;
+- [x] настроить базовую камеру;
 - [ ] сделать первый Windows build;
 - [ ] сделать первый Android build.
 
@@ -1738,6 +1738,8 @@ Balance.md — стоимость, время производства и эко
 пустой проект успешно собирается под PC и Android.
 
 ---
+
+> Подготовлена сцена `Assets/_Project/Scenes/Levels/MVP_Farm.unity` на основе URP SampleScene. Камера perspective, позиция (0, 12, -12), наклон 45°. Input System включён. Импорт сцены, Play Mode и сборки Windows/Android ещё требуют проверки в Unity 6000.3.27f2; этап не завершён.
 
 ## PHASE 1 — Interaction Prototype
 

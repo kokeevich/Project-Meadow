@@ -1,0 +1,7 @@
+{
+  "name": "ProjectMeadow",
+  "rootNamespace": "ProjectMeadow",
+  "references": [
+    "Unity.InputSystem"
+  ]
+}
