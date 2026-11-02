@@ -13,7 +13,7 @@ namespace ProjectMeadow.Tests
         {
             var prefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/_Project/Prefabs/Animals/Cow.prefab");
             Assert.IsNotNull(prefab);
-            var controller = prefab.GetComponent<FarmAnimalController>();
+            var controller = prefab.GetComponent<ChickenController>();
             Assert.IsNotNull(controller);
             var serialized = new SerializedObject(controller);
             Assert.IsTrue(serialized.FindProperty("isCow").boolValue);

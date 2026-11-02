@@ -1,13 +1,17 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
+using UnityEngine.Scripting.APIUpdating;
 using ProjectMeadow.Farming;
 
 namespace ProjectMeadow.Animals
 {
+    [MovedFrom(true, sourceNamespace: "ProjectMeadow.Animals", sourceAssembly: "ProjectMeadow.Runtime", sourceClassName: "FarmAnimalController")]
     [RequireComponent(typeof(NavMeshAgent))]
-    public sealed class FarmAnimalController : MonoBehaviour
+    public sealed class ChickenController : MonoBehaviour
     {
         [SerializeField] private AnimalData data;
+        [FormerlySerializedAs("eggData")]
         [SerializeField] private ProjectMeadow.Items.ItemData productData;
         [SerializeField] private bool isCow;
         [SerializeField] private Material bodyMaterial;
@@ -28,7 +32,7 @@ namespace ProjectMeadow.Animals
         private void Awake()
         {
             agent = GetComponent<NavMeshAgent>();
-            if (data == null) { Debug.LogError("Chicken needs AnimalData.", this); enabled = false; return; }
+            if (data == null) { Debug.LogError("Animal needs AnimalData.", this); enabled = false; return; }
             agent.speed = data.moveSpeed;
             agent.radius = isCow ? .45f : .25f;
             agent.height = isCow ? 1.5f : 1f;

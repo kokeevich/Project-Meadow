@@ -61,8 +61,8 @@ This image is a static Blender layout preview, not Unity gameplay validation.
 
 Phase 9 adds an original spotted cow with a pink muzzle, horns, ears and four animated legs,
 a dedicated grass patch, milk cans and a teal cheese maker beside the windmill.
-Animal visuals share the feeding/navigation controller; the chicken prefab retains its
-script GUID after renaming the controller. Chicken food and cattle grass are separate types.
+Animal visuals share the feeding/navigation controller; both prefabs retain the original
+ChickenController script name and GUID for stable Unity imports. Chicken food and cattle grass are separate types.
 Both production buildings are selectable in the Production card. All five resources are
 available as market tabs; storage remains shared and capped at ten units.
 
