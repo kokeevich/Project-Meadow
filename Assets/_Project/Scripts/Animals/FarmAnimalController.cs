@@ -5,14 +5,17 @@ using ProjectMeadow.Farming;
 namespace ProjectMeadow.Animals
 {
     [RequireComponent(typeof(NavMeshAgent))]
-    public sealed class ChickenController : MonoBehaviour
+    public sealed class FarmAnimalController : MonoBehaviour
     {
         [SerializeField] private AnimalData data;
-        [SerializeField] private ProjectMeadow.Items.ItemData eggData;
+        [SerializeField] private ProjectMeadow.Items.ItemData productData;
+        [SerializeField] private bool isCow;
         [SerializeField] private Material bodyMaterial;
         [SerializeField] private Material beakMaterial;
         [SerializeField] private Material combMaterial, eyeMaterial, wingMaterial;
         private Transform head, leftFoot, rightFoot;
+        private readonly System.Collections.Generic.List<Transform> cowLegs = new System.Collections.Generic.List<Transform>();
+        private readonly System.Collections.Generic.List<Vector3> cowLegPositions = new System.Collections.Generic.List<Vector3>();
         private NavMeshAgent agent;
         private ChickenCycle cycle;
         private FoodPlot target;
@@ -21,16 +24,17 @@ namespace ProjectMeadow.Animals
         private float seekDeadline;
         public string State => cycle == null ? "Idle" : cycle.State != ChickenCycle.Phase.Idle
             ? cycle.State.ToString() : target != null ? "MoveToFood" : "Idle";
-        public int EggsProduced { get; private set; }
+        public int ProductsProduced { get; private set; }
         private void Awake()
         {
             agent = GetComponent<NavMeshAgent>();
             if (data == null) { Debug.LogError("Chicken needs AnimalData.", this); enabled = false; return; }
             agent.speed = data.moveSpeed;
-            agent.radius = 0.25f;
-            agent.height = 1f;
+            agent.radius = isCow ? .45f : .25f;
+            agent.height = isCow ? 1.5f : 1f;
             agent.stoppingDistance = 0.1f;
             cycle = new ChickenCycle(data.eatSeconds, data.productionSeconds);
+            if (isCow) { BuildCow(); return; }
             body = Part("Body", PrimitiveType.Sphere, new Vector3(0, .5f, 0), new Vector3(.7f, .7f, .85f), bodyMaterial);
             head = Part("Head", PrimitiveType.Sphere, new Vector3(0, .83f, .36f), Vector3.one * .43f, bodyMaterial);
             Part("Beak", PrimitiveType.Sphere, new Vector3(0, .79f, .62f), new Vector3(.19f, .13f, .25f), beakMaterial);
@@ -47,6 +51,39 @@ namespace ProjectMeadow.Animals
             }
             var tail = Part("Tail feathers", PrimitiveType.Sphere, new Vector3(0, .68f, -.39f), new Vector3(.35f, .49f, .2f), wingMaterial);
             tail.localRotation = Quaternion.Euler(-32, 0, 0);
+        }
+        private void BuildCow()
+        {
+            body = Part("Cow body", PrimitiveType.Sphere, new Vector3(0, .85f, 0), new Vector3(1, .85f, 1.6f), bodyMaterial);
+            head = Part("Cow head", PrimitiveType.Sphere, new Vector3(0, 1.04f, .9f), new Vector3(.63f, .68f, .65f), bodyMaterial);
+            var muzzle = Part("Muzzle", PrimitiveType.Sphere, new Vector3(0, .88f, 1.2f), new Vector3(.64f, .36f, .38f), beakMaterial);
+            muzzle.SetParent(head, true);
+            for (int side = -1; side <= 1; side += 2)
+            {
+                var eye = Part("Cow eye", PrimitiveType.Sphere, new Vector3(side * .24f, 1.15f, 1.13f), Vector3.one * .09f, eyeMaterial); eye.SetParent(head, true);
+                var ear = Part("Cow ear", PrimitiveType.Sphere, new Vector3(side * .4f, 1.2f, .85f), new Vector3(.35f, .14f, .2f), eyeMaterial); ear.SetParent(head, true);
+                var horn = Part("Horn", PrimitiveType.Cylinder, new Vector3(side * .23f, 1.42f, .8f), new Vector3(.09f, .14f, .09f), wingMaterial); horn.SetParent(head, true);
+                var spot = Part("Coat patch", PrimitiveType.Sphere, new Vector3(side * .45f, .9f, -.2f), new Vector3(.14f, .46f, .65f), eyeMaterial); spot.SetParent(body, true);
+                for (int end = -1; end <= 1; end += 2)
+                {
+                    var leg = Part("Cow leg", PrimitiveType.Cube, new Vector3(side * .33f, .3f, end * .5f), new Vector3(.19f, .6f, .2f), bodyMaterial);
+                    cowLegs.Add(leg); cowLegPositions.Add(leg.localPosition);
+                    var hoof = Part("Hoof", PrimitiveType.Cube, new Vector3(side * .33f, .08f, end * .5f), new Vector3(.21f, .14f, .24f), eyeMaterial); hoof.SetParent(leg, true);
+                }
+            }
+            Part("Tail", PrimitiveType.Cylinder, new Vector3(0, .6f, -.85f), new Vector3(.07f, .35f, .07f), eyeMaterial);
+        }
+        private void AnimateCow(bool eating)
+        {
+            float speed = agent.velocity.magnitude;
+            body.localPosition = new Vector3(0, .85f + (speed > .1f ? Mathf.Sin(Time.time * 5) * .015f : 0), 0);
+            head.localPosition = new Vector3(0, eating ? .8f + Mathf.Sin(Time.time * 4) * .035f : 1.04f, .9f);
+            head.localRotation = Quaternion.Euler(eating ? 20 : 0, 0, 0);
+            for (int i = 0; i < cowLegs.Count; i++)
+            {
+                float step = speed > .1f ? Mathf.Sin(Time.time * 5 + (i == 0 || i == 3 ? 0 : Mathf.PI)) * .08f : 0;
+                cowLegs[i].localPosition = cowLegPositions[i] + new Vector3(0, Mathf.Max(0, step) * .4f, step);
+            }
         }
         private Transform Part(string label, PrimitiveType shape, Vector3 position, Vector3 scale, Material material)
         {
@@ -66,8 +103,11 @@ namespace ProjectMeadow.Animals
         private void Update()
         {
             if (cycle == null || !agent.isOnNavMesh) return;
-            if (cycle.Tick(Time.deltaTime)) SpawnEgg();
+            if (cycle.Tick(Time.deltaTime)) SpawnProduct();
             bool eating = cycle.State == ChickenCycle.Phase.Eat;
+            if (isCow) AnimateCow(eating);
+            else
+            {
             float bob = eating ? Mathf.Sin(Time.time * 7f) * .025f : agent.velocity.magnitude > .1f ? Mathf.Sin(Time.time * 8f) * .02f : 0;
             body.localPosition = new Vector3(0, .5f + bob, 0);
             body.localRotation = Quaternion.Euler(eating ? 6f + Mathf.Sin(Time.time * 7f) * 4f : 0, 0, 0);
@@ -75,6 +115,7 @@ namespace ProjectMeadow.Animals
             float step = agent.velocity.magnitude > .1f ? Mathf.Sin(Time.time * 8f) * .045f : 0;
             leftFoot.localPosition = new Vector3(-.16f, .08f + Mathf.Max(0, step), .05f + step);
             rightFoot.localPosition = new Vector3(.16f, .08f + Mathf.Max(0, -step), .05f - step);
+            }
             if (cycle.State != ChickenCycle.Phase.Idle) return;
             if (target != null)
             {
@@ -97,7 +138,7 @@ namespace ProjectMeadow.Animals
             float best = float.PositiveInfinity;
             foreach (var plot in FindObjectsByType<FoodPlot>(FindObjectsSortMode.None))
             {
-                if (!plot.IsAvailableFor(this)) continue;
+                if (plot.Kind != (isCow ? FoodPlot.FeedKind.Cattle : FoodPlot.FeedKind.Poultry) || !plot.IsAvailableFor(this)) continue;
                 var collider = plot.GetComponent<Collider>();
                 if (collider == null) continue;
                 Vector3 point = collider.ClosestPoint(transform.position);
@@ -122,18 +163,27 @@ namespace ProjectMeadow.Animals
             if (agent != null && agent.enabled && agent.isOnNavMesh) agent.ResetPath();
         }
         private void OnDisable() => StopSeeking();
-        private void SpawnEgg()
+        private void SpawnProduct()
         {
-            var egg = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            egg.name = "Egg";
-            egg.transform.position = transform.position - transform.forward * .6f + Vector3.up * .4f;
-            egg.transform.localScale = new Vector3(.32f, .43f, .32f);
+            var egg = GameObject.CreatePrimitive(isCow ? PrimitiveType.Cylinder : PrimitiveType.Sphere);
+            egg.name = isCow ? "Milk" : "Egg";
+            egg.transform.position = transform.position - transform.forward * (isCow ? 1.25f : .6f) + Vector3.up * .4f;
+            egg.transform.localScale = isCow ? new Vector3(.35f, .25f, .35f) : new Vector3(.32f, .43f, .32f);
             egg.GetComponent<Renderer>().sharedMaterial = bodyMaterial;
+            if (isCow)
+            {
+                var lid = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+                lid.name = "Milk can lid"; lid.transform.SetParent(egg.transform, false);
+                lid.transform.localPosition = new Vector3(0, 1.03f, 0);
+                lid.transform.localScale = new Vector3(.9f, .07f, .9f);
+                lid.GetComponent<Renderer>().sharedMaterial = eyeMaterial;
+                var collider = lid.GetComponent<Collider>(); collider.enabled = false; Destroy(collider);
+            }
             var physics = egg.AddComponent<Rigidbody>();
             physics.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
-            egg.AddComponent<ProjectMeadow.Items.WorldItem>().Initialize(eggData,
+            egg.AddComponent<ProjectMeadow.Items.WorldItem>().Initialize(productData,
                 FindFirstObjectByType<ProjectMeadow.Inventory.InventoryController>());
-            EggsProduced++;
+            ProductsProduced++;
         }
     }
 }

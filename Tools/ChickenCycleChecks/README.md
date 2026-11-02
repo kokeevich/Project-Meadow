@@ -6,7 +6,7 @@ Run with .NET 8 SDK:
 dotnet run --project Tools/ChickenCycleChecks/CycleChecks.csproj
 ```
 
-Uses the actual ChickenCycle.cs source and checks 52 production, route, objective, inventory and economy checks without Unity.
+Uses the actual ChickenCycle.cs source and checks 63 animal, dairy, production, route, objective, inventory and economy checks without Unity.
 Unity EditMode tests also cover the cycle and single-serving food consumption.
 
 ## Unity smoke check
@@ -58,3 +58,19 @@ The CLI tests cannot validate scene reload, Unity audio or the victory UI.
 - Restart after victory; all inventory, queues, upgrades and navigation must reset.
 
 Scene navigation, input, animation and sound still require Unity; the CLI tests do not cover them.
+
+## Cow and dairy smoke check (Unity)
+
+- Start the scene: two chickens and one cow appear, and HUD counts show 2 / 1.
+- Plant the separately labelled cattle grass between the food patch and wheat patch.
+- Grass grows for eight seconds. Only the cow should approach it; chickens keep their own food.
+- After eating for three seconds and waiting ten seconds, the cow leaves a milk can.
+- Click milk to collect it. Repeat to obtain two milk.
+- Open Production, select the cheese maker, queue cheese and wait eight seconds.
+- Mill and dairy should run at the same time, with independent queue/upgrade state.
+- Sell milk (8) or cheese (24). Neither should advance the egg objective.
+- Check labels and five market tabs at 1024x576 and 1920x1080.
+- Restart: cow, feed, products and both production queues reset.
+
+The imported prefab reference test is supplied in DairyTests for Unity EditMode.
+CLI tests validate the cycle/economy, not animal navigation, visual animation or Unity import.

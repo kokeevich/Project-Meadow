@@ -6,6 +6,9 @@ namespace ProjectMeadow.Farming
     [RequireComponent(typeof(Renderer))]
     public sealed class FoodPlot : MonoBehaviour, IInteractable
     {
+        public enum FeedKind { Poultry, Cattle }
+        [SerializeField] private FeedKind kind;
+        public FeedKind Kind => kind;
         public enum GrowthState { Empty, Growing, Ready }
         [SerializeField, Min(0.1f)] private float growthSeconds = 5f;
         public GrowthState State { get; private set; }

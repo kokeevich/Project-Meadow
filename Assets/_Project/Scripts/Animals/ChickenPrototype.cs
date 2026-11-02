@@ -6,6 +6,8 @@ namespace ProjectMeadow.Animals
     public sealed class ChickenPrototype : MonoBehaviour
     {
         [SerializeField] private GameObject chickenPrefab;
+        [SerializeField] private GameObject cowPrefab;
+        public int CowCount { get; private set; }
         public int ChickenCount { get; private set; }
         public const int MaximumChickens = 12;
         private int currentAgentType;
@@ -34,6 +36,14 @@ namespace ProjectMeadow.Animals
             currentAgentType = settings.agentTypeID;
             Spawn(new Vector3(-2, 0, -2), settings.agentTypeID);
             Spawn(new Vector3(2, 0, -2), settings.agentTypeID);
+            var filter = new NavMeshQueryFilter { agentTypeID = settings.agentTypeID, areaMask = NavMesh.AllAreas };
+            if (cowPrefab != null && NavMesh.SamplePosition(new Vector3(4, 0, -2.5f), out var cowSpawn, 2f, filter))
+            {
+                var cow = Instantiate(cowPrefab, cowSpawn.position, Quaternion.identity, transform);
+                cow.GetComponent<NavMeshAgent>().agentTypeID = settings.agentTypeID;
+                CowCount = 1;
+            }
+            else Debug.LogError("Cow prefab or valid spawn missing.", this);
         }
         public bool TrySpawnPurchasedChicken()
         {

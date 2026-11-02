@@ -466,6 +466,7 @@ MonoBehaviour:
   leaves: {fileID: 2100000, guid: e69591cc567f4ae2ae68a3fab5db41d0, type: 2}
   levelData: {fileID: 11400000, guid: bb1b0a8b09464400a0b9498eb013bd0a, type: 2}
   flourRecipe: {fileID: 11400000, guid: c3a13265e8e14e4794c4f493d5b1e07a, type: 2}
+  cheeseRecipe: {fileID: 11400000, guid: 13dfbb28fcea4c74bf03c68f5246db9a, type: 2}
 --- !u!1 &910000
 GameObject:
   m_ObjectHideFlags: 0
@@ -573,6 +574,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_Script: {fileID: 11500000, guid: 10b78bf1f9ff4b9181bda3a0f7216771, type: 3}
   chickenPrefab: {fileID: 1000, guid: d766a7bffe174db6b3ae5758e83cc9f1, type: 3}
+  cowPrefab: {fileID: 1000, guid: 9f5f9ba7b98245ab9d34996f8d1ae4ec, type: 3}
 --- !u!1 &1999990
 GameObject:
   serializedVersion: 6
@@ -735,6 +737,12 @@ Transform:
   - {fileID: 2001911}
   - {fileID: 2001921}
   - {fileID: 2001931}
+  - {fileID: 2001941}
+  - {fileID: 2002011}
+  - {fileID: 2002021}
+  - {fileID: 2002031}
+  - {fileID: 2002041}
+  - {fileID: 2002051}
   m_Father: {fileID: 0}
 --- !u!1 &2000000
 GameObject:
@@ -3724,7 +3732,7 @@ Transform:
   m_GameObject: {fileID: 2000860}
   serializedVersion: 2
   m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
-  m_LocalPosition: {x: 5.3, y: 0.7200000000000001, z: -1}
+  m_LocalPosition: {x: 11.2, y: 0.7200000000000001, z: -1}
   m_LocalScale: {x: 0.24, y: 1.6, z: 0.24}
   m_Children: []
   m_Father: {fileID: 1999991}
@@ -3766,7 +3774,7 @@ Transform:
   m_GameObject: {fileID: 2000870}
   serializedVersion: 2
   m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
-  m_LocalPosition: {x: 5.3, y: 1.6, z: -1}
+  m_LocalPosition: {x: 11.2, y: 1.6, z: -1}
   m_LocalScale: {x: 1.5, y: 1.35, z: 1.5}
   m_Children: []
   m_Father: {fileID: 1999991}
@@ -3800,7 +3808,7 @@ Transform:
   m_GameObject: {fileID: 2000880}
   serializedVersion: 2
   m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
-  m_LocalPosition: {x: 4.8999999999999995, y: 1.75, z: -0.85}
+  m_LocalPosition: {x: 10.799999999999999, y: 1.75, z: -0.85}
   m_LocalScale: {x: 1.1, y: 0.9900000000000001, z: 1.1}
   m_Children: []
   m_Father: {fileID: 1999991}
@@ -3834,7 +3842,7 @@ Transform:
   m_GameObject: {fileID: 2000890}
   serializedVersion: 2
   m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
-  m_LocalPosition: {x: 5.6499999999999995, y: 2.0500000000000003, z: -1}
+  m_LocalPosition: {x: 11.549999999999999, y: 2.0500000000000003, z: -1}
   m_LocalScale: {x: 1.15, y: 1.035, z: 1.15}
   m_Children: []
   m_Father: {fileID: 1999991}
@@ -7391,6 +7399,435 @@ MeshRenderer:
   m_ReceiveShadows: 1
   m_Materials:
   - {fileID: 2100000, guid: b0dc635b2623430393ee8c6657e87b01, type: 2}
+--- !u!1 &2001940
+GameObject:
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001941}
+  - component: {fileID: 2001945}
+  m_Name: Cheese maker
+  m_IsActive: 1
+--- !u!4 &2001941
+Transform:
+  m_GameObject: {fileID: 2001940}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.8, y: 0, z: 2.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2001951}
+  - {fileID: 2001961}
+  - {fileID: 2001971}
+  - {fileID: 2001981}
+  - {fileID: 2001991}
+  - {fileID: 2002001}
+  m_Father: {fileID: 1999991}
+--- !u!114 &2001945
+MonoBehaviour:
+  m_GameObject: {fileID: 2001940}
+  m_Enabled: 1
+  m_Script: {fileID: 11500000, guid: aa98bfc9128440409021211d8819d120, type: 3}
+  kind: 1
+--- !u!1 &2001950
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001951}
+  - component: {fileID: 2001952}
+  - component: {fileID: 2001953}
+  - component: {fileID: 2001954}
+  m_Layer: 0
+  m_Name: Dairy walls
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2001951
+Transform:
+  m_GameObject: {fileID: 2001950}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 0, y: 0.9, z: 0}
+  m_LocalScale: {x: 1.8, y: 1.8, z: 1.8}
+  m_Children: []
+  m_Father: {fileID: 2001941}
+--- !u!33 &2001952
+MeshFilter:
+  m_GameObject: {fileID: 2001950}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2001953
+MeshRenderer:
+  m_GameObject: {fileID: 2001950}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 2c0c61981c434063a2b321d2a8041247, type: 2}
+--- !u!65 &2001954
+BoxCollider:
+  m_GameObject: {fileID: 2001950}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &2001960
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001961}
+  - component: {fileID: 2001962}
+  - component: {fileID: 2001963}
+  m_Layer: 0
+  m_Name: Dairy roof
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2001961
+Transform:
+  m_GameObject: {fileID: 2001960}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.25881904510252074, w: 0.9659258262890683}
+  m_LocalPosition: {x: -0.5, y: 2.08, z: 0}
+  m_LocalScale: {x: 1.3, y: 0.14, z: 2.1}
+  m_Children: []
+  m_Father: {fileID: 2001941}
+--- !u!33 &2001962
+MeshFilter:
+  m_GameObject: {fileID: 2001960}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2001963
+MeshRenderer:
+  m_GameObject: {fileID: 2001960}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: c9b72beffcb947d59b9c7de095658f47, type: 2}
+--- !u!1 &2001970
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001971}
+  - component: {fileID: 2001972}
+  - component: {fileID: 2001973}
+  m_Layer: 0
+  m_Name: Dairy roof
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2001971
+Transform:
+  m_GameObject: {fileID: 2001970}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: -0.25881904510252074, w: 0.9659258262890683}
+  m_LocalPosition: {x: 0.5, y: 2.08, z: 0}
+  m_LocalScale: {x: 1.3, y: 0.14, z: 2.1}
+  m_Children: []
+  m_Father: {fileID: 2001941}
+--- !u!33 &2001972
+MeshFilter:
+  m_GameObject: {fileID: 2001970}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2001973
+MeshRenderer:
+  m_GameObject: {fileID: 2001970}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: c9b72beffcb947d59b9c7de095658f47, type: 2}
+--- !u!1 &2001980
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001981}
+  - component: {fileID: 2001982}
+  - component: {fileID: 2001983}
+  m_Layer: 0
+  m_Name: Dairy door
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2001981
+Transform:
+  m_GameObject: {fileID: 2001980}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: -0.4, y: 0.6, z: -0.92}
+  m_LocalScale: {x: 0.55, y: 1.2, z: 0.06}
+  m_Children: []
+  m_Father: {fileID: 2001941}
+--- !u!33 &2001982
+MeshFilter:
+  m_GameObject: {fileID: 2001980}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2001983
+MeshRenderer:
+  m_GameObject: {fileID: 2001980}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
+--- !u!1 &2001990
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001991}
+  - component: {fileID: 2001992}
+  - component: {fileID: 2001993}
+  m_Layer: 0
+  m_Name: Dairy window
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2001991
+Transform:
+  m_GameObject: {fileID: 2001990}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 0.45, y: 1.15, z: -0.92}
+  m_LocalScale: {x: 0.45, y: 0.5, z: 0.06}
+  m_Children: []
+  m_Father: {fileID: 2001941}
+--- !u!33 &2001992
+MeshFilter:
+  m_GameObject: {fileID: 2001990}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2001993
+MeshRenderer:
+  m_GameObject: {fileID: 2001990}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: fd24c36884fe40b9ada2be198c668c3d, type: 2}
+--- !u!1 &2002000
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2002001}
+  - component: {fileID: 2002002}
+  - component: {fileID: 2002003}
+  m_Layer: 0
+  m_Name: Cheese sign
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2002001
+Transform:
+  m_GameObject: {fileID: 2002000}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 0.45, y: 0.55, z: -0.94}
+  m_LocalScale: {x: 0.45, y: 0.2, z: 0.08}
+  m_Children: []
+  m_Father: {fileID: 2001941}
+--- !u!33 &2002002
+MeshFilter:
+  m_GameObject: {fileID: 2002000}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2002003
+MeshRenderer:
+  m_GameObject: {fileID: 2002000}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 825a88434f644f23b930d7e06ffd9f20, type: 2}
+--- !u!1 &2002010
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2002011}
+  - component: {fileID: 2002012}
+  - component: {fileID: 2002013}
+  - component: {fileID: 2002014}
+  - component: {fileID: 2002015}
+  m_Layer: 0
+  m_Name: Cow feed
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2002011
+Transform:
+  m_GameObject: {fileID: 2002010}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 4.5, y: 0.15, z: -1.2}
+  m_LocalScale: {x: 2, y: 0.3, z: 2}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2002012
+MeshFilter:
+  m_GameObject: {fileID: 2002010}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2002013
+MeshRenderer:
+  m_GameObject: {fileID: 2002010}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 9d6fbc5e9b4048df80d738dad77f3059, type: 2}
+--- !u!65 &2002014
+BoxCollider:
+  m_GameObject: {fileID: 2002010}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2002015
+MonoBehaviour:
+  m_GameObject: {fileID: 2002010}
+  m_Enabled: 1
+  m_Script: {fileID: 11500000, guid: 14c41042a3144b998062126b22c75a38, type: 3}
+  kind: 1
+  growthSeconds: 8
+--- !u!1 &2002020
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2002021}
+  - component: {fileID: 2002022}
+  - component: {fileID: 2002023}
+  m_Layer: 0
+  m_Name: Pasture border
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2002021
+Transform:
+  m_GameObject: {fileID: 2002020}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 4.5, y: 0.18, z: -2.25}
+  m_LocalScale: {x: 2.2, y: 0.22, z: 0.12}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2002022
+MeshFilter:
+  m_GameObject: {fileID: 2002020}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2002023
+MeshRenderer:
+  m_GameObject: {fileID: 2002020}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: c3a3e9cc544f4f8cbca8725d96ba7cd0, type: 2}
+--- !u!1 &2002030
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2002031}
+  - component: {fileID: 2002032}
+  - component: {fileID: 2002033}
+  m_Layer: 0
+  m_Name: Pasture border
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2002031
+Transform:
+  m_GameObject: {fileID: 2002030}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 4.5, y: 0.18, z: -0.15}
+  m_LocalScale: {x: 2.2, y: 0.22, z: 0.12}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2002032
+MeshFilter:
+  m_GameObject: {fileID: 2002030}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2002033
+MeshRenderer:
+  m_GameObject: {fileID: 2002030}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: c3a3e9cc544f4f8cbca8725d96ba7cd0, type: 2}
+--- !u!1 &2002040
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2002041}
+  - component: {fileID: 2002042}
+  - component: {fileID: 2002043}
+  m_Layer: 0
+  m_Name: Pasture border
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2002041
+Transform:
+  m_GameObject: {fileID: 2002040}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 3.45, y: 0.18, z: -1.2}
+  m_LocalScale: {x: 0.12, y: 0.22, z: 2.2}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2002042
+MeshFilter:
+  m_GameObject: {fileID: 2002040}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2002043
+MeshRenderer:
+  m_GameObject: {fileID: 2002040}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: c3a3e9cc544f4f8cbca8725d96ba7cd0, type: 2}
+--- !u!1 &2002050
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2002051}
+  - component: {fileID: 2002052}
+  - component: {fileID: 2002053}
+  m_Layer: 0
+  m_Name: Pasture border
+  m_TagString: Untagged
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2002051
+Transform:
+  m_GameObject: {fileID: 2002050}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  m_LocalPosition: {x: 5.55, y: 0.18, z: -1.2}
+  m_LocalScale: {x: 0.12, y: 0.22, z: 2.2}
+  m_Children: []
+  m_Father: {fileID: 1999991}
+--- !u!33 &2002052
+MeshFilter:
+  m_GameObject: {fileID: 2002050}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2002053
+MeshRenderer:
+  m_GameObject: {fileID: 2002050}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: c3a3e9cc544f4f8cbca8725d96ba7cd0, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

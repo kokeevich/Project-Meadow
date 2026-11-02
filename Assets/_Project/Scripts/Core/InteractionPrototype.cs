@@ -10,14 +10,16 @@ namespace ProjectMeadow.Core
     {
         [SerializeField] private Material cream, teal, wood, dark, glass, gold, leaves;
         [SerializeField] private ProjectMeadow.Levels.LevelData levelData;
-        [SerializeField] private ProjectMeadow.Production.RecipeData flourRecipe;
+        [SerializeField] private ProjectMeadow.Production.RecipeData flourRecipe, cheeseRecipe;
         private EconomyService economy;
         private void Awake()
         {
             var warehouse = gameObject.AddComponent<ProjectMeadow.Inventory.InventoryController>();
             economy = new EconomyService(warehouse.Inventory);
             var chickens = GetComponent<ChickenPrototype>();
-            var plot = FindFirstObjectByType<ProjectMeadow.Farming.FoodPlot>();
+            var foodPlots = FindObjectsByType<ProjectMeadow.Farming.FoodPlot>(FindObjectsSortMode.None);
+            ProjectMeadow.Farming.FoodPlot plot = null;
+            foreach (var food in foodPlots) if (food.Kind == ProjectMeadow.Farming.FoodPlot.FeedKind.Poultry) plot = food;
             var camera = UnityEngine.Camera.main;
             if (camera == null) { Debug.LogError("Main Camera missing.", this); return; }
             var truck = CreateTruck();
@@ -25,29 +27,33 @@ namespace ProjectMeadow.Core
             var audioPlayer = gameObject.AddComponent<ProjectMeadow.Audio.LevelAudio>();
             var level = gameObject.AddComponent<ProjectMeadow.Levels.LevelController>();
             level.Initialize(levelData, economy, audioPlayer);
-            var mill = FindFirstObjectByType<ProjectMeadow.Production.ProductionBuilding>();
+            var buildings = FindObjectsByType<ProjectMeadow.Production.ProductionBuilding>(FindObjectsSortMode.None);
             var grain = FindFirstObjectByType<ProjectMeadow.Farming.GrainPlot>();
-            if (mill != null && flourRecipe != null) mill.Initialize(warehouse.Inventory, economy.Currency, flourRecipe);
+            foreach (var building in buildings)
+            {
+                bool dairy = building.Kind == ProjectMeadow.Production.ProductionBuilding.BuildingKind.CheeseMaker;
+                building.Initialize(warehouse.Inventory, economy.Currency, dairy ? cheeseRecipe : flourRecipe);
+                building.gameObject.AddComponent<WorldLabel>().Initialize(dairy ? "СЫРОВАРНЯ" : "МЕЛЬНИЦА", dairy ? 2.7f : 4.2f);
+            }
             if (grain != null)
             {
                 grain.Initialize(warehouse);
                 grain.gameObject.AddComponent<WorldLabel>().Initialize("ПШЕНИЦА · посадить / собрать", 1.2f);
             }
-            if (mill != null) mill.gameObject.AddComponent<WorldLabel>().Initialize("МЕЛЬНИЦА", 4.2f);
-            if (plot != null)
+            foreach (var food in foodPlots)
             {
                 var marker = new GameObject("Feed sign"); marker.transform.SetParent(transform, false);
-                marker.transform.position = plot.transform.position;
-                marker.AddComponent<WorldLabel>().Initialize("КОРМ ДЛЯ КУРИЦ", 1.15f);
+                marker.transform.position = food.transform.position;
+                marker.AddComponent<WorldLabel>().Initialize(food.Kind == ProjectMeadow.Farming.FoodPlot.FeedKind.Cattle ? "ТРАВА ДЛЯ КОРОВЫ" : "КОРМ ДЛЯ КУРИЦ", 1.15f);
             }
-            hud.Initialize(warehouse, economy, chickens, plot, truck, level, audioPlayer, mill, grain);
+            hud.Initialize(warehouse, economy, chickens, plot, truck, level, audioPlayer, buildings, grain);
             camera.gameObject.AddComponent<ProjectMeadow.Camera.CameraZoom>().Initialize(hud);
             gameObject.AddComponent<InteractionSystem>().Initialize(camera, hud);
-            if (plot != null)
+            foreach (var food in foodPlots)
             {
                 var crops = new GameObject("Garden crops");
                 crops.transform.SetParent(transform, false);
-                crops.AddComponent<ProjectMeadow.Farming.FoodPlotVisual>().Initialize(plot, leaves, gold);
+                crops.AddComponent<ProjectMeadow.Farming.FoodPlotVisual>().Initialize(food, leaves, food.Kind == ProjectMeadow.Farming.FoodPlot.FeedKind.Cattle ? leaves : gold);
             }
         }
         private Truck CreateTruck()

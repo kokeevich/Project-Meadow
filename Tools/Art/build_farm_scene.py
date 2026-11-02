@@ -149,7 +149,7 @@ for x in (-6.1,12.1):
   if z<4:
    for y in (.35,.73):part('Fence rail',(x,y,z+1),(.12,.12,2),'Cream')
 # Trees are deliberately outside the useful play area.
-for x,z,h in [(-5,3.7,1.8),(5.2,4,1.9),(-5.2,-1.5,1.6),(5.3,-1,1.6)]:
+for x,z,h in [(-5,3.7,1.8),(5.2,4,1.9),(-5.2,-1.5,1.6),(11.2,-1,1.6)]:
  part('Tree trunk',(x,h*.45,z),(.24,h,.24),'Wood',solid=True)
  for dx,dy,dz,size,col in [(0,0,0,1.5,'Leaves'),(-.4,.15,.15,1.1,'LeavesLight'),(.35,.45,0,1.15,'Leaves')]:
   part('Tree crown',(x+dx,h+dy,z+dz),(size,size*.9,size),col,'sphere')
@@ -187,6 +187,28 @@ for row in range(3):
   part('Wheat stalk',(x,.22,z),(.04,.44,.04),'Leaves',parent=wheat+1)
   part('Wheat ear',(x,.5,z),(.12,.26,.12),'Gold','sphere',parent=wheat+1)
 for i in range(4):part('Mill path',(8,.035,-2.5+i*.7),(.7,.07,.45),'Path')
+# Dairy shed and a dedicated cattle feed patch.
+dairy=empty('Cheese maker',(10.8,0,2.6),script=guid(r/'Scripts/Production/ProductionBuilding.cs'))
+blocks[-1]+='  kind: 1\n'
+part('Dairy walls',(0,.9,0),(1.8,1.8,1.8),'Teal',solid=True,parent=dairy+1)
+for side in (-1,1):
+ part('Dairy roof',(side*.5,2.08,0),(1.3,.14,2.1),'Roof',angle=-side*30,parent=dairy+1)
+part('Dairy door',(-.4,.6,-.92),(.55,1.2,.06),'Cream',parent=dairy+1)
+part('Dairy window',(.45,1.15,-.92),(.45,.5,.06),'Glass',parent=dairy+1)
+part('Cheese sign',(.45,.55,-.94),(.45,.2,.08),'Gold',parent=dairy+1)
+cattle=part('Cow feed',(4.5,.15,-1.2),(2,.3,2),'Soil',solid=True)
+blocks[-1]=blocks[-1].replace(f'  - component: {{fileID: {cattle+4}}}',f'  - component: {{fileID: {cattle+4}}}\n  - component: {{fileID: {cattle+5}}}')
+blocks[-1]+=f"""--- !u!114 &{cattle+5}
+MonoBehaviour:
+  m_GameObject: {{fileID: {cattle}}}
+  m_Enabled: 1
+  m_Script: {{fileID: 11500000, guid: {guid(r/'Scripts/Farming/FoodPlot.cs')}, type: 3}}
+  kind: 1
+  growthSeconds: 8
+"""
+for z in (-2.25,-.15):part('Pasture border',(4.5,.18,z),(2.2,.22,.12),'Wood')
+for x in (3.45,5.55):part('Pasture border',(x,.18,-1.2),(.12,.22,2.2),'Wood')
+
 # Populate child lists for nested art groups.
 for i,b in enumerate(blocks):
  for parent,children in childmap.items():

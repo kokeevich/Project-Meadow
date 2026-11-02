@@ -56,3 +56,15 @@ Materials and new geometry remain original project content.
 ![Production district layout, Blender composition preview](Production-layout-preview.png)
 
 This image is a static Blender layout preview, not Unity gameplay validation.
+
+## Dairy district
+
+Phase 9 adds an original spotted cow with a pink muzzle, horns, ears and four animated legs,
+a dedicated grass patch, milk cans and a teal cheese maker beside the windmill.
+Animal visuals share the feeding/navigation controller; the chicken prefab retains its
+script GUID after renaming the controller. Chicken food and cattle grass are separate types.
+Both production buildings are selectable in the Production card. All five resources are
+available as market tabs; storage remains shared and capped at ten units.
+
+Initial balance: cow grass 8s, eating 3s, milk cooldown 10s; cheese 2 milk → 1 cheese in 8s.
+Milk sells for 8 coins and cheese for 24. These values still need playtest feedback.

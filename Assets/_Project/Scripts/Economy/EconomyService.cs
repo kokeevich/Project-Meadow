@@ -12,7 +12,7 @@ namespace ProjectMeadow.Economy
         public int Cargo { get; private set; }
         public string CargoId { get; private set; }
         private int cargoPrice;
-        public static int Price(string id) => id == "egg" ? EggPrice : id == "grain" ? 2 : id == "flour" ? 14 : 0;
+        public static int Price(string id) => id == "egg" ? EggPrice : id == "grain" ? 2 : id == "flour" ? 14 : id == "milk" ? 8 : id == "cheese" ? 24 : 0;
         public int EggsSold { get; private set; }
         public float Remaining { get; private set; }
         public bool Busy => Cargo > 0;

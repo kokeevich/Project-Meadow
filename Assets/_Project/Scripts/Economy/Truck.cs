@@ -13,8 +13,7 @@ namespace ProjectMeadow.Economy
         public void Interact()
         {
             Selected = true;
-            var mill = FindFirstObjectByType<ProjectMeadow.Production.ProductionBuilding>();
-            if (mill != null) mill.Selected = false;
+            foreach (var building in FindObjectsByType<ProjectMeadow.Production.ProductionBuilding>(FindObjectsSortMode.None)) building.Selected = false;
         }
         private void Update()
         {

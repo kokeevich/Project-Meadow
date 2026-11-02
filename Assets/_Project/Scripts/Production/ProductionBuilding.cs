@@ -4,6 +4,9 @@ namespace ProjectMeadow.Production
 {
     public sealed class ProductionBuilding : MonoBehaviour, IInteractable
     {
+        public enum BuildingKind { Mill, CheeseMaker }
+        [SerializeField] private BuildingKind kind;
+        public BuildingKind Kind => kind;
         public ProductionService Service { get; private set; }
         public bool Selected { get; set; }
         private Transform rotor;
@@ -14,6 +17,7 @@ namespace ProjectMeadow.Production
         }
         public void Interact()
         {
+            foreach (var building in FindObjectsByType<ProductionBuilding>(FindObjectsSortMode.None)) building.Selected = false;
             Selected = true;
             var truck = FindFirstObjectByType<ProjectMeadow.Economy.Truck>();
             if (truck != null) truck.Selected = false;
