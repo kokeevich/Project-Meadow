@@ -52,3 +52,5 @@ MonoBehaviour:
   eyeMaterial: {fileID: 2100000, guid: bab571160f184759ab41ceb0408c7c2f, type: 2}
   wingMaterial: {fileID: 2100000, guid: 7e8a3c13628544b19797a8f92ea04218, type: 2}
   isCow: 1
+  milkMaterial: {fileID: 2100000, guid: a529eee1c7234121bfeabd1bb3e5ab31, type: 2}
+  milkAccent: {fileID: 2100000, guid: 2c0c61981c434063a2b321d2a8041247, type: 2}

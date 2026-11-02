@@ -68,3 +68,8 @@ available as market tabs; storage remains shared and capped at ten units.
 
 Initial balance: cow grass 8s, eating 3s, milk cooldown 10s; cheese 2 milk → 1 cheese in 8s.
 Milk sells for 8 coins and cheese for 24. These values still need playtest feedback.
+
+Dairy polish: rounded capsule legs and oval hooves replace the cow's block legs.
+Animals spawn on pasture; navigation excludes the delivery road and its shoulder.
+Milk searches for a free pasture position and stays upright without sliding onto the road.
+The original milk can has a shaped metal body, neck, lid, attached arched handle and teal band.

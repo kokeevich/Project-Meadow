@@ -29,15 +29,21 @@ namespace ProjectMeadow.Animals
                     area = box.gameObject == ground ? 0 : 1
                 });
             }
+            // Reserve the road and a shoulder wide enough for the cow's body.
+            sources.Add(new NavMeshBuildSource {
+                shape = NavMeshBuildSourceShape.Box,
+                transform = Matrix4x4.TRS(new Vector3(3, 1, -4.25f), Quaternion.identity, Vector3.one),
+                size = new Vector3(24, 4, 4.5f), area = 1
+            });
             var settings = NavMesh.GetSettingsByIndex(0);
             mesh = NavMeshBuilder.BuildNavMeshData(settings, sources, new Bounds(new Vector3(3, 0, 0), new Vector3(24, 8, 18)), Vector3.zero, Quaternion.identity);
             if (mesh == null) { Debug.LogError("Cannot build prototype NavMesh.", this); return; }
             instance = NavMesh.AddNavMeshData(mesh);
             currentAgentType = settings.agentTypeID;
-            Spawn(new Vector3(-2, 0, -2), settings.agentTypeID);
-            Spawn(new Vector3(2, 0, -2), settings.agentTypeID);
+            Spawn(new Vector3(-2, 0, -.8f), settings.agentTypeID);
+            Spawn(new Vector3(-1, 0, -.8f), settings.agentTypeID);
             var filter = new NavMeshQueryFilter { agentTypeID = settings.agentTypeID, areaMask = NavMesh.AllAreas };
-            if (cowPrefab != null && NavMesh.SamplePosition(new Vector3(4, 0, -2.5f), out var cowSpawn, 2f, filter))
+            if (cowPrefab != null && NavMesh.SamplePosition(new Vector3(5.8f, 0, .3f), out var cowSpawn, 2f, filter))
             {
                 var cow = Instantiate(cowPrefab, cowSpawn.position, Quaternion.identity, transform);
                 cow.GetComponent<NavMeshAgent>().agentTypeID = settings.agentTypeID;
@@ -48,7 +54,7 @@ namespace ProjectMeadow.Animals
         public bool TrySpawnPurchasedChicken()
         {
             if (!instance.valid || chickenPrefab == null || ChickenCount >= MaximumChickens) return false;
-            return Spawn(new Vector3(-3 + ChickenCount % 6, 0, -3), currentAgentType);
+            return Spawn(new Vector3(-3 + ChickenCount % 3, 0, -.6f), currentAgentType);
         }
         private bool Spawn(Vector3 position, int agentType)
         {
