@@ -73,3 +73,8 @@ Dairy polish: rounded capsule legs and oval hooves replace the cow's block legs.
 Animals spawn on pasture; navigation excludes the delivery road and its shoulder.
 Milk searches for a free pasture position and stays upright without sliding onto the road.
 The original milk can has a shaped metal body, neck, lid, attached arched handle and teal band.
+
+Animal layout: poultry feed is in front of the hen house at (4, -0.6),
+with starting chickens on opposite sides. Cattle feed is near the barn at
+(-1.4, -0.6), with the cow starting to its left. Plot frames and furrows
+move with their gameplay surfaces; model geometry and production rules are unchanged.

@@ -160,9 +160,9 @@ for i in range(28):
  part('Meadow tuft',(x,.08,z),(.18,.16,.18),'Leaves','sphere')
  if i%3==0:part('Wildflower',(x,.22,z),(.13,.13,.13),'Cream' if i%2 else 'Pink','sphere')
 # Raised garden frame around the existing food plot.
-for z in (-1.3,1.3):part('Garden timber',(1.5,.18,z),(2.85,.22,.13),'Wood')
-for x in (.15,2.85):part('Garden timber',(x,.18,0),(.13,.22,2.7),'Wood')
-for i in range(5):part('Soil furrow',(1.5,.309,-.95+i*.47),(2.25,.022,.05),'Earth')
+for z in (-1.9,.7):part('Garden timber',(4,.18,z),(2.85,.22,.13),'Wood')
+for x in (2.65,5.35):part('Garden timber',(x,.18,-.6),(.13,.22,2.7),'Wood')
+for i in range(5):part('Soil furrow',(4,.309,-1.55+i*.47),(2.25,.022,.05),'Earth')
 # Stepping stones toward the barn.
 for i in range(4):part('Stepping stone',(-2.7,.04,-1.7+i*.6),(.55,.08,.4),'Path',angle=i*9,axis='y')
 # New production district, a separate editable hierarchy.
@@ -196,7 +196,7 @@ for side in (-1,1):
 part('Dairy door',(-.4,.6,-.92),(.55,1.2,.06),'Cream',parent=dairy+1)
 part('Dairy window',(.45,1.15,-.92),(.45,.5,.06),'Glass',parent=dairy+1)
 part('Cheese sign',(.45,.55,-.94),(.45,.2,.08),'Gold',parent=dairy+1)
-cattle=part('Cow feed',(4.5,.15,-1.2),(2,.3,2),'Soil',solid=True)
+cattle=part('Cow feed',(-1.4,.15,-.6),(2,.3,2),'Soil',solid=True)
 blocks[-1]=blocks[-1].replace(f'  - component: {{fileID: {cattle+4}}}',f'  - component: {{fileID: {cattle+4}}}\n  - component: {{fileID: {cattle+5}}}')
 blocks[-1]+=f"""--- !u!114 &{cattle+5}
 MonoBehaviour:
@@ -206,8 +206,8 @@ MonoBehaviour:
   kind: 1
   growthSeconds: 8
 """
-for z in (-2.25,-.15):part('Pasture border',(4.5,.18,z),(2.2,.22,.12),'Wood')
-for x in (3.45,5.55):part('Pasture border',(x,.18,-1.2),(.12,.22,2.2),'Wood')
+for z in (-1.65,.45):part('Pasture border',(-1.4,.18,z),(2.2,.22,.12),'Wood')
+for x in (-2.45,-.35):part('Pasture border',(x,.18,-.6),(.12,.22,2.2),'Wood')
 
 # Populate child lists for nested art groups.
 for i,b in enumerate(blocks):
@@ -238,6 +238,9 @@ Transform:
   m_Children:
 '''+''.join(f'  - {{fileID: {n}}}\n' for n in transforms)+'  m_Father: {fileID: 0}\n'
 s=scene.read_text()
+# Keep the gameplay collider aligned with its generated garden frame.
+a=s.index('--- !u!4 &910021');b=s.index('--- !u!',a+5)
+s=s[:a]+re.sub(r'm_LocalPosition: \{[^}]+\}', 'm_LocalPosition: {x: 4, y: 0.15, z: -0.6}', s[a:b])+s[b:]
 # Idempotently remove generated art and obsolete test cube.
 sections=re.split(r'(?=^--- !u!)',s,flags=re.M)
 s=''.join(section for section in sections if not (m:=re.match(r'--- !u!\d+ &(\d+)',section)) or not (1999990<=int(m[1])<3000000 or 910010<=int(m[1])<=910015))

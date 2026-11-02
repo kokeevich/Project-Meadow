@@ -40,10 +40,10 @@ namespace ProjectMeadow.Animals
             if (mesh == null) { Debug.LogError("Cannot build prototype NavMesh.", this); return; }
             instance = NavMesh.AddNavMeshData(mesh);
             currentAgentType = settings.agentTypeID;
-            Spawn(new Vector3(-2, 0, -.8f), settings.agentTypeID);
-            Spawn(new Vector3(-1, 0, -.8f), settings.agentTypeID);
+            Spawn(new Vector3(2, 0, -.8f), settings.agentTypeID);
+            Spawn(new Vector3(5.9f, 0, .65f), settings.agentTypeID);
             var filter = new NavMeshQueryFilter { agentTypeID = settings.agentTypeID, areaMask = NavMesh.AllAreas };
-            if (cowPrefab != null && NavMesh.SamplePosition(new Vector3(5.8f, 0, .3f), out var cowSpawn, 2f, filter))
+            if (cowPrefab != null && NavMesh.SamplePosition(new Vector3(-3.6f, 0, -.7f), out var cowSpawn, 2f, filter))
             {
                 var cow = Instantiate(cowPrefab, cowSpawn.position, Quaternion.identity, transform);
                 cow.GetComponent<NavMeshAgent>().agentTypeID = settings.agentTypeID;
@@ -54,7 +54,10 @@ namespace ProjectMeadow.Animals
         public bool TrySpawnPurchasedChicken()
         {
             if (!instance.valid || chickenPrefab == null || ChickenCount >= MaximumChickens) return false;
-            return Spawn(new Vector3(-3 + ChickenCount % 3, 0, -.6f), currentAgentType);
+            // Alternate between the open sides of the hen-house garden.
+            bool right = ChickenCount % 2 != 0;
+            float row = (ChickenCount / 2) % 3;
+            return Spawn(new Vector3(right ? 5.9f : 2f, 0, (right ? .65f : -.8f) + row * .9f), currentAgentType);
         }
         private bool Spawn(Vector3 position, int agentType)
         {
