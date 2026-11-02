@@ -74,7 +74,10 @@ Animals spawn on pasture; navigation excludes the delivery road and its shoulder
 Milk searches for a free pasture position and stays upright without sliding onto the road.
 The original milk can has a shaped metal body, neck, lid, attached arched handle and teal band.
 
-Animal layout: poultry feed is in front of the hen house at (4, -0.6),
-with starting chickens on opposite sides. Cattle feed is near the barn at
-(-1.4, -0.6), with the cow starting to its left. Plot frames and furrows
-move with their gameplay surfaces; model geometry and production rules are unchanged.
+Animal layout: poultry feed is in front of the hen house at (4, -0.3).
+One starting chicken stays on the left; the other starts between the garden and
+road. Both spawn facing their feed. Cattle feed is between the barn and hen house
+at (0, 2), with the cow in front. Milk placement searches the camera-facing
+half-circle for a free spot so the cow does not conceal the product.
+The road exclusion leaves a grass approach in front of the poultry garden.
+Model geometry and production rules are unchanged.

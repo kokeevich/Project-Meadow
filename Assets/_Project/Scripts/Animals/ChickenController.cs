@@ -171,12 +171,16 @@ namespace ProjectMeadow.Animals
         private Vector3 ProductPosition()
         {
             var filter = new NavMeshQueryFilter { agentTypeID = agent.agentTypeID, areaMask = agent.areaMask };
-            for (int ring = 0; ring < 3; ring++) for (int i = 0; i < 12; i++)
+            // Search the camera-facing half-circle first, so the cow cannot hide the can.
+            Vector3 towardCamera = UnityEngine.Camera.main != null ? -UnityEngine.Camera.main.transform.forward : Vector3.back;
+            towardCamera.y = 0;
+            towardCamera.Normalize();
+            for (int ring = 0; ring < 4; ring++) for (int i = 0; i < 7; i++)
             {
-                float angle = i * Mathf.PI * 2 / 12;
-                var offset = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * (1.1f + ring * .5f);
+                float angle = ((i + 1) / 2) * 25f * (i % 2 == 0 ? 1 : -1);
+                var offset = Quaternion.Euler(0, angle, 0) * towardCamera * (1.4f + ring * .5f);
                 if (!NavMesh.SamplePosition(transform.position + offset, out var hit, .5f, filter)) continue;
-                if (hit.position.z < -1.9f) continue;
+                if (hit.position.z < -1.9f || Vector3.Dot(hit.position - transform.position, towardCamera) < .7f) continue;
                 Vector3 candidate = hit.position + Vector3.up * .4f;
                 if (!Physics.CheckSphere(candidate, .28f, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore))
                     return hit.position + Vector3.up * .08f;

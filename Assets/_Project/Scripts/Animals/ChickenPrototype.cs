@@ -32,7 +32,7 @@ namespace ProjectMeadow.Animals
             // Reserve the road and a shoulder wide enough for the cow's body.
             sources.Add(new NavMeshBuildSource {
                 shape = NavMeshBuildSourceShape.Box,
-                transform = Matrix4x4.TRS(new Vector3(3, 1, -4.25f), Quaternion.identity, Vector3.one),
+                transform = Matrix4x4.TRS(new Vector3(3, 1, -5.1f), Quaternion.identity, Vector3.one),
                 size = new Vector3(24, 4, 4.5f), area = 1
             });
             var settings = NavMesh.GetSettingsByIndex(0);
@@ -41,11 +41,11 @@ namespace ProjectMeadow.Animals
             instance = NavMesh.AddNavMeshData(mesh);
             currentAgentType = settings.agentTypeID;
             Spawn(new Vector3(2, 0, -.8f), settings.agentTypeID);
-            Spawn(new Vector3(5.9f, 0, .65f), settings.agentTypeID);
+            Spawn(new Vector3(4, 0, -2.2f), settings.agentTypeID);
             var filter = new NavMeshQueryFilter { agentTypeID = settings.agentTypeID, areaMask = NavMesh.AllAreas };
-            if (cowPrefab != null && NavMesh.SamplePosition(new Vector3(-3.6f, 0, -.7f), out var cowSpawn, 2f, filter))
+            if (cowPrefab != null && NavMesh.SamplePosition(new Vector3(0, 0, .15f), out var cowSpawn, 2f, filter))
             {
-                var cow = Instantiate(cowPrefab, cowSpawn.position, Quaternion.identity, transform);
+                var cow = Instantiate(cowPrefab, cowSpawn.position, FacingFeed(cowSpawn.position, ProjectMeadow.Farming.FoodPlot.FeedKind.Cattle), transform);
                 cow.GetComponent<NavMeshAgent>().agentTypeID = settings.agentTypeID;
                 CowCount = 1;
             }
@@ -63,10 +63,21 @@ namespace ProjectMeadow.Animals
         {
             var filter = new NavMeshQueryFilter { agentTypeID = agentType, areaMask = NavMesh.AllAreas };
             if (!NavMesh.SamplePosition(position, out var hit, 2f, filter)) { Debug.LogError("Chicken spawn is outside NavMesh.", this); return false; }
-            var chicken = Instantiate(chickenPrefab, hit.position, Quaternion.identity, transform);
+            var chicken = Instantiate(chickenPrefab, hit.position, FacingFeed(hit.position, ProjectMeadow.Farming.FoodPlot.FeedKind.Poultry), transform);
             chicken.GetComponent<NavMeshAgent>().agentTypeID = agentType;
             ChickenCount++;
             return true;
+        }
+        private static Quaternion FacingFeed(Vector3 position, ProjectMeadow.Farming.FoodPlot.FeedKind kind)
+        {
+            foreach (var plot in FindObjectsByType<ProjectMeadow.Farming.FoodPlot>(FindObjectsSortMode.None))
+            {
+                if (plot.Kind != kind) continue;
+                var direction = plot.transform.position - position;
+                direction.y = 0;
+                if (direction.sqrMagnitude > .001f) return Quaternion.LookRotation(direction);
+            }
+            return Quaternion.identity;
         }
         private void OnDestroy()
         {
